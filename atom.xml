@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Living and Programming - YJ Park's Blog]]></title>
+  <link href="http://blog.yjpark.org/atom.xml" rel="self"/>
+  <link href="http://blog.yjpark.org/"/>
+  <updated>2012-01-27T18:48:56+08:00</updated>
+  <id>http://blog.yjpark.org/</id>
+  <author>
+    <name><![CDATA[YJ Park]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
