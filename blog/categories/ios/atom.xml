@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Living and Programming - YJ Park's Blog]]></title>
-  <link href="http://blog.yjpark.org/atom.xml" rel="self"/>
+  <title><![CDATA[Category: ios | Living and Programming - YJ Park's Blog]]></title>
+  <link href="http://blog.yjpark.org/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
   <updated>2012-04-24T23:51:24+08:00</updated>
   <id>http://blog.yjpark.org/</id>
@@ -22,9 +22,9 @@
 
 <p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
 
-<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&#8217;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I've been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
 
-<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&#8217;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it's very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
 
 <p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
 
@@ -37,30 +37,30 @@
 
 <h2>What is missed</h2>
 
-<p>I did implement support for USB transfer for backup/restore, though didn&#8217;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&#8217;t get time for it.</p>
+<p>I did implement support for USB transfer for backup/restore, though didn't write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn't get time for it.</p>
 
 <p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
 
-<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&#8217;ve done some experiments about bigger writing area, it&#8217;s not easy to put it into the current structure though.</p>
+<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I've done some experiments about bigger writing area, it's not easy to put it into the current structure though.</p>
 
 <p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
 
 <p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
 
-<p>&#8230;</p>
+<p>...</p>
 
 <h2>Why open sourced</h2>
 
-<p>It&#8217;s sadly that I can&#8217;t put more dedicated time into it, since it didn&#8217;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
+<p>It's sadly that I can't put more dedicated time into it, since it didn't bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
 
-<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&#8217;re interesting.</p>
+<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you're interesting.</p>
 
 <ul>
 <li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
 </ul>
 
 
-<p>Might write more about the technical side of the project later, what I&#8217;ve learned, and how to extend it.</p>
+<p>Might write more about the technical side of the project later, what I've learned, and how to extend it.</p>
 ]]></content>
   </entry>
   
