@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Living and Programming - YJ Park's Blog]]></title>
-  <link href="http://blog.yjpark.org/atom.xml" rel="self"/>
+  <title><![CDATA[Category: chinese | Living and Programming - YJ Park's Blog]]></title>
+  <link href="http://blog.yjpark.org/blog/categories/chinese/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
   <updated>2012-08-18T17:09:51+08:00</updated>
   <id>http://blog.yjpark.org/</id>
@@ -136,140 +136,6 @@
 <p>游戏的内容应该是比较健康的，那种利用人性中比较阴暗的部分的我个人很不喜欢，而且所谓面向高端用户（利用玩家的重度沉迷从玩家身上尽可能的榨取利益）的做法也是我不能接受的。从每个用户身上能拿到1～2美元我认为对于休闲小游戏就已经足够好了，用户基数已经足够大了，就看我们能不能把自己的产品做好。</p>
 
 <p>我们会用相对较长的时间一起讨论游戏的概念、细节、美术风格、技术难点，争取在项目正式开始时大家达到共识，也对开发的难度有所了解。半年内，第一款产品应能上线，根据带来的收入情况再确定下一步的具体计划。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[PlantUML Plugin for Octopress]]></title>
-    <link href="http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/"/>
-    <updated>2012-04-30T23:20:00+08:00</updated>
-    <id>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress</id>
-    <content type="html"><![CDATA[<h2>What is PlantUML?</h2>
-
-<p><a href="http://plantuml.sourceforge.net/">PlantUML</a> is a component that allows to quickly write:</p>
-
-<ul>
-<li>sequence diagram,</li>
-<li>use case diagram,</li>
-<li>class diagram,</li>
-<li>activity diagram,</li>
-<li>component diagram,</li>
-<li>state diagram</li>
-<li>object diagram</li>
-</ul>
-
-
-<p>I really like the idea of writing UML diagram with plain text. Since it&#8217;s totally plaintext, it&#8217;s very easy to do diff and version track, also you don&#8217;t need to do anything about the layout (the text itself looks pretty good too).</p>
-
-<p>Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.</p>
-
-<h2>The Plugin</h2>
-
-<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&#8217;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
-
-<p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
-
-<!-- more -->
-
-
-<h2>Configuration</h2>
-
-<p>You need to download the plantuml.jar file from <a href="http://plantuml.sourceforge.net/download.html">http://plantuml.sourceforge.net/download.html</a></p>
-
-<p>In your _config.xml, setup plantuml_jar to the downloaded jar file, e.g.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>plantuml_jar: ../_lib/plantuml.jar
-</span><span class='line'>plantuml_background_color: "#f8f8f8"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The plantuml_background_color is optional, which will change the background of the generated diagram.</p>
-
-<h2>Usage</h2>
-
-<p>Just wrap the diagram text in &#8220;plantuml&#8221; block, e.g.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>{% plantuml %}
-</span><span class='line'>Alice -&gt; Bob: Authentication Request
-</span><span class='line'>Bob --&gt; Alice: Authentication Response
-</span><span class='line'>
-</span><span class='line'>Alice -&gt; Bob: Another authentication Request
-</span><span class='line'>Alice &lt;-- Bob: another authentication Response
-</span><span class='line'>{% endplantuml %}
-</span><span class='line'></span></code></pre></td></tr></table></div></figure>
-
-
-<h2>An Example</h2>
-
-<center><img src='http://blog.yjpark.org/images/plantuml/9c73e1984d305ac440792be9dc65b164.png'></center>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Movable Write Open Sourced]]></title>
-    <link href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/"/>
-    <updated>2012-04-22T13:35:00+08:00</updated>
-    <id>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced</id>
-    <content type="html"><![CDATA[<h2>What is Movable Write</h2>
-
-<p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
-
-<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&#8217;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
-
-<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&#8217;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
-
-<p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
-
-<ul>
-<li><a href="http://itunes.apple.com/us/app/movable-write/id416413981?mt=8">App store link</a></li>
-<li><a href="http://wolfewithane.com/blog/2011/6/22/review-hand-notes-over-to-movable-write.html">A nice introduction from wolfewithane.com</a></li>
-<li><a href="http://iapp.com.tw/ex/topic_inside.php?id=2447">Another nice introduction from iapp.com.tw (in Chinese)</a></li>
-</ul>
-
-
-<!-- more -->
-
-
-<h2>What is missed</h2>
-
-<p>I did implement support for USB transfer for backup/restore, though didn&#8217;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&#8217;t get time for it.</p>
-
-<p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
-
-<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&#8217;ve done some experiments about bigger writing area, it&#8217;s not easy to put it into the current structure though.</p>
-
-<p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
-
-<p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
-
-<p>&#8230;</p>
-
-<h2>Why open sourced</h2>
-
-<p>It&#8217;s sadly that I can&#8217;t put more dedicated time into it, since it didn&#8217;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
-
-<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&#8217;re interesting.</p>
-
-<ul>
-<li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
-</ul>
-
-
-<p>Might write more about the technical side of the project later, what I&#8217;ve learned, and how to extend it.</p>
 ]]></content>
   </entry>
   

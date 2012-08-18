@@ -2,18 +2,22 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</loc>
-        <lastmod>2012-05-01T00:53:16+08:00</lastmod>
+        <lastmod>2012-07-28T00:37:20+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</loc>
-        <lastmod>2012-05-01T00:53:16+08:00</lastmod>
+        <lastmod>2012-07-29T16:23:28+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.yjpark.org/blog/2012/07/27/pettyfun-game-studio-established/</loc>
+        <lastmod>2012-07-29T16:54:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/archives/</loc>
-        <lastmod>2012-05-01T00:53:16+08:00</lastmod>
+        <lastmod>2012-07-29T16:54:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/</loc>
-        <lastmod>2012-05-01T00:53:16+08:00</lastmod>
+        <lastmod>2012-07-29T16:54:32+08:00</lastmod>
     </url>
 </urlset>

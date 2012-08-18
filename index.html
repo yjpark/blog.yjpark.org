@@ -9,10 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="What is PlantUML? PlantUML is a component that allows to quickly write: sequence diagram,
-use case diagram,
-class diagram,
-activity diagram, &hellip;">
+  <meta name="description" content="一点小小的历史 之前工作的公司是做外包的，因为环境和人都不错，在那里工作了好几年。渐渐的由一个独自写代码的程序员，认识了很多同行，接触了开源技术，开始做技术管理，和不少面试培训的工作。过程中学到了很多，也对自己能做些什么，有那些长处开始有了信心。 外包的好处是比较清闲，压力并不大， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +80,59 @@ activity diagram, &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/07/27/pettyfun-game-studio-established/">PettyFun 游戏工作室成立了！</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-27T18:31:00+08:00" pubdate data-updated="true">2012-07-27 18:31</time>
+        
+         | <a href="/blog/2012/07/27/pettyfun-game-studio-established/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>一点小小的历史</h2>
+
+<p>之前工作的公司是做外包的，因为环境和人都不错，在那里工作了好几年。渐渐的由一个独自写代码的程序员，认识了很多同行，接触了开源技术，开始做技术管理，和不少面试培训的工作。过程中学到了很多，也对自己能做些什么，有那些长处开始有了信心。</p>
+
+<p>外包的好处是比较清闲，压力并不大，在技术和流程上做的相对比较完善，然而外包最大的问题是实质上是不鼓励程序员有太高的效率的。由于技术难度和工作效率的难以衡量，很难判断是效率高低还是项目难易的关系导致的工作时间的变化。虽然业内都会同意好的程序员和差的程序员的生产率会有数十倍的差距，然而外包的很大出发点就是节约成本，想给好的程序员提供有吸引力的条件是很难的。</p>
+
+<p>我们做的是个长期项目，基本是按人数计算收入的，也就是说在客户关系正常的情况下，项目组的人数越多，公司得到的收入也就越多。因此，运作的模式基本是比较好的程序员倾向于成为技术组长，把大量的时间花在如何让其他能力不够强的程序员正常工作上，具体说来就是大量的代码审查。</p>
+
+<p>读别人的代码，并提出意见，最终改善的过程，对于程序员来说是个很好的学习提高的过程，我也做了很久。但是工作的内容往往技术含量并不高，受到扩大规模的压力，进人的标准也渐渐放低，感觉自己做的事越来越没有意思，虽然通过业余时间做了些纯技术的学习，然而已经感觉在工作中没有热情了。</p>
+
+<p>公司在iPhone刚出来不久就开始了产品开发的尝试，选择的方向是游戏，做了两款小型游戏，有些进展，然而收入不够理想，老板把方向调整为社交相关的方向，不过产品开发过程有点纠结，花了相当长的时间做了一款相对比较大的产品。（最终结果还是很好，产品有自己的创意，相当成功）</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/07/27/pettyfun-game-studio-established/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/04/30/plantuml-plugin-for-octopress/">PlantUML Plugin for Octopress</a></h1>
     
     
@@ -133,52 +183,12 @@ activity diagram, &hellip;">
 
 <p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
 
-<h2>Configuration</h2>
-
-<p>You need to download the plantuml.jar file from <a href="http://plantuml.sourceforge.net/download.html">http://plantuml.sourceforge.net/download.html</a></p>
-
-<p>In your _config.xml, setup plantuml_jar to the downloaded jar file, e.g.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>plantuml_jar: ../_lib/plantuml.jar
-</span><span class='line'>plantuml_background_color: "#f8f8f8"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The plantuml_background_color is optional, which will change the background of the generated diagram.</p>
-
-<h2>Usage</h2>
-
-<p>Just wrap the diagram text in &#8220;plantuml&#8221; block, e.g.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>{% plantuml %}
-</span><span class='line'>Alice -&gt; Bob: Authentication Request
-</span><span class='line'>Bob --&gt; Alice: Authentication Response
-</span><span class='line'>
-</span><span class='line'>Alice -&gt; Bob: Another authentication Request
-</span><span class='line'>Alice &lt;-- Bob: another authentication Response
-</span><span class='line'>{% endplantuml %}
-</span><span class='line'></span></code></pre></td></tr></table></div></figure>
-
-
-<h2>An Example</h2>
-
-<center><img src='/images/plantuml/9c73e1984d305ac440792be9dc65b164.png'></center>
-
-
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/04/30/plantuml-plugin-for-octopress/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -231,34 +241,12 @@ activity diagram, &hellip;">
 </ul>
 
 
-<h2>What is missed</h2>
-
-<p>I did implement support for USB transfer for backup/restore, though didn&#8217;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&#8217;t get time for it.</p>
-
-<p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
-
-<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&#8217;ve done some experiments about bigger writing area, it&#8217;s not easy to put it into the current structure though.</p>
-
-<p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
-
-<p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
-
-<p>&#8230;</p>
-
-<h2>Why open sourced</h2>
-
-<p>It&#8217;s sadly that I can&#8217;t put more dedicated time into it, since it didn&#8217;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
-
-<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&#8217;re interesting.</p>
-
-<ul>
-<li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
-</ul>
-
-
-<p>Might write more about the technical side of the project later, what I&#8217;ve learned, and how to extend it.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/04/22/movable-write-open-sourced/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -274,11 +262,15 @@ activity diagram, &hellip;">
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/code' style='font-size: 160.0%'>code(1)</a> <a href='/blog/categories/ios' style='font-size: 160.0%'>ios(1)</a> <a href='/blog/categories/movablewrite' style='font-size: 160.0%'>movablewrite(1)</a> <a href='/blog/categories/pettyfun' style='font-size: 160.0%'>pettyfun(1)</a> <a href='/blog/categories/tool' style='font-size: 160.0%'>tool(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/chinese' style='font-size: 130.0%'>chinese(1)</a> <a href='/blog/categories/code' style='font-size: 130.0%'>code(1)</a> <a href='/blog/categories/ios' style='font-size: 130.0%'>ios(1)</a> <a href='/blog/categories/movablewrite' style='font-size: 130.0%'>movablewrite(1)</a> <a href='/blog/categories/pettyfun' style='font-size: 160.0%'>pettyfun(2)</a> <a href='/blog/categories/tool' style='font-size: 130.0%'>tool(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/27/pettyfun-game-studio-established/">PettyFun 游戏工作室成立了！</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/04/30/plantuml-plugin-for-octopress/">PlantUML Plugin for Octopress</a>

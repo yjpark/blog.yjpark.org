@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tool | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/tool/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2012-05-01T01:30:15+08:00</updated>
+  <updated>2012-08-18T17:09:51+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -42,6 +42,9 @@
 <p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can't find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
 
 <p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
+
+<!-- more -->
+
 
 <h2>Configuration</h2>
 
