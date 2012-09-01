@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iwgame | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/iwgame/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2012-09-01T12:20:30+08:00</updated>
+  <updated>2012-09-01T12:25:59+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -29,6 +29,9 @@
 <p>I did have quite some experience on cocos2d, though it's been ruled out pretty quickly. I want our game to work on multiple platforms, since we don't use much platform-specific features, we don't get much with objective-c. Also personally I am not really a big fan of cocos2d, it's kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I've tried Cocos Builder and Level Helper very breifly, might be just me, but I don't like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn't dig into it deeply.</p>
 
 <p>The second option is Unity3d, I've used it for about 3 months before, It's pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it's a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don't really think the .Net virtual machine is the best way for our rather small games. My feeling is that it's more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it's mostly 3D centric, 2D works are possible, but a bit awkard, since we don't need the 3D power and I want more control with my codes, I did not take this path either.</p>
+
+<!-- more -->
+
 
 <p>For good performance and graphic effects, I didn't investigate the fast development tools, most of them are HTML based or LUA based, more like quick prototype tools for me.</p>
 
