@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iwgame | Living and Programming - YJ Park's Blog]]></title>
+  <link href="http://blog.yjpark.org/blog/categories/iwgame/atom.xml" rel="self"/>
+  <link href="http://blog.yjpark.org/"/>
+  <updated>2012-09-01T12:20:30+08:00</updated>
+  <id>http://blog.yjpark.org/</id>
+  <author>
+    <name><![CDATA[YJ Park]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Game Engine Based on Marmalade and IwGame]]></title>
+    <link href="http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/"/>
+    <updated>2012-08-30T22:58:00+08:00</updated>
+    <id>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame</id>
+    <content type="html"><![CDATA[<p>Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual games, as the tech lead, I need to choose a development way for our first batch of games.</p>
+
+<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that's better for the team and the graphic quality of the games.</p>
+
+<p>After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.</p>
+
+<h2>Why choose Marmalade?</h2>
+
+<p>I did have quite some experience on cocos2d, though it's been ruled out pretty quickly. I want our game to work on multiple platforms, since we don't use much platform-specific features, we don't get much with objective-c. Also personally I am not really a big fan of cocos2d, it's kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I've tried Cocos Builder and Level Helper very breifly, might be just me, but I don't like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn't dig into it deeply.</p>
+
+<p>The second option is Unity3d, I've used it for about 3 months before, It's pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it's a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don't really think the .Net virtual machine is the best way for our rather small games. My feeling is that it's more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it's mostly 3D centric, 2D works are possible, but a bit awkard, since we don't need the 3D power and I want more control with my codes, I did not take this path either.</p>
+
+<p>For good performance and graphic effects, I didn't investigate the fast development tools, most of them are HTML based or LUA based, more like quick prototype tools for me.</p>
+
+<p>I've played with Airplay for a couple of days 2 years ago, technically it was very good, though with a rather steep learning curve, and lack of tutorials and blog post, so I didn't really learn it as a hobby. Now it's renamed to Marmalade, been updated pretty often, and having a much bigger user base and many successful games are based on it, like Draw Something or Cut The Rope. Since I will use the chosen platform for at least 1 or 2 years, I spend a week to really try to learn it this time.</p>
+
+<p>The first impression was kind of negative, the OSX support seems to be much weaker than the windows one, a bunch of small problems were met, which almost make me give it up. Now I've been using it for about 1 month, still got some problem, though I think I start to feel comfortable with it.</p>
+
+<p>There are still very few technical information about marmalade other than the official documents and forum, the only helpful tutorial I can find is the <a href="http://www.drmop.com/index.php/marmalade-sdk-tutorials/">DrMop tutorials</a>. It's very helpful to provide basic ideas for new Marmalade users.</p>
+
+<p>The API documents of Marmalade is actually quite good after you get the basic ideas about it. Also the examples included are good learning source.</p>
+
+<p>My current feeling about Marmalade is quite positive, it has nice features and solid quality, provide full control, has native bridge for potential platform-specific development.</p>
+
+<p>The things I wish to be better:</p>
+
+<ul>
+<li>1st class OSX support, add the missing features of the simulator, fix the broken "mkb --iphone" device building (only trid on 10.8 + Xcode 4.4, not sure about other environments).</li>
+<li>Release to osx ability, then I can create desktop tools such as customized level editor instead of let my graphic designers to use the simulator to run them.</li>
+<li>Float data types in IwGx, it's said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we'll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can't afford dedicated tester anyway.</li>
+<li>High level document besides API reference, and generally more documentations.</li>
+<li>Better community and 3rd party components, it's quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
+</ul>
+
+
+<h2>What is IwGame, and Why it is Helpful</h2>
+
+<p>Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don't have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.</p>
+
+<p>According to the website, <a href="http://www.drmop.com/index.php/iwgame-engine/">IwGame</a> is a "Free Open Source Cross Platform Mobile Game Engine for Smart Phones and Tablets", it's a quite ambitious project, already has a long feature list with many future features, though still in an rather early stage.</p>
+
+<p>The main reasons I chose it:</p>
+
+<ul>
+<li>Open source, I can tweak the codes to suit my needs better, and even if its development stopped, we can still improve it by ourselves.</li>
+<li>XML file format, it's very powerful, e.g. make simple animations easily without coding. Also it's very easy to extend the system to add our own extensions. This is a hugh advantage to me.</li>
+<li>Complete 2D framework, including sprite, scene, particle, physics, UI... No need to reimplement the basic things from the scratch, we can focus on more interesting stuffs.</li>
+<li>Support 2D and 3D rendering, since the rendering codes are based on IwGx now, even for 2D games, some part of 3D elements can be very useful, so I think this flexibility is very good.</li>
+<li>Good document and a full game source included, there are quite some typos in the included PDF document, though it provide most information I need to get started, plus reading the source code, It's kind of easy to learn (though still much harder comparing to cocos2d family).</li>
+<li>Good code quality, easy to read and not hard to expand.</li>
+</ul>
+
+
+<p>Some worries about base our codes on it:</p>
+
+<ul>
+<li>It's a big project, and seems most code and docs are written by DrMop in several monthes. He did very great so far, though he has too many works ahead him, I am not sure where this project will be after 1 year, what if it's dead? also it's been a while since the last update.</li>
+<li>On the other hand, if it's been developed rapidly, since it's not finished yet, we will need to expand it by ourself, it can be a problem to keep update with the future updates. I don't want to make a fork since many good features are on the list, though we can't wait for they to appear, We will be careful with out changes to make them easy to merge, but what if the owner decide to change the API interface drasticly?</li>
+<li>The core string class (CIwGameString) is not unicode compatible, and the author didn't have plan to support it soon. This can be a big problem for us to support multiple language, especially the asian languages. I want to find a clean solution for this, though haven't started working on it yet.</li>
+<li>There is no unit tests yet, so it might introduce its own bugs, especially if it's been update quickly.</li>
+</ul>
+
+
+<h2>My Plan on The Game Engine</h2>
+
+<p>Now I feel OK working with Marmalade and IwGame, the next steps will be creating the features/tools we need for our games, i.e. create a game engine for our requirements.</p>
+
+<p>Here is the current list of works to be done:</p>
+
+<ul>
+<li>Basic level editing, to arrange 2D sprites on screen, supporting basic operations such as moving, scaling, rotating, etc. Our level/scene will be 2D non-tile with multiple layers, something similar to <a href="http://javilop.com/gamedev/c-game-programming-tutorial-non-tile-based-arbitrary-positioned-entity-engine-editor-like-in-braid-or-aquaria-games/">this</a></li>
+<li>Complex charactor editing, 2D or 3D charactors with body parts, movement and animations.</li>
+<li>Advanced level editing, particles, visual effects, events, etc.</li>
+<li>UI editing.</li>
+</ul>
+
+
+<p>All these editors will base on the XOML markup system of IwGame.</p>
+
+<p>These are still quite some works, might be over engineering for our first game, though as a developer, I don't want to just do things in the quick and dirty way, I want to do it in a proper way. And I think a proper engine can make future games easier to develop, so in the long run, it will worth the efforts.</p>
+
+<p>Think I will start to write more about Marmalade and IwGame in the future, both help myself to understand them better, and hopefully might help some other developers too.</p>
+]]></content>
+  </entry>
+  
+</feed>
