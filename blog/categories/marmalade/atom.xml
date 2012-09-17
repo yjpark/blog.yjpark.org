@@ -4,7 +4,7 @@
   <title><![CDATA[Category: marmalade | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/marmalade/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2012-09-17T10:04:01+08:00</updated>
+  <updated>2012-09-17T19:26:51+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[OpenGL ES 2.0 Shader in Marmalade]]></title>
-    <link href="http://blog.yjpark.org/blog/2012/09/04/opengl-es-2-dot-0-shader-in-marmalade/"/>
-    <updated>2012-09-04T23:37:00+08:00</updated>
-    <id>http://blog.yjpark.org/blog/2012/09/04/opengl-es-2-dot-0-shader-in-marmalade</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Game Engine Based on Marmalade and IwGame]]></title>
