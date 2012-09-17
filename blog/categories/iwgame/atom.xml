@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iwgame | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/iwgame/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2012-09-01T12:25:59+08:00</updated>
+  <updated>2012-09-17T10:04:01+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -48,9 +48,9 @@
 <p>The things I wish to be better:</p>
 
 <ul>
-<li>1st class OSX support, add the missing features of the simulator, fix the broken "mkb --iphone" device building (only trid on 10.8 + Xcode 4.4, not sure about other environments).</li>
-<li>Release to osx ability, then I can create desktop tools such as customized level editor instead of let my graphic designers to use the simulator to run them.</li>
-<li>Float data types in IwGx, it's said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we'll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can't afford dedicated tester anyway.</li>
+<li>1st class OSX support, add the missing features of the simulator, fix the broken "mkb --iphone" device building (only trid on 10.8 + Xcode 4.4, not sure about other environments). (Update: --iphone is fixed in 6.1, simulator seems not updated)</li>
+<li>Release to osx ability, then I can create desktop tools such as customized level editor instead of let my graphic designers to use the simulator to run them. (Update: Added in 6.1)</li>
+<li>Float data types in IwGx, it's said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we'll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can't afford dedicated tester anyway. (Update: Float added in 6.1 and works great, though we probably will not change IwGame to use float)</li>
 <li>High level document besides API reference, and generally more documentations.</li>
 <li>Better community and 3rd party components, it's quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
 </ul>
