@@ -9,7 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual &hellip;">
+  <meta name="description" content="Marmalade provide good support for writing custom shaders in it, though it&#8217;s not easy to get all the information to start writing the first &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/">OpenGL ES 2.0 Shader in Marmalade</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-02T18:00:00+08:00" pubdate data-updated="true">2012-10-02 18:00</time>
+        
+         | <a href="/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Marmalade provide good support for writing custom shaders in it, though it&#8217;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
+
+<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&#8217;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
+
+<p>The sample shader&#8217;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
+
+<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&#8217;s a good start point to me, you should read it first to get the concepts.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -315,11 +364,15 @@
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/chinese' style='font-size: 120.0%'>chinese(1)</a> <a href='/blog/categories/code' style='font-size: 120.0%'>code(1)</a> <a href='/blog/categories/game' style='font-size: 120.0%'>game(1)</a> <a href='/blog/categories/ios' style='font-size: 120.0%'>ios(1)</a> <a href='/blog/categories/iwgame' style='font-size: 120.0%'>iwgame(1)</a> <a href='/blog/categories/marmalade' style='font-size: 120.0%'>marmalade(1)</a> <a href='/blog/categories/movablewrite' style='font-size: 120.0%'>movablewrite(1)</a> <a href='/blog/categories/pettyfun' style='font-size: 160.0%'>pettyfun(3)</a> <a href='/blog/categories/tool' style='font-size: 120.0%'>tool(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/chinese' style='font-size: 120.0%'>chinese(1)</a> <a href='/blog/categories/code' style='font-size: 120.0%'>code(1)</a> <a href='/blog/categories/game' style='font-size: 120.0%'>game(1)</a> <a href='/blog/categories/ios' style='font-size: 120.0%'>ios(1)</a> <a href='/blog/categories/iwgame' style='font-size: 120.0%'>iwgame(1)</a> <a href='/blog/categories/marmalade' style='font-size: 140.0%'>marmalade(2)</a> <a href='/blog/categories/movablewrite' style='font-size: 120.0%'>movablewrite(1)</a> <a href='/blog/categories/pettyfun' style='font-size: 160.0%'>pettyfun(3)</a> <a href='/blog/categories/tool' style='font-size: 120.0%'>tool(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/">OpenGL ES 2.0 Shader in Marmalade</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">Game Engine Based on Marmalade and IwGame</a>
