@@ -9,7 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="It&#8217;s been more than a month since my post about the idea of game engine based on Marmalade and IwGame, after the post, spent many hours busy &hellip;">
+  <meta name="description" content="In 2D games, it&#8217;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/">Convert Cocos2D Font (BMFont) to Marmalade&#8217;s GxFont</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-05T19:16:00+08:00" pubdate data-updated="true">2012-11-05 19:16</time>
+        
+         | <a href="/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In 2D games, it&#8217;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+
+<p>There are quite some tools to generate such font images, I&#8217;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &#8220;Cocos2d / BMFont&#8221; format, though it&#8217;s not directly usable in Marmalade.</p>
+
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&#8217;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
+
+<p>My first thought was to add function to use the BMFont generated, though it&#8217;s not an easy task, also I want to use IwGame&#8217;s label components, which are based on Marmalade&#8217;s GxFont and Truetype support.</p>
+
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&#8217;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -411,11 +462,15 @@
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/chinese' style='font-size: 120.0%'>chinese(1)</a> <a href='/blog/categories/code' style='font-size: 120.0%'>code(1)</a> <a href='/blog/categories/game' style='font-size: 120.0%'>game(1)</a> <a href='/blog/categories/ios' style='font-size: 120.0%'>ios(1)</a> <a href='/blog/categories/iwgame' style='font-size: 160.0%'>iwgame(3)</a> <a href='/blog/categories/marmalade' style='font-size: 140.0%'>marmalade(2)</a> <a href='/blog/categories/movablewrite' style='font-size: 120.0%'>movablewrite(1)</a> <a href='/blog/categories/pettyfun' style='font-size: 160.0%'>pettyfun(3)</a> <a href='/blog/categories/pfgame' style='font-size: 120.0%'>pfgame(1)</a> <a href='/blog/categories/tool' style='font-size: 120.0%'>tool(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/chinese' style='font-size: 120.0%'>chinese(1)</a> <a href='/blog/categories/code' style='font-size: 120.0%'>code(1)</a> <a href='/blog/categories/game' style='font-size: 120.0%'>game(1)</a> <a href='/blog/categories/ios' style='font-size: 120.0%'>ios(1)</a> <a href='/blog/categories/iwgame' style='font-size: 160.0%'>iwgame(3)</a> <a href='/blog/categories/marmalade' style='font-size: 160.0%'>marmalade(3)</a> <a href='/blog/categories/movablewrite' style='font-size: 120.0%'>movablewrite(1)</a> <a href='/blog/categories/pettyfun' style='font-size: 160.0%'>pettyfun(3)</a> <a href='/blog/categories/pfgame' style='font-size: 140.0%'>pfgame(2)</a> <a href='/blog/categories/tool' style='font-size: 120.0%'>tool(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/">Convert Cocos2D Font (BMFont) to Marmalade&#8217;s GxFont</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/12/level-editor-based-on-iwgame-introduction/">Level Editor Based on IwGame - Introduction</a>
@@ -431,10 +486,6 @@
     
       <li class="post">
         <a href="/blog/2012/07/27/pettyfun-game-studio-established/">PettyFun 游戏工作室成立了！</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/30/plantuml-plugin-for-octopress/">PlantUML Plugin for Octopress</a>
       </li>
     
   </ul>

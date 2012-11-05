@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pfgame | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/pfgame/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2012-10-13T14:51:33+08:00</updated>
+  <updated>2012-11-05T19:53:59+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Convert Cocos2D Font (BMFont) to Marmalade's GxFont]]></title>
+    <link href="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/"/>
+    <updated>2012-11-05T19:16:00+08:00</updated>
+    <id>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont</id>
+    <content type="html"><![CDATA[<p>In 2D games, it's typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+
+<p>There are quite some tools to generate such font images, I'm using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular "Cocos2d / BMFont" format, though it's not directly usable in Marmalade.</p>
+
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I'm using the OS X version of the font builder, not sure about how the Windows version works.</p>
+
+<p>My first thought was to add function to use the BMFont generated, though it's not an easy task, also I want to use IwGame's label components, which are based on Marmalade's GxFont and Truetype support.</p>
+
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it's using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+
+<!-- more -->
+
+
+<h2>Code of the Converter</h2>
+
+<p>I've put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+
+<p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
+
+<p>It's kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph's console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+
+<p>Just read the code if you're interested in the implementation details. :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Level Editor Based on IwGame - Introduction]]></title>
