@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2012-11-05T19:53:59+08:00</updated>
+  <updated>2012-11-07T00:23:43+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Initial Release of s3eBass - Marmalade extension for BASS audio engine]]></title>
+    <link href="http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/"/>
+    <updated>2012-11-06T23:24:00+08:00</updated>
+    <id>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine</id>
+    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don't use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
+
+<p>There are quite some libraries to support xm playback, though I can't find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
+
+<p>After some search, I decided to use <a href="http://www.un4seen.com/bass.html">BASS audio engine</a>, which is quite powerful, with well designed API, not bad documentation and sample, and a reasonable price for small projects (the shareware license can cover product with small price).</p>
+
+<p>Now I've got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I'm going to share the extension and some experiences I've learn from the process(not in this post).</p>
+
+<!-- more -->
+
+
+<h2>Quick Note about Implementation</h2>
+
+<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It's pure C, so it shouldn't be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
+
+<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it's actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade's build system.</p>
+
+<p>Will write more about how to wrap C libraries into Marmalade extension in other posts later.</p>
+
+<h2>Code of the Extension</h2>
+
+<p>Since basically I have no idea about how to use BASS now, I just tried to use some codes from the BASS examples, it works pretty good, the xm files sounds quite good.</p>
+
+<p>Think I will write some wrapper layer around the C function calls to expose audio functionalities to C++, XML and Lua codes. Guess I will have much better idea about it in a couple of months after our first game get done.</p>
+
+<p>I've put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Convert Cocos2D Font (BMFont) to Marmalade's GxFont]]></title>
+    <link href="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/"/>
+    <updated>2012-11-05T19:16:00+08:00</updated>
+    <id>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont</id>
+    <content type="html"><![CDATA[<p>In 2D games, it's typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+
+<p>There are quite some tools to generate such font images, I'm using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular "Cocos2d / BMFont" format, though it's not directly usable in Marmalade.</p>
+
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I'm using the OS X version of the font builder, not sure about how the Windows version works.</p>
+
+<p>My first thought was to add function to use the BMFont generated, though it's not an easy task, also I want to use IwGame's label components, which are based on Marmalade's GxFont and Truetype support.</p>
+
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it's using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+
+<!-- more -->
+
+
+<h2>Code of the Converter</h2>
+
+<p>I've put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+
+<p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
+
+<p>It's kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph's console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+
+<p>Just read the code if you're interested in the implementation details. :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[PlantUML Plugin for Octopress]]></title>
@@ -78,6 +142,60 @@ Alice &lt;-- Bob: another authentication Response
 <h2>An Example</h2>
 
 <p><center><img src='/images/plantuml/3528cc0917294af2887d906c7a56b98b.png'></center></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Movable Write Open Sourced]]></title>
+    <link href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/"/>
+    <updated>2012-04-22T13:35:00+08:00</updated>
+    <id>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced</id>
+    <content type="html"><![CDATA[<h2>What is Movable Write</h2>
+
+<p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
+
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I've been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it's very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+
+<p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
+
+<ul>
+<li><a href="http://itunes.apple.com/us/app/movable-write/id416413981?mt=8">App store link</a></li>
+<li><a href="http://wolfewithane.com/blog/2011/6/22/review-hand-notes-over-to-movable-write.html">A nice introduction from wolfewithane.com</a></li>
+<li><a href="http://iapp.com.tw/ex/topic_inside.php?id=2447">Another nice introduction from iapp.com.tw (in Chinese)</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>What is missed</h2>
+
+<p>I did implement support for USB transfer for backup/restore, though didn't write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn't get time for it.</p>
+
+<p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
+
+<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I've done some experiments about bigger writing area, it's not easy to put it into the current structure though.</p>
+
+<p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
+
+<p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
+
+<p>...</p>
+
+<h2>Why open sourced</h2>
+
+<p>It's sadly that I can't put more dedicated time into it, since it didn't bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
+
+<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you're interesting.</p>
+
+<ul>
+<li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
+</ul>
+
+
+<p>Might write more about the technical side of the project later, what I've learned, and how to extend it.</p>
 ]]></content>
   </entry>
   
