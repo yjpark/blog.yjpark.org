@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2013-08-04T13:02:51+08:00</updated>
+  <updated>2014-01-21T18:15:36+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -18,22 +18,22 @@
     <link href="http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/"/>
     <updated>2012-11-06T23:24:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine</id>
-    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don't use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
+    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
 
-<p>There are quite some libraries to support xm playback, though I can't find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
+<p>There are quite some libraries to support xm playback, though I can&rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
 
 <p>After some search, I decided to use <a href="http://www.un4seen.com/bass.html">BASS audio engine</a>, which is quite powerful, with well designed API, not bad documentation and sample, and a reasonable price for small projects (the shareware license can cover product with small price).</p>
 
-<p>Now I've got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I'm going to share the extension and some experiences I've learn from the process(not in this post).</p>
+<p>Now I&rsquo;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&rsquo;m going to share the extension and some experiences I&rsquo;ve learn from the process(not in this post).</p>
 
 <!-- more -->
 
 
 <h2>Quick Note about Implementation</h2>
 
-<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It's pure C, so it shouldn't be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
+<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&rsquo;s pure C, so it shouldn&rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
 
-<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it's actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade's build system.</p>
+<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it&rsquo;s actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade&rsquo;s build system.</p>
 
 <p>Will write more about how to wrap C libraries into Marmalade extension in other posts later.</p>
 
@@ -43,7 +43,7 @@
 
 <p>Think I will write some wrapper layer around the C function calls to expose audio functionalities to C++, XML and Lua codes. Guess I will have much better idea about it in a couple of months after our first game get done.</p>
 
-<p>I've put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
 ]]></content>
   </entry>
   
@@ -52,28 +52,28 @@
     <link href="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/"/>
     <updated>2012-11-05T19:16:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont</id>
-    <content type="html"><![CDATA[<p>In 2D games, it's typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+    <content type="html"><![CDATA[<p>In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
 
-<p>There are quite some tools to generate such font images, I'm using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular "Cocos2d / BMFont" format, though it's not directly usable in Marmalade.</p>
+<p>There are quite some tools to generate such font images, I&rsquo;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &ldquo;Cocos2d / BMFont&rdquo; format, though it&rsquo;s not directly usable in Marmalade.</p>
 
-<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I'm using the OS X version of the font builder, not sure about how the Windows version works.</p>
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
 
-<p>My first thought was to add function to use the BMFont generated, though it's not an easy task, also I want to use IwGame's label components, which are based on Marmalade's GxFont and Truetype support.</p>
+<p>My first thought was to add function to use the BMFont generated, though it&rsquo;s not an easy task, also I want to use IwGame&rsquo;s label components, which are based on Marmalade&rsquo;s GxFont and Truetype support.</p>
 
-<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it's using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
 
 <!-- more -->
 
 
 <h2>Code of the Converter</h2>
 
-<p>I've put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
 
 <p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
 
-<p>It's kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph's console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+<p>It&rsquo;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&rsquo;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
 
-<p>Just read the code if you're interested in the implementation details. :)</p>
+<p>Just read the code if you&rsquo;re interested in the implementation details. :)</p>
 ]]></content>
   </entry>
   
@@ -97,13 +97,13 @@
 </ul>
 
 
-<p>I really like the idea of writing UML diagram with plain text. Since it's totally plaintext, it's very easy to do diff and version track, also you don't need to do anything about the layout (the text itself looks pretty good too).</p>
+<p>I really like the idea of writing UML diagram with plain text. Since it&rsquo;s totally plaintext, it&rsquo;s very easy to do diff and version track, also you don&rsquo;t need to do anything about the layout (the text itself looks pretty good too).</p>
 
 <p>Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.</p>
 
 <h2>The Plugin</h2>
 
-<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can't find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
+<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&rsquo;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
 
 <p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
 
@@ -125,23 +125,23 @@ plantuml_background_color: "#f8f8f8"
 
 <h2>Usage</h2>
 
-<p>Just wrap the diagram text in "plantuml" block, e.g.</p>
+<p>Just wrap the diagram text in &ldquo;plantuml&rdquo; block, e.g.</p>
 
 <p>```
 
 {% plantuml %}
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response</p>
+Alice &ndash;> Bob: Authentication Request
+Bob &mdash;> Alice: Authentication Response</p>
 
-<p>Alice -> Bob: Another authentication Request
-Alice &lt;-- Bob: another authentication Response
+<p>Alice &ndash;> Bob: Another authentication Request
+Alice &lt;&mdash; Bob: another authentication Response
 {% endplantuml %}
 
 ```</p>
 
 <h2>An Example</h2>
 
-<p><center><img src='/images/plantuml/3528cc0917294af2887d906c7a56b98b.png'></center></p>
+<p><center><img src='/images/plantuml/f6a3f2864ad1557c793a92f1c3de3951.png'></center></p>
 ]]></content>
   </entry>
   
@@ -154,9 +154,9 @@ Alice &lt;-- Bob: another authentication Response
 
 <p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
 
-<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I've been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
 
-<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it's very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&rsquo;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
 
 <p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
 
@@ -172,30 +172,30 @@ Alice &lt;-- Bob: another authentication Response
 
 <h2>What is missed</h2>
 
-<p>I did implement support for USB transfer for backup/restore, though didn't write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn't get time for it.</p>
+<p>I did implement support for USB transfer for backup/restore, though didn&rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&rsquo;t get time for it.</p>
 
 <p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
 
-<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I've done some experiments about bigger writing area, it's not easy to put it into the current structure though.</p>
+<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&rsquo;ve done some experiments about bigger writing area, it&rsquo;s not easy to put it into the current structure though.</p>
 
 <p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
 
 <p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
 
-<p>...</p>
+<p>&hellip;</p>
 
 <h2>Why open sourced</h2>
 
-<p>It's sadly that I can't put more dedicated time into it, since it didn't bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
+<p>It&rsquo;s sadly that I can&rsquo;t put more dedicated time into it, since it didn&rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
 
-<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you're interesting.</p>
+<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&rsquo;re interesting.</p>
 
 <ul>
 <li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
 </ul>
 
 
-<p>Might write more about the technical side of the project later, what I've learned, and how to extend it.</p>
+<p>Might write more about the technical side of the project later, what I&rsquo;ve learned, and how to extend it.</p>
 ]]></content>
   </entry>
   

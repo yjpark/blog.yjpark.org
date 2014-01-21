@@ -9,7 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="Marmalade provide good support for writing custom shaders in it, though it&#8217;s not easy to get all the information to start writing the first &hellip;">
+  <meta name="description" content="Marmalade provide good support for writing custom shaders in it, though it&rsquo;s not easy to get all the information to start writing the first &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <link href="http://feeds.feedburner.com/yjpark" rel="alternate" title="Living and Programming - YJ Park's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -96,20 +96,21 @@
 
 <time datetime="2012-10-02T18:00:00+08:00" pubdate data-updated="true">2012-10-02 18:00</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Marmalade provide good support for writing custom shaders in it, though it&#8217;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
+<div class="entry-content"><p>Marmalade provide good support for writing custom shaders in it, though it&rsquo;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
 
-<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&#8217;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
+<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&rsquo;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
 
-<p>The sample shader&#8217;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
+<p>The sample shader&rsquo;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
 
-<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&#8217;s a good start point to me, you should read it first to get the concepts.</p>
+<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&rsquo;s a good start point to me, you should read it first to get the concepts.</p>
 
 <!-- more -->
 
@@ -170,7 +171,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Note: since I need multiple instance of the shader for diffrent images with differnt colors, here I use a quick solution with marmalade&#8217;s serialization, which is NOT thread safe due to the hard code file name.</p>
+<p>Note: since I need multiple instance of the shader for diffrent images with differnt colors, here I use a quick solution with marmalade&rsquo;s serialization, which is NOT thread safe due to the hard code file name.</p>
 
 <p>Load the resource group as this:</p>
 
@@ -210,7 +211,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Please refer to Marmalade&#8217;s documents if you are not familiar with the resource compiling process and mkb syntaxes.</p>
+<p>Please refer to Marmalade&rsquo;s documents if you are not familiar with the resource compiling process and mkb syntaxes.</p>
 
 <p>Here is data/effect/Shaders.group</p>
 
@@ -322,7 +323,7 @@
 
 <h2>Update Params By Code and XML</h2>
 
-<p>the <strong>param</strong> in the shader is for the parameters from your code, change it&#8217;s value like this.</p>
+<p>the <strong>param</strong> in the shader is for the parameters from your code, change it&rsquo;s value like this.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -399,7 +400,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Since I&#8217;m using IwGame, it&#8217;s very easy to make the color controlled by the XOML animation, all I need to do is to override the UpdateFromAnimation method of CIwGameActor, and handle the color value from it.</p>
+<p>Since I&rsquo;m using IwGame, it&rsquo;s very easy to make the color controlled by the XOML animation, all I need to do is to override the UpdateFromAnimation method of CIwGameActor, and handle the color value from it.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -506,7 +507,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -632,7 +633,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - YJ Park -
+  Copyright &copy; 2014 - YJ Park -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -650,7 +651,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -683,7 +684,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

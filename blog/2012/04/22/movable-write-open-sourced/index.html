@@ -24,7 +24,7 @@
   <link href="http://feeds.feedburner.com/yjpark" rel="alternate" title="Living and Programming - YJ Park's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -96,7 +96,8 @@
 
 <time datetime="2012-04-22T13:35:00+08:00" pubdate data-updated="true">2012-04-22 13:35</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org">Comments</a>
         
       </p>
     
@@ -107,9 +108,9 @@
 
 <p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
 
-<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&#8217;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
 
-<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&#8217;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&rsquo;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
 
 <p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
 
@@ -125,30 +126,30 @@
 
 <h2>What is missed</h2>
 
-<p>I did implement support for USB transfer for backup/restore, though didn&#8217;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&#8217;t get time for it.</p>
+<p>I did implement support for USB transfer for backup/restore, though didn&rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&rsquo;t get time for it.</p>
 
 <p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
 
-<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&#8217;ve done some experiments about bigger writing area, it&#8217;s not easy to put it into the current structure though.</p>
+<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&rsquo;ve done some experiments about bigger writing area, it&rsquo;s not easy to put it into the current structure though.</p>
 
 <p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
 
 <p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
 
-<p>&#8230;</p>
+<p>&hellip;</p>
 
 <h2>Why open sourced</h2>
 
-<p>It&#8217;s sadly that I can&#8217;t put more dedicated time into it, since it didn&#8217;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
+<p>It&rsquo;s sadly that I can&rsquo;t put more dedicated time into it, since it didn&rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
 
-<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&#8217;re interesting.</p>
+<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&rsquo;re interesting.</p>
 
 <ul>
 <li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
 </ul>
 
 
-<p>Might write more about the technical side of the project later, what I&#8217;ve learned, and how to extend it.</p>
+<p>Might write more about the technical side of the project later, what I&rsquo;ve learned, and how to extend it.</p>
 </div>
 
 
@@ -185,7 +186,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -309,7 +310,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - YJ Park -
+  Copyright &copy; 2014 - YJ Park -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -327,7 +328,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -360,7 +361,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

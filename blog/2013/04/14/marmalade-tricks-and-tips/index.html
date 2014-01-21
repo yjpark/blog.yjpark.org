@@ -9,7 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="During the days to develop our first game: Day Day Birds, I went through the progress of learning to use Marmalade, generally it&#8217;s very easy to &hellip;">
+  <meta name="description" content="During the days to develop our first game: Day Day Birds, I went through the progress of learning to use Marmalade, generally it&rsquo;s very easy to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <link href="http://feeds.feedburner.com/yjpark" rel="alternate" title="Living and Programming - YJ Park's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -96,25 +96,26 @@
 
 <time datetime="2013-04-14T20:22:00+08:00" pubdate data-updated="true">2013-04-14 20:22</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&#8217;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
+<div class="entry-content"><p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&rsquo;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
 
 <h2>Stack Size</h2>
 
-<p>The game started to crash randomly before I noticed, it&#8217;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
+<p>The game started to crash randomly before I noticed, it&rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
 
 <p>When it crashed on iOS device, some information were provided, though full stack trace is not availabe, and the place of crash is not consistent. After 2 or 3 days and nights figihting with this bug, finally found out the root cause, which is very surprising.</p>
 
 <!--more-->
 
 
-<p>It&#8217;s caused by stack overflow, since Marmalade is designed to support many different mobile devices, many of them are with limited hardware, the stack size is 32k by default, since I&#8217;m having a LUA layer, and also allocated some string buffer in stack for convinience, it got overflowed, so caused the random crash.</p>
+<p>It&rsquo;s caused by stack overflow, since Marmalade is designed to support many different mobile devices, many of them are with limited hardware, the stack size is 32k by default, since I&rsquo;m having a LUA layer, and also allocated some string buffer in stack for convinience, it got overflowed, so caused the random crash.</p>
 
 <p>There is actually a <a href="http://www.madewithmarmalade.com/devnet/forum/advice-anyone-experiencing-heap-corruption-3">forum thread</a> mentioned this.</p>
 
@@ -128,11 +129,11 @@
 
 <h2>Accelerate framework</h2>
 
-<p>I&#8217;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add <code>iphone-link-opts="-weak_framework Accelerate"</code> into the mkf file.</p>
+<p>I&rsquo;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add <code>iphone-link-opts="-weak_framework Accelerate"</code> into the mkf file.</p>
 
 <p>For unknown reason, the Accelerate.framework stub in <code>/Developer/Marmalade/6.2/s3e/deploy/plugins/iphone/sys_libs/System/Library/Frameworks/Accelerate.frameworks/Accelerate</code> is not working, might be the nested frameworks inside it.</p>
 
-<p>Not really understand how the stub frameworks work in Marmalade, seems a smart way to use the system&#8217;s SDK libraries, though a hacky solution make it compiled.</p>
+<p>Not really understand how the stub frameworks work in Marmalade, seems a smart way to use the system&rsquo;s SDK libraries, though a hacky solution make it compiled.</p>
 
 <p>Current fix is to copy the framework from <code>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Accelerate.framework</code>. Not sure whether there is side effects.</p>
 
@@ -142,7 +143,7 @@
 
 <h2>iOS device crash report</h2>
 
-<p>This page explains how to read the crash report nicely, also don&#8217;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.</p>
+<p>This page explains how to read the crash report nicely, also don&rsquo;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.</p>
 
 <p><a href="https://marmalade.zendesk.com/entries/22126117-how-to-map-iphone-crash-log-addresses-to-your-code">How to map iPhone crash log addressed to your code</a></p>
 
@@ -256,7 +257,7 @@
 </span><span class='line'>{}</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>DispFixRot="Landscape"</code> is to lock the screen rotation to be landscape only, I&#8217;ve met quite some problem with landscape, probably will write another post about it.</p>
+<p><code>DispFixRot="Landscape"</code> is to lock the screen rotation to be landscape only, I&rsquo;ve met quite some problem with landscape, probably will write another post about it.</p>
 
 <p><code>IOSDispScaleFactor=200</code> is used to activate the retina screen support, so the resolution of retina iPad will be 2048 x 1536,</p>
 
@@ -291,7 +292,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -415,7 +416,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - YJ Park -
+  Copyright &copy; 2014 - YJ Park -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -433,7 +434,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -466,7 +467,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

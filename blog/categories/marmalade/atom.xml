@@ -4,7 +4,7 @@
   <title><![CDATA[Category: marmalade | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/marmalade/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2013-08-04T13:02:51+08:00</updated>
+  <updated>2014-01-21T18:15:36+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -18,22 +18,22 @@
     <link href="http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/"/>
     <updated>2012-11-06T23:24:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine</id>
-    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don't use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
+    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
 
-<p>There are quite some libraries to support xm playback, though I can't find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
+<p>There are quite some libraries to support xm playback, though I can&rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
 
 <p>After some search, I decided to use <a href="http://www.un4seen.com/bass.html">BASS audio engine</a>, which is quite powerful, with well designed API, not bad documentation and sample, and a reasonable price for small projects (the shareware license can cover product with small price).</p>
 
-<p>Now I've got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I'm going to share the extension and some experiences I've learn from the process(not in this post).</p>
+<p>Now I&rsquo;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&rsquo;m going to share the extension and some experiences I&rsquo;ve learn from the process(not in this post).</p>
 
 <!-- more -->
 
 
 <h2>Quick Note about Implementation</h2>
 
-<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It's pure C, so it shouldn't be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
+<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&rsquo;s pure C, so it shouldn&rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
 
-<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it's actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade's build system.</p>
+<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it&rsquo;s actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade&rsquo;s build system.</p>
 
 <p>Will write more about how to wrap C libraries into Marmalade extension in other posts later.</p>
 
@@ -43,7 +43,7 @@
 
 <p>Think I will write some wrapper layer around the C function calls to expose audio functionalities to C++, XML and Lua codes. Guess I will have much better idea about it in a couple of months after our first game get done.</p>
 
-<p>I've put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
 ]]></content>
   </entry>
   
@@ -52,28 +52,28 @@
     <link href="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/"/>
     <updated>2012-11-05T19:16:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont</id>
-    <content type="html"><![CDATA[<p>In 2D games, it's typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+    <content type="html"><![CDATA[<p>In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
 
-<p>There are quite some tools to generate such font images, I'm using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular "Cocos2d / BMFont" format, though it's not directly usable in Marmalade.</p>
+<p>There are quite some tools to generate such font images, I&rsquo;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &ldquo;Cocos2d / BMFont&rdquo; format, though it&rsquo;s not directly usable in Marmalade.</p>
 
-<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I'm using the OS X version of the font builder, not sure about how the Windows version works.</p>
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
 
-<p>My first thought was to add function to use the BMFont generated, though it's not an easy task, also I want to use IwGame's label components, which are based on Marmalade's GxFont and Truetype support.</p>
+<p>My first thought was to add function to use the BMFont generated, though it&rsquo;s not an easy task, also I want to use IwGame&rsquo;s label components, which are based on Marmalade&rsquo;s GxFont and Truetype support.</p>
 
-<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it's using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
 
 <!-- more -->
 
 
 <h2>Code of the Converter</h2>
 
-<p>I've put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
 
 <p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
 
-<p>It's kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph's console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+<p>It&rsquo;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&rsquo;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
 
-<p>Just read the code if you're interested in the implementation details. :)</p>
+<p>Just read the code if you&rsquo;re interested in the implementation details. :)</p>
 ]]></content>
   </entry>
   
@@ -82,13 +82,13 @@
     <link href="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/"/>
     <updated>2012-10-02T18:00:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade</id>
-    <content type="html"><![CDATA[<p>Marmalade provide good support for writing custom shaders in it, though it's not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
+    <content type="html"><![CDATA[<p>Marmalade provide good support for writing custom shaders in it, though it&rsquo;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
 
-<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don't have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
+<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&rsquo;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
 
-<p>The sample shader's function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
+<p>The sample shader&rsquo;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
 
-<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it's a good start point to me, you should read it first to get the concepts.</p>
+<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&rsquo;s a good start point to me, you should read it first to get the concepts.</p>
 
 <!-- more -->
 
@@ -131,7 +131,7 @@ return shader;
 
 <p>}
 ```
-Note: since I need multiple instance of the shader for diffrent images with differnt colors, here I use a quick solution with marmalade's serialization, which is NOT thread safe due to the hard code file name.</p>
+Note: since I need multiple instance of the shader for diffrent images with differnt colors, here I use a quick solution with marmalade&rsquo;s serialization, which is NOT thread safe due to the hard code file name.</p>
 
 <p>Load the resource group as this:
 ``` c++</p>
@@ -165,7 +165,7 @@ effect/Shaders.group.bin
 
 <p>}
 ```
-Please refer to Marmalade's documents if you are not familiar with the resource compiling process and mkb syntaxes.</p>
+Please refer to Marmalade&rsquo;s documents if you are not familiar with the resource compiling process and mkb syntaxes.</p>
 
 <p>Here is data/effect/Shaders.group
 ```
@@ -232,7 +232,7 @@ Please read <a href="http://docs.madewithmarmalade.com/native/api_reference/api/
 
 <h2>Update Params By Code and XML</h2>
 
-<p>the <strong>param</strong> in the shader is for the parameters from your code, change it's value like this.
+<p>the <strong>param</strong> in the shader is for the parameters from your code, change it&rsquo;s value like this.
 ``` cpp
 void PfShaderEffect::SetShaderParam(const char <em>paramName, CIwGxShaderUniform::CIwGxShaderUniformType type, const void</em> value) {</p>
 
@@ -286,7 +286,7 @@ color-&gt;a = value-&gt;data.w;
 <p>}
 ```</p>
 
-<p>Since I'm using IwGame, it's very easy to make the color controlled by the XOML animation, all I need to do is to override the UpdateFromAnimation method of CIwGameActor, and handle the color value from it.
+<p>Since I&rsquo;m using IwGame, it&rsquo;s very easy to make the color controlled by the XOML animation, all I need to do is to override the UpdateFromAnimation method of CIwGameActor, and handle the color value from it.
 ``` cpp
 bool PfMaskEffect::UpdateFromAnimation(CIwGameAnimInstance *animation) {</p>
 
@@ -340,26 +340,26 @@ This is very flexible and powerful, no need to recompile, just updating plain XM
     <id>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame</id>
     <content type="html"><![CDATA[<p>Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual games, as the tech lead, I need to choose a development way for our first batch of games.</p>
 
-<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that's better for the team and the graphic quality of the games.</p>
+<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&rsquo;s better for the team and the graphic quality of the games.</p>
 
 <p>After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.</p>
 
 <h2>Why choose Marmalade?</h2>
 
-<p>I did have quite some experience on cocos2d, though it's been ruled out pretty quickly. I want our game to work on multiple platforms, since we don't use much platform-specific features, we don't get much with objective-c. Also personally I am not really a big fan of cocos2d, it's kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I've tried Cocos Builder and Level Helper very breifly, might be just me, but I don't like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn't dig into it deeply.</p>
+<p>I did have quite some experience on cocos2d, though it&rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&rsquo;t use much platform-specific features, we don&rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&rsquo;t dig into it deeply.</p>
 
-<p>The second option is Unity3d, I've used it for about 3 months before, It's pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it's a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don't really think the .Net virtual machine is the best way for our rather small games. My feeling is that it's more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it's mostly 3D centric, 2D works are possible, but a bit awkard, since we don't need the 3D power and I want more control with my codes, I did not take this path either.</p>
+<p>The second option is Unity3d, I&rsquo;ve used it for about 3 months before, It&rsquo;s pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it&rsquo;s a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don&rsquo;t really think the .Net virtual machine is the best way for our rather small games. My feeling is that it&rsquo;s more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it&rsquo;s mostly 3D centric, 2D works are possible, but a bit awkard, since we don&rsquo;t need the 3D power and I want more control with my codes, I did not take this path either.</p>
 
 <!-- more -->
 
 
-<p>For good performance and graphic effects, I didn't investigate the fast development tools, most of them are HTML based or LUA based, more like quick prototype tools for me.</p>
+<p>For good performance and graphic effects, I didn&rsquo;t investigate the fast development tools, most of them are HTML based or LUA based, more like quick prototype tools for me.</p>
 
-<p>I've played with Airplay for a couple of days 2 years ago, technically it was very good, though with a rather steep learning curve, and lack of tutorials and blog post, so I didn't really learn it as a hobby. Now it's renamed to Marmalade, been updated pretty often, and having a much bigger user base and many successful games are based on it, like Draw Something or Cut The Rope. Since I will use the chosen platform for at least 1 or 2 years, I spend a week to really try to learn it this time.</p>
+<p>I&rsquo;ve played with Airplay for a couple of days 2 years ago, technically it was very good, though with a rather steep learning curve, and lack of tutorials and blog post, so I didn&rsquo;t really learn it as a hobby. Now it&rsquo;s renamed to Marmalade, been updated pretty often, and having a much bigger user base and many successful games are based on it, like Draw Something or Cut The Rope. Since I will use the chosen platform for at least 1 or 2 years, I spend a week to really try to learn it this time.</p>
 
-<p>The first impression was kind of negative, the OSX support seems to be much weaker than the windows one, a bunch of small problems were met, which almost make me give it up. Now I've been using it for about 1 month, still got some problem, though I think I start to feel comfortable with it.</p>
+<p>The first impression was kind of negative, the OSX support seems to be much weaker than the windows one, a bunch of small problems were met, which almost make me give it up. Now I&rsquo;ve been using it for about 1 month, still got some problem, though I think I start to feel comfortable with it.</p>
 
-<p>There are still very few technical information about marmalade other than the official documents and forum, the only helpful tutorial I can find is the <a href="http://www.drmop.com/index.php/marmalade-sdk-tutorials/">DrMop tutorials</a>. It's very helpful to provide basic ideas for new Marmalade users.</p>
+<p>There are still very few technical information about marmalade other than the official documents and forum, the only helpful tutorial I can find is the <a href="http://www.drmop.com/index.php/marmalade-sdk-tutorials/">DrMop tutorials</a>. It&rsquo;s very helpful to provide basic ideas for new Marmalade users.</p>
 
 <p>The API documents of Marmalade is actually quite good after you get the basic ideas about it. Also the examples included are good learning source.</p>
 
@@ -368,28 +368,28 @@ This is very flexible and powerful, no need to recompile, just updating plain XM
 <p>The things I wish to be better:</p>
 
 <ul>
-<li>1st class OSX support, add the missing features of the simulator, fix the broken "mkb --iphone" device building (only trid on 10.8 + Xcode 4.4, not sure about other environments). (Update: --iphone is fixed in 6.1, simulator seems not updated)</li>
+<li>1st class OSX support, add the missing features of the simulator, fix the broken &ldquo;mkb &mdash;iphone&rdquo; device building (only trid on 10.8 + Xcode 4.4, not sure about other environments). (Update: &mdash;iphone is fixed in 6.1, simulator seems not updated)</li>
 <li>Release to osx ability, then I can create desktop tools such as customized level editor instead of let my graphic designers to use the simulator to run them. (Update: Added in 6.1)</li>
-<li>Float data types in IwGx, it's said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we'll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can't afford dedicated tester anyway. (Update: Float added in 6.1 and works great, though we probably will not change IwGame to use float)</li>
+<li>Float data types in IwGx, it&rsquo;s said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we&rsquo;ll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can&rsquo;t afford dedicated tester anyway. (Update: Float added in 6.1 and works great, though we probably will not change IwGame to use float)</li>
 <li>High level document besides API reference, and generally more documentations.</li>
-<li>Better community and 3rd party components, it's quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
+<li>Better community and 3rd party components, it&rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
 </ul>
 
 
 <h2>What is IwGame, and Why it is Helpful</h2>
 
-<p>Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don't have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.</p>
+<p>Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.</p>
 
-<p>According to the website, <a href="http://www.drmop.com/index.php/iwgame-engine/">IwGame</a> is a "Free Open Source Cross Platform Mobile Game Engine for Smart Phones and Tablets", it's a quite ambitious project, already has a long feature list with many future features, though still in an rather early stage.</p>
+<p>According to the website, <a href="http://www.drmop.com/index.php/iwgame-engine/">IwGame</a> is a &ldquo;Free Open Source Cross Platform Mobile Game Engine for Smart Phones and Tablets&rdquo;, it&rsquo;s a quite ambitious project, already has a long feature list with many future features, though still in an rather early stage.</p>
 
 <p>The main reasons I chose it:</p>
 
 <ul>
 <li>Open source, I can tweak the codes to suit my needs better, and even if its development stopped, we can still improve it by ourselves.</li>
-<li>XML file format, it's very powerful, e.g. make simple animations easily without coding. Also it's very easy to extend the system to add our own extensions. This is a hugh advantage to me.</li>
-<li>Complete 2D framework, including sprite, scene, particle, physics, UI... No need to reimplement the basic things from the scratch, we can focus on more interesting stuffs.</li>
+<li>XML file format, it&rsquo;s very powerful, e.g. make simple animations easily without coding. Also it&rsquo;s very easy to extend the system to add our own extensions. This is a hugh advantage to me.</li>
+<li>Complete 2D framework, including sprite, scene, particle, physics, UI&hellip; No need to reimplement the basic things from the scratch, we can focus on more interesting stuffs.</li>
 <li>Support 2D and 3D rendering, since the rendering codes are based on IwGx now, even for 2D games, some part of 3D elements can be very useful, so I think this flexibility is very good.</li>
-<li>Good document and a full game source included, there are quite some typos in the included PDF document, though it provide most information I need to get started, plus reading the source code, It's kind of easy to learn (though still much harder comparing to cocos2d family).</li>
+<li>Good document and a full game source included, there are quite some typos in the included PDF document, though it provide most information I need to get started, plus reading the source code, It&rsquo;s kind of easy to learn (though still much harder comparing to cocos2d family).</li>
 <li>Good code quality, easy to read and not hard to expand.</li>
 </ul>
 
@@ -397,10 +397,10 @@ This is very flexible and powerful, no need to recompile, just updating plain XM
 <p>Some worries about base our codes on it:</p>
 
 <ul>
-<li>It's a big project, and seems most code and docs are written by DrMop in several monthes. He did very great so far, though he has too many works ahead him, I am not sure where this project will be after 1 year, what if it's dead? also it's been a while since the last update.</li>
-<li>On the other hand, if it's been developed rapidly, since it's not finished yet, we will need to expand it by ourself, it can be a problem to keep update with the future updates. I don't want to make a fork since many good features are on the list, though we can't wait for they to appear, We will be careful with out changes to make them easy to merge, but what if the owner decide to change the API interface drasticly?</li>
-<li>The core string class (CIwGameString) is not unicode compatible, and the author didn't have plan to support it soon. This can be a big problem for us to support multiple language, especially the asian languages. I want to find a clean solution for this, though haven't started working on it yet.</li>
-<li>There is no unit tests yet, so it might introduce its own bugs, especially if it's been update quickly.</li>
+<li>It&rsquo;s a big project, and seems most code and docs are written by DrMop in several monthes. He did very great so far, though he has too many works ahead him, I am not sure where this project will be after 1 year, what if it&rsquo;s dead? also it&rsquo;s been a while since the last update.</li>
+<li>On the other hand, if it&rsquo;s been developed rapidly, since it&rsquo;s not finished yet, we will need to expand it by ourself, it can be a problem to keep update with the future updates. I don&rsquo;t want to make a fork since many good features are on the list, though we can&rsquo;t wait for they to appear, We will be careful with out changes to make them easy to merge, but what if the owner decide to change the API interface drasticly?</li>
+<li>The core string class (CIwGameString) is not unicode compatible, and the author didn&rsquo;t have plan to support it soon. This can be a big problem for us to support multiple language, especially the asian languages. I want to find a clean solution for this, though haven&rsquo;t started working on it yet.</li>
+<li>There is no unit tests yet, so it might introduce its own bugs, especially if it&rsquo;s been update quickly.</li>
 </ul>
 
 
@@ -420,7 +420,7 @@ This is very flexible and powerful, no need to recompile, just updating plain XM
 
 <p>All these editors will base on the XOML markup system of IwGame.</p>
 
-<p>These are still quite some works, might be over engineering for our first game, though as a developer, I don't want to just do things in the quick and dirty way, I want to do it in a proper way. And I think a proper engine can make future games easier to develop, so in the long run, it will worth the efforts.</p>
+<p>These are still quite some works, might be over engineering for our first game, though as a developer, I don&rsquo;t want to just do things in the quick and dirty way, I want to do it in a proper way. And I think a proper engine can make future games easier to develop, so in the long run, it will worth the efforts.</p>
 
 <p>Think I will start to write more about Marmalade and IwGame in the future, both help myself to understand them better, and hopefully might help some other developers too.</p>
 ]]></content>

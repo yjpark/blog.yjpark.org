@@ -9,7 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="In 2D games, it&#8217;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller &hellip;">
+  <meta name="description" content="In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <link href="http://feeds.feedburner.com/yjpark" rel="alternate" title="Living and Programming - YJ Park's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -96,35 +96,36 @@
 
 <time datetime="2012-11-05T19:16:00+08:00" pubdate data-updated="true">2012-11-05 19:16</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>In 2D games, it&#8217;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+<div class="entry-content"><p>In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
 
-<p>There are quite some tools to generate such font images, I&#8217;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &#8220;Cocos2d / BMFont&#8221; format, though it&#8217;s not directly usable in Marmalade.</p>
+<p>There are quite some tools to generate such font images, I&rsquo;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &ldquo;Cocos2d / BMFont&rdquo; format, though it&rsquo;s not directly usable in Marmalade.</p>
 
-<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&#8217;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
 
-<p>My first thought was to add function to use the BMFont generated, though it&#8217;s not an easy task, also I want to use IwGame&#8217;s label components, which are based on Marmalade&#8217;s GxFont and Truetype support.</p>
+<p>My first thought was to add function to use the BMFont generated, though it&rsquo;s not an easy task, also I want to use IwGame&rsquo;s label components, which are based on Marmalade&rsquo;s GxFont and Truetype support.</p>
 
-<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&#8217;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
 
 <!-- more -->
 
 
 <h2>Code of the Converter</h2>
 
-<p>I&#8217;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
 
 <p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
 
-<p>It&#8217;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&#8217;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+<p>It&rsquo;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&rsquo;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
 
-<p>Just read the code if you&#8217;re interested in the implementation details. :)</p>
+<p>Just read the code if you&rsquo;re interested in the implementation details. :)</p>
 </div>
 
 
@@ -161,7 +162,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -287,7 +288,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - YJ Park -
+  Copyright &copy; 2014 - YJ Park -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -305,7 +306,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -338,7 +339,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

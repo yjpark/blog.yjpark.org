@@ -4,7 +4,7 @@
   <title><![CDATA[Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2013-08-04T13:02:51+08:00</updated>
+  <updated>2014-01-21T18:15:36+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -18,18 +18,18 @@
     <link href="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/"/>
     <updated>2013-04-14T20:22:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips</id>
-    <content type="html"><![CDATA[<p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&#8217;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
+    <content type="html"><![CDATA[<p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&rsquo;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
 
 <h2>Stack Size</h2>
 
-<p>The game started to crash randomly before I noticed, it&#8217;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
+<p>The game started to crash randomly before I noticed, it&rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
 
 <p>When it crashed on iOS device, some information were provided, though full stack trace is not availabe, and the place of crash is not consistent. After 2 or 3 days and nights figihting with this bug, finally found out the root cause, which is very surprising.</p>
 
 <!--more-->
 
 
-<p>It&#8217;s caused by stack overflow, since Marmalade is designed to support many different mobile devices, many of them are with limited hardware, the stack size is 32k by default, since I&#8217;m having a LUA layer, and also allocated some string buffer in stack for convinience, it got overflowed, so caused the random crash.</p>
+<p>It&rsquo;s caused by stack overflow, since Marmalade is designed to support many different mobile devices, many of them are with limited hardware, the stack size is 32k by default, since I&rsquo;m having a LUA layer, and also allocated some string buffer in stack for convinience, it got overflowed, so caused the random crash.</p>
 
 <p>There is actually a <a href="http://www.madewithmarmalade.com/devnet/forum/advice-anyone-experiencing-heap-corruption-3">forum thread</a> mentioned this.</p>
 
@@ -43,11 +43,11 @@
 
 <h2>Accelerate framework</h2>
 
-<p>I&#8217;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add <code>iphone-link-opts="-weak_framework Accelerate"</code> into the mkf file.</p>
+<p>I&rsquo;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add <code>iphone-link-opts="-weak_framework Accelerate"</code> into the mkf file.</p>
 
 <p>For unknown reason, the Accelerate.framework stub in <code>/Developer/Marmalade/6.2/s3e/deploy/plugins/iphone/sys_libs/System/Library/Frameworks/Accelerate.frameworks/Accelerate</code> is not working, might be the nested frameworks inside it.</p>
 
-<p>Not really understand how the stub frameworks work in Marmalade, seems a smart way to use the system&#8217;s SDK libraries, though a hacky solution make it compiled.</p>
+<p>Not really understand how the stub frameworks work in Marmalade, seems a smart way to use the system&rsquo;s SDK libraries, though a hacky solution make it compiled.</p>
 
 <p>Current fix is to copy the framework from <code>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Accelerate.framework</code>. Not sure whether there is side effects.</p>
 
@@ -57,7 +57,7 @@
 
 <h2>iOS device crash report</h2>
 
-<p>This page explains how to read the crash report nicely, also don&#8217;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.</p>
+<p>This page explains how to read the crash report nicely, also don&rsquo;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.</p>
 
 <p><a href="https://marmalade.zendesk.com/entries/22126117-how-to-map-iphone-crash-log-addresses-to-your-code">How to map iPhone crash log addressed to your code</a></p>
 
@@ -171,7 +171,7 @@
 </span><span class='line'>{}</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>DispFixRot="Landscape"</code> is to lock the screen rotation to be landscape only, I&#8217;ve met quite some problem with landscape, probably will write another post about it.</p>
+<p><code>DispFixRot="Landscape"</code> is to lock the screen rotation to be landscape only, I&rsquo;ve met quite some problem with landscape, probably will write another post about it.</p>
 
 <p><code>IOSDispScaleFactor=200</code> is used to activate the retina screen support, so the resolution of retina iPad will be 2048 x 1536,</p>
 
@@ -184,22 +184,22 @@
     <link href="http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/"/>
     <updated>2012-11-06T23:24:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine</id>
-    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&#8217;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
+    <content type="html"><![CDATA[<p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
 
-<p>There are quite some libraries to support xm playback, though I can&#8217;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
+<p>There are quite some libraries to support xm playback, though I can&rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
 
 <p>After some search, I decided to use <a href="http://www.un4seen.com/bass.html">BASS audio engine</a>, which is quite powerful, with well designed API, not bad documentation and sample, and a reasonable price for small projects (the shareware license can cover product with small price).</p>
 
-<p>Now I&#8217;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&#8217;m going to share the extension and some experiences I&#8217;ve learn from the process(not in this post).</p>
+<p>Now I&rsquo;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&rsquo;m going to share the extension and some experiences I&rsquo;ve learn from the process(not in this post).</p>
 
 <!-- more -->
 
 
 <h2>Quick Note about Implementation</h2>
 
-<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&#8217;s pure C, so it shouldn&#8217;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
+<p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&rsquo;s pure C, so it shouldn&rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
 
-<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it&#8217;s actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade&#8217;s build system.</p>
+<p>Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it&rsquo;s actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade&rsquo;s build system.</p>
 
 <p>Will write more about how to wrap C libraries into Marmalade extension in other posts later.</p>
 
@@ -209,7 +209,7 @@
 
 <p>Think I will write some wrapper layer around the C function calls to expose audio functionalities to C++, XML and Lua codes. Guess I will have much better idea about it in a couple of months after our first game get done.</p>
 
-<p>I&#8217;ve put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/s3eBass">Github</a>, feel free to clone it, and give it a try. see the github pages for more details about it.</p>
 ]]></content>
   </entry>
   
@@ -218,28 +218,28 @@
     <link href="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/"/>
     <updated>2012-11-05T19:16:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont</id>
-    <content type="html"><![CDATA[<p>In 2D games, it&#8217;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+    <content type="html"><![CDATA[<p>In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
 
-<p>There are quite some tools to generate such font images, I&#8217;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &#8220;Cocos2d / BMFont&#8221; format, though it&#8217;s not directly usable in Marmalade.</p>
+<p>There are quite some tools to generate such font images, I&rsquo;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &ldquo;Cocos2d / BMFont&rdquo; format, though it&rsquo;s not directly usable in Marmalade.</p>
 
-<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&#8217;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
 
-<p>My first thought was to add function to use the BMFont generated, though it&#8217;s not an easy task, also I want to use IwGame&#8217;s label components, which are based on Marmalade&#8217;s GxFont and Truetype support.</p>
+<p>My first thought was to add function to use the BMFont generated, though it&rsquo;s not an easy task, also I want to use IwGame&rsquo;s label components, which are based on Marmalade&rsquo;s GxFont and Truetype support.</p>
 
-<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&#8217;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
 
 <!-- more -->
 
 
 <h2>Code of the Converter</h2>
 
-<p>I&#8217;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
 
 <p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
 
-<p>It&#8217;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&#8217;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+<p>It&rsquo;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&rsquo;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
 
-<p>Just read the code if you&#8217;re interested in the implementation details. :)</p>
+<p>Just read the code if you&rsquo;re interested in the implementation details. :)</p>
 ]]></content>
   </entry>
   
@@ -248,7 +248,7 @@
     <link href="http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/"/>
     <updated>2012-10-12T22:56:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction</id>
-    <content type="html"><![CDATA[<p>It&#8217;s been more than a month since my post about the idea of <a href="http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">game engine based on Marmalade and IwGame</a>, after the post, spent many hours busy coding, now I&#8217;ve got the basic level editor up running, I think it&#8217;s pretty cool, so here are some details about it.</p>
+    <content type="html"><![CDATA[<p>It&rsquo;s been more than a month since my post about the idea of <a href="http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">game engine based on Marmalade and IwGame</a>, after the post, spent many hours busy coding, now I&rsquo;ve got the basic level editor up running, I think it&rsquo;s pretty cool, so here are some details about it.</p>
 
 <p>Here is a screenshot of the level editor:</p>
 
@@ -261,59 +261,59 @@
 
 <p>Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</p>
 
-<p>First, Marmalade 6.1 was released, it&#8217;s great for me, the 2 most useful feature for me are: Open GL ES 2.0 shader support in simulator, easy to debug shader now, and OSX deployment to send game/editor as running application to Graphic Artists.</p>
+<p>First, Marmalade 6.1 was released, it&rsquo;s great for me, the 2 most useful feature for me are: Open GL ES 2.0 shader support in simulator, easy to debug shader now, and OSX deployment to send game/editor as running application to Graphic Artists.</p>
 
 <p>Second, DrMop commented in the original post, assure that IwGame is very actively developed and <a href="http://www.drmop.com/index.php/2012/10/08/iwgame-0-4-coming-very-soon-iwgame-is-going-portable/">version 0.40 is about to be released</a>.</p>
 
-<p>Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&#8217;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.</p>
+<p>Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&rsquo;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.</p>
 
 <h2>Current Features</h2>
 
-<p>Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&#8217;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).</p>
+<p>Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&rsquo;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).</p>
 
-<p>Actually it&#8217;s a bit easier than I thought to implement it, caused me about 5 weeks so far, worked quite hared during the time, but also had a basic animation editor and a game prototype at the same time, so the pure time on it was about 3 weeks.</p>
+<p>Actually it&rsquo;s a bit easier than I thought to implement it, caused me about 5 weeks so far, worked quite hared during the time, but also had a basic animation editor and a game prototype at the same time, so the pure time on it was about 3 weeks.</p>
 
-<p>Our graphic artists have already used the editor to build a few nice scenes and they are getting more productively with it day by day, It&#8217;s just what I wished it to be: a tool to make developer and other roles to collaborative more effectively, think it&#8217;s at the right direction.</p>
+<p>Our graphic artists have already used the editor to build a few nice scenes and they are getting more productively with it day by day, It&rsquo;s just what I wished it to be: a tool to make developer and other roles to collaborative more effectively, think it&rsquo;s at the right direction.</p>
 
-<p>Also it&#8217;s extremely useful for prototyping and debugging, the way I did it is to add a few tools around the objects, so when you&#8217;re running your game, you can switch to editor mode at any time (by tapping the tab key), then you can check the scene to see what&#8217;s going on, or adjust the objects right in the editor, then you can switch back to game mode. It feels like you can freeze time in game at any time, then make changes, then go back, very cool, and very useful.</p>
+<p>Also it&rsquo;s extremely useful for prototyping and debugging, the way I did it is to add a few tools around the objects, so when you&rsquo;re running your game, you can switch to editor mode at any time (by tapping the tab key), then you can check the scene to see what&rsquo;s going on, or adjust the objects right in the editor, then you can switch back to game mode. It feels like you can freeze time in game at any time, then make changes, then go back, very cool, and very useful.</p>
 
 <p>To make it clear, here is a screenshot of our game prototype:
 <img src="http://blog.yjpark.org/images/pfgame/leveleditor-screenshot-2.png"></p>
 
 <p>After I switch to editor mode, and zoom out a bit, I can get the screen as the first screenshot, then I can adjust the level, and switch back to keep playing. Our graphic artist feels very happy with this in game editing ability, they can see their changes instantly, which make the whole process very efficiently.</p>
 
-<p>Another very useful feature is the Box2D shape editor and debug view, we can create boxes and circles right through the level editor, they will be effective instantly, so for a game based on Box2D, it&#8217;s very easy to create the levels by non-programmers.</p>
+<p>Another very useful feature is the Box2D shape editor and debug view, we can create boxes and circles right through the level editor, they will be effective instantly, so for a game based on Box2D, it&rsquo;s very easy to create the levels by non-programmers.</p>
 
 <p>Here is the same game prototype with Box2D debug view enabled:
 <img src="http://blog.yjpark.org/images/pfgame/leveleditor-screenshot-3.png"></p>
 
-<p>As you can see, we use boxes and circles to create a rather complicate level. Also it&#8217;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.</p>
+<p>As you can see, we use boxes and circles to create a rather complicate level. Also it&rsquo;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.</p>
 
-<h2>What&#8217;s Missing</h2>
+<h2>What&rsquo;s Missing</h2>
 
-<p>As a basic level editor with advanced features (particle, animations&#8230;), I think it&#8217;s quite complete and usable, we&#8217;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.</p>
+<p>As a basic level editor with advanced features (particle, animations&hellip;), I think it&rsquo;s quite complete and usable, we&rsquo;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.</p>
 
-<p>The biggest missed feature is undo/redo, only deleting have a quick undo since it can cause big trouble when touch wrong key accidentally. To make it better, all version of saved files are kept on disk, so if you made big mistakes, then it&#8217;s recoverable by hand. It&#8217;s non trivial to implement a good undo/redo system, so probably this feature will only be added in a much later stage.</p>
+<p>The biggest missed feature is undo/redo, only deleting have a quick undo since it can cause big trouble when touch wrong key accidentally. To make it better, all version of saved files are kept on disk, so if you made big mistakes, then it&rsquo;s recoverable by hand. It&rsquo;s non trivial to implement a good undo/redo system, so probably this feature will only be added in a much later stage.</p>
 
-<p>Also there is on gui at all, all functions are done by keyboard shortcut and mouse movement, so there is a learning curve, and you&#8217;ll feel a bit awkward at first. Though this is the quickest way for implementation and also for actually using IMO, after a few days using it, both of our graphic artists can use it with no big problem, and they said that it&#8217;s a bit geeky feeling when using it. :)</p>
+<p>Also there is on gui at all, all functions are done by keyboard shortcut and mouse movement, so there is a learning curve, and you&rsquo;ll feel a bit awkward at first. Though this is the quickest way for implementation and also for actually using IMO, after a few days using it, both of our graphic artists can use it with no big problem, and they said that it&rsquo;s a bit geeky feeling when using it. :)</p>
 
-<p>And manual works required to create a skeleton scene and import images to it, it&#8217;s not hard, just running some python scripts, but it&#8217;s still not so simple for non-programmers.</p>
+<p>And manual works required to create a skeleton scene and import images to it, it&rsquo;s not hard, just running some python scripts, but it&rsquo;s still not so simple for non-programmers.</p>
 
-<h2>What&#8217;s Next</h2>
+<h2>What&rsquo;s Next</h2>
 
-<p>Guess I&#8217;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&#8217;ll add particle feature to the level editor.</p>
+<p>Guess I&rsquo;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&rsquo;ll add particle feature to the level editor.</p>
 
-<p>I feel quite happy doing this kind of tool works, and actually it&#8217;s not hard to make it usable as a standalone project and let other people to use it. e.g. I can make a converter to generate cocos builder format, then it can be used in cocos2d projects. Or if I make my animation editor to export spriter&#8217;s xml syntax, it can be used in many other projects too.</p>
+<p>I feel quite happy doing this kind of tool works, and actually it&rsquo;s not hard to make it usable as a standalone project and let other people to use it. e.g. I can make a converter to generate cocos builder format, then it can be used in cocos2d projects. Or if I make my animation editor to export spriter&rsquo;s xml syntax, it can be used in many other projects too.</p>
 
-<p>And at least for myself and our graphic artists, we think that our homebrew tools are much easier to use and feature complete (for just our needs) comparing to the tools we&#8217;ve tried. e.g. cocos builder, sprite helper, and spriter. Not saying that my editors are better products, just they are tailored by exactly our need and my design approach, and since it&#8217;s integrated in the exact game process, the workflow is much better comparing to a 3rd party tools. Also our level is pretty big(currently the demo scene is about 20000 pixel wide, and the engine/editor can support much bigger usage), I can&#8217;t find a proper tool to handle such big scene.</p>
+<p>And at least for myself and our graphic artists, we think that our homebrew tools are much easier to use and feature complete (for just our needs) comparing to the tools we&rsquo;ve tried. e.g. cocos builder, sprite helper, and spriter. Not saying that my editors are better products, just they are tailored by exactly our need and my design approach, and since it&rsquo;s integrated in the exact game process, the workflow is much better comparing to a 3rd party tools. Also our level is pretty big(currently the demo scene is about 20000 pixel wide, and the engine/editor can support much bigger usage), I can&rsquo;t find a proper tool to handle such big scene.</p>
 
-<p>Though making a generic tool will involve many not so interesting works, and it&#8217;s very hard to make it works for more people, and probably my tools are just too tailored to our need, so I think I will keep focusing on our games in the near future.</p>
+<p>Though making a generic tool will involve many not so interesting works, and it&rsquo;s very hard to make it works for more people, and probably my tools are just too tailored to our need, so I think I will keep focusing on our games in the near future.</p>
 
 <p>But anyway, I already have some demo scene editor running as OS X application, will make it downloadable in next few days, after I wrote a very basic manual about it. like Jakub commented in the original post, even if I decided to keep it private, it can still help others a bit, and maybe by using it in a experimental way, people can get some ideas about improving their own tools.</p>
 
 <p>If you are interested to see more information about the editor, please leave comments, thanks.</p>
 
-<p>I&#8217;ll try to post more about technical details about some aspects of the editors, some hacks I used, and some mistakes I&#8217;ve overcomed.</p>
+<p>I&rsquo;ll try to post more about technical details about some aspects of the editors, some hacks I used, and some mistakes I&rsquo;ve overcomed.</p>
 ]]></content>
   </entry>
   
@@ -322,13 +322,13 @@
     <link href="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/"/>
     <updated>2012-10-02T18:00:00+08:00</updated>
     <id>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade</id>
-    <content type="html"><![CDATA[<p>Marmalade provide good support for writing custom shaders in it, though it&#8217;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
+    <content type="html"><![CDATA[<p>Marmalade provide good support for writing custom shaders in it, though it&rsquo;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
 
-<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&#8217;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
+<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&rsquo;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
 
-<p>The sample shader&#8217;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
+<p>The sample shader&rsquo;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
 
-<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&#8217;s a good start point to me, you should read it first to get the concepts.</p>
+<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&rsquo;s a good start point to me, you should read it first to get the concepts.</p>
 
 <!-- more -->
 
@@ -389,7 +389,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Note: since I need multiple instance of the shader for diffrent images with differnt colors, here I use a quick solution with marmalade&#8217;s serialization, which is NOT thread safe due to the hard code file name.</p>
+<p>Note: since I need multiple instance of the shader for diffrent images with differnt colors, here I use a quick solution with marmalade&rsquo;s serialization, which is NOT thread safe due to the hard code file name.</p>
 
 <p>Load the resource group as this:</p>
 
@@ -429,7 +429,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Please refer to Marmalade&#8217;s documents if you are not familiar with the resource compiling process and mkb syntaxes.</p>
+<p>Please refer to Marmalade&rsquo;s documents if you are not familiar with the resource compiling process and mkb syntaxes.</p>
 
 <p>Here is data/effect/Shaders.group</p>
 
@@ -541,7 +541,7 @@
 
 <h2>Update Params By Code and XML</h2>
 
-<p>the <strong>param</strong> in the shader is for the parameters from your code, change it&#8217;s value like this.</p>
+<p>the <strong>param</strong> in the shader is for the parameters from your code, change it&rsquo;s value like this.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -618,7 +618,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Since I&#8217;m using IwGame, it&#8217;s very easy to make the color controlled by the XOML animation, all I need to do is to override the UpdateFromAnimation method of CIwGameActor, and handle the color value from it.</p>
+<p>Since I&rsquo;m using IwGame, it&rsquo;s very easy to make the color controlled by the XOML animation, all I need to do is to override the UpdateFromAnimation method of CIwGameActor, and handle the color value from it.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -699,26 +699,26 @@
     <id>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame</id>
     <content type="html"><![CDATA[<p>Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual games, as the tech lead, I need to choose a development way for our first batch of games.</p>
 
-<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&#8217;s better for the team and the graphic quality of the games.</p>
+<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&rsquo;s better for the team and the graphic quality of the games.</p>
 
 <p>After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.</p>
 
 <h2>Why choose Marmalade?</h2>
 
-<p>I did have quite some experience on cocos2d, though it&#8217;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&#8217;t use much platform-specific features, we don&#8217;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&#8217;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&#8217;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&#8217;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&#8217;t dig into it deeply.</p>
+<p>I did have quite some experience on cocos2d, though it&rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&rsquo;t use much platform-specific features, we don&rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&rsquo;t dig into it deeply.</p>
 
-<p>The second option is Unity3d, I&#8217;ve used it for about 3 months before, It&#8217;s pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it&#8217;s a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don&#8217;t really think the .Net virtual machine is the best way for our rather small games. My feeling is that it&#8217;s more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it&#8217;s mostly 3D centric, 2D works are possible, but a bit awkard, since we don&#8217;t need the 3D power and I want more control with my codes, I did not take this path either.</p>
+<p>The second option is Unity3d, I&rsquo;ve used it for about 3 months before, It&rsquo;s pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it&rsquo;s a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don&rsquo;t really think the .Net virtual machine is the best way for our rather small games. My feeling is that it&rsquo;s more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it&rsquo;s mostly 3D centric, 2D works are possible, but a bit awkard, since we don&rsquo;t need the 3D power and I want more control with my codes, I did not take this path either.</p>
 
 <!-- more -->
 
 
-<p>For good performance and graphic effects, I didn&#8217;t investigate the fast development tools, most of them are HTML based or LUA based, more like quick prototype tools for me.</p>
+<p>For good performance and graphic effects, I didn&rsquo;t investigate the fast development tools, most of them are HTML based or LUA based, more like quick prototype tools for me.</p>
 
-<p>I&#8217;ve played with Airplay for a couple of days 2 years ago, technically it was very good, though with a rather steep learning curve, and lack of tutorials and blog post, so I didn&#8217;t really learn it as a hobby. Now it&#8217;s renamed to Marmalade, been updated pretty often, and having a much bigger user base and many successful games are based on it, like Draw Something or Cut The Rope. Since I will use the chosen platform for at least 1 or 2 years, I spend a week to really try to learn it this time.</p>
+<p>I&rsquo;ve played with Airplay for a couple of days 2 years ago, technically it was very good, though with a rather steep learning curve, and lack of tutorials and blog post, so I didn&rsquo;t really learn it as a hobby. Now it&rsquo;s renamed to Marmalade, been updated pretty often, and having a much bigger user base and many successful games are based on it, like Draw Something or Cut The Rope. Since I will use the chosen platform for at least 1 or 2 years, I spend a week to really try to learn it this time.</p>
 
-<p>The first impression was kind of negative, the OSX support seems to be much weaker than the windows one, a bunch of small problems were met, which almost make me give it up. Now I&#8217;ve been using it for about 1 month, still got some problem, though I think I start to feel comfortable with it.</p>
+<p>The first impression was kind of negative, the OSX support seems to be much weaker than the windows one, a bunch of small problems were met, which almost make me give it up. Now I&rsquo;ve been using it for about 1 month, still got some problem, though I think I start to feel comfortable with it.</p>
 
-<p>There are still very few technical information about marmalade other than the official documents and forum, the only helpful tutorial I can find is the <a href="http://www.drmop.com/index.php/marmalade-sdk-tutorials/">DrMop tutorials</a>. It&#8217;s very helpful to provide basic ideas for new Marmalade users.</p>
+<p>There are still very few technical information about marmalade other than the official documents and forum, the only helpful tutorial I can find is the <a href="http://www.drmop.com/index.php/marmalade-sdk-tutorials/">DrMop tutorials</a>. It&rsquo;s very helpful to provide basic ideas for new Marmalade users.</p>
 
 <p>The API documents of Marmalade is actually quite good after you get the basic ideas about it. Also the examples included are good learning source.</p>
 
@@ -727,28 +727,28 @@
 <p>The things I wish to be better:</p>
 
 <ul>
-<li>1st class OSX support, add the missing features of the simulator, fix the broken &#8220;mkb &#8211;iphone&#8221; device building (only trid on 10.8 + Xcode 4.4, not sure about other environments). (Update: &#8211;iphone is fixed in 6.1, simulator seems not updated)</li>
+<li>1st class OSX support, add the missing features of the simulator, fix the broken &ldquo;mkb &mdash;iphone&rdquo; device building (only trid on 10.8 + Xcode 4.4, not sure about other environments). (Update: &mdash;iphone is fixed in 6.1, simulator seems not updated)</li>
 <li>Release to osx ability, then I can create desktop tools such as customized level editor instead of let my graphic designers to use the simulator to run them. (Update: Added in 6.1)</li>
-<li>Float data types in IwGx, it&#8217;s said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we&#8217;ll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can&#8217;t afford dedicated tester anyway. (Update: Float added in 6.1 and works great, though we probably will not change IwGame to use float)</li>
+<li>Float data types in IwGx, it&rsquo;s said to be included in 6.1 release which should be out soon, much simpler and less error-prone, we&rsquo;ll target on OpenGL ES 2.0 devices only (iOS devices first) to make our life easier since we can&rsquo;t afford dedicated tester anyway. (Update: Float added in 6.1 and works great, though we probably will not change IwGame to use float)</li>
 <li>High level document besides API reference, and generally more documentations.</li>
-<li>Better community and 3rd party components, it&#8217;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
+<li>Better community and 3rd party components, it&rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
 </ul>
 
 
 <h2>What is IwGame, and Why it is Helpful</h2>
 
-<p>Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&#8217;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.</p>
+<p>Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.</p>
 
-<p>According to the website, <a href="http://www.drmop.com/index.php/iwgame-engine/">IwGame</a> is a &#8220;Free Open Source Cross Platform Mobile Game Engine for Smart Phones and Tablets&#8221;, it&#8217;s a quite ambitious project, already has a long feature list with many future features, though still in an rather early stage.</p>
+<p>According to the website, <a href="http://www.drmop.com/index.php/iwgame-engine/">IwGame</a> is a &ldquo;Free Open Source Cross Platform Mobile Game Engine for Smart Phones and Tablets&rdquo;, it&rsquo;s a quite ambitious project, already has a long feature list with many future features, though still in an rather early stage.</p>
 
 <p>The main reasons I chose it:</p>
 
 <ul>
 <li>Open source, I can tweak the codes to suit my needs better, and even if its development stopped, we can still improve it by ourselves.</li>
-<li>XML file format, it&#8217;s very powerful, e.g. make simple animations easily without coding. Also it&#8217;s very easy to extend the system to add our own extensions. This is a hugh advantage to me.</li>
-<li>Complete 2D framework, including sprite, scene, particle, physics, UI&#8230; No need to reimplement the basic things from the scratch, we can focus on more interesting stuffs.</li>
+<li>XML file format, it&rsquo;s very powerful, e.g. make simple animations easily without coding. Also it&rsquo;s very easy to extend the system to add our own extensions. This is a hugh advantage to me.</li>
+<li>Complete 2D framework, including sprite, scene, particle, physics, UI&hellip; No need to reimplement the basic things from the scratch, we can focus on more interesting stuffs.</li>
 <li>Support 2D and 3D rendering, since the rendering codes are based on IwGx now, even for 2D games, some part of 3D elements can be very useful, so I think this flexibility is very good.</li>
-<li>Good document and a full game source included, there are quite some typos in the included PDF document, though it provide most information I need to get started, plus reading the source code, It&#8217;s kind of easy to learn (though still much harder comparing to cocos2d family).</li>
+<li>Good document and a full game source included, there are quite some typos in the included PDF document, though it provide most information I need to get started, plus reading the source code, It&rsquo;s kind of easy to learn (though still much harder comparing to cocos2d family).</li>
 <li>Good code quality, easy to read and not hard to expand.</li>
 </ul>
 
@@ -756,10 +756,10 @@
 <p>Some worries about base our codes on it:</p>
 
 <ul>
-<li>It&#8217;s a big project, and seems most code and docs are written by DrMop in several monthes. He did very great so far, though he has too many works ahead him, I am not sure where this project will be after 1 year, what if it&#8217;s dead? also it&#8217;s been a while since the last update.</li>
-<li>On the other hand, if it&#8217;s been developed rapidly, since it&#8217;s not finished yet, we will need to expand it by ourself, it can be a problem to keep update with the future updates. I don&#8217;t want to make a fork since many good features are on the list, though we can&#8217;t wait for they to appear, We will be careful with out changes to make them easy to merge, but what if the owner decide to change the API interface drasticly?</li>
-<li>The core string class (CIwGameString) is not unicode compatible, and the author didn&#8217;t have plan to support it soon. This can be a big problem for us to support multiple language, especially the asian languages. I want to find a clean solution for this, though haven&#8217;t started working on it yet.</li>
-<li>There is no unit tests yet, so it might introduce its own bugs, especially if it&#8217;s been update quickly.</li>
+<li>It&rsquo;s a big project, and seems most code and docs are written by DrMop in several monthes. He did very great so far, though he has too many works ahead him, I am not sure where this project will be after 1 year, what if it&rsquo;s dead? also it&rsquo;s been a while since the last update.</li>
+<li>On the other hand, if it&rsquo;s been developed rapidly, since it&rsquo;s not finished yet, we will need to expand it by ourself, it can be a problem to keep update with the future updates. I don&rsquo;t want to make a fork since many good features are on the list, though we can&rsquo;t wait for they to appear, We will be careful with out changes to make them easy to merge, but what if the owner decide to change the API interface drasticly?</li>
+<li>The core string class (CIwGameString) is not unicode compatible, and the author didn&rsquo;t have plan to support it soon. This can be a big problem for us to support multiple language, especially the asian languages. I want to find a clean solution for this, though haven&rsquo;t started working on it yet.</li>
+<li>There is no unit tests yet, so it might introduce its own bugs, especially if it&rsquo;s been update quickly.</li>
 </ul>
 
 
@@ -779,7 +779,7 @@
 
 <p>All these editors will base on the XOML markup system of IwGame.</p>
 
-<p>These are still quite some works, might be over engineering for our first game, though as a developer, I don&#8217;t want to just do things in the quick and dirty way, I want to do it in a proper way. And I think a proper engine can make future games easier to develop, so in the long run, it will worth the efforts.</p>
+<p>These are still quite some works, might be over engineering for our first game, though as a developer, I don&rsquo;t want to just do things in the quick and dirty way, I want to do it in a proper way. And I think a proper engine can make future games easier to develop, so in the long run, it will worth the efforts.</p>
 
 <p>Think I will start to write more about Marmalade and IwGame in the future, both help myself to understand them better, and hopefully might help some other developers too.</p>
 ]]></content>
@@ -931,13 +931,13 @@
 </ul>
 
 
-<p>I really like the idea of writing UML diagram with plain text. Since it&#8217;s totally plaintext, it&#8217;s very easy to do diff and version track, also you don&#8217;t need to do anything about the layout (the text itself looks pretty good too).</p>
+<p>I really like the idea of writing UML diagram with plain text. Since it&rsquo;s totally plaintext, it&rsquo;s very easy to do diff and version track, also you don&rsquo;t need to do anything about the layout (the text itself looks pretty good too).</p>
 
 <p>Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.</p>
 
 <h2>The Plugin</h2>
 
-<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&#8217;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
+<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&rsquo;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
 
 <p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
 
@@ -960,7 +960,7 @@
 
 <h2>Usage</h2>
 
-<p>Just wrap the diagram text in &#8220;plantuml&#8221; block, e.g.</p>
+<p>Just wrap the diagram text in &ldquo;plantuml&rdquo; block, e.g.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -1000,9 +1000,9 @@
 
 <p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
 
-<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&#8217;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
 
-<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&#8217;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&rsquo;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
 
 <p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
 
@@ -1018,30 +1018,30 @@
 
 <h2>What is missed</h2>
 
-<p>I did implement support for USB transfer for backup/restore, though didn&#8217;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&#8217;t get time for it.</p>
+<p>I did implement support for USB transfer for backup/restore, though didn&rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&rsquo;t get time for it.</p>
 
 <p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
 
-<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&#8217;ve done some experiments about bigger writing area, it&#8217;s not easy to put it into the current structure though.</p>
+<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&rsquo;ve done some experiments about bigger writing area, it&rsquo;s not easy to put it into the current structure though.</p>
 
 <p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
 
 <p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
 
-<p>&#8230;</p>
+<p>&hellip;</p>
 
 <h2>Why open sourced</h2>
 
-<p>It&#8217;s sadly that I can&#8217;t put more dedicated time into it, since it didn&#8217;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
+<p>It&rsquo;s sadly that I can&rsquo;t put more dedicated time into it, since it didn&rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
 
-<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&#8217;re interesting.</p>
+<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&rsquo;re interesting.</p>
 
 <ul>
 <li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
 </ul>
 
 
-<p>Might write more about the technical side of the project later, what I&#8217;ve learned, and how to extend it.</p>
+<p>Might write more about the technical side of the project later, what I&rsquo;ve learned, and how to extend it.</p>
 ]]></content>
   </entry>
   

@@ -2,58 +2,58 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/2012/07/27/pettyfun-game-studio-established/</loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/
         </loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/
         </loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/
         </loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/
         </loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/</loc>
-        <lastmod>2013-04-16T00:05:49+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/blog/archives/</loc>
-        <lastmod>2013-04-16T00:05:49+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/</loc>
-        <lastmod>2013-04-16T00:05:49+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.yjpark.org/robots.txt</loc>
-        <lastmod>2013-04-13T01:01:18+08:00</lastmod>
+        <lastmod>2014-01-21T18:03:38+08:00</lastmod>
     </url>
 </urlset>

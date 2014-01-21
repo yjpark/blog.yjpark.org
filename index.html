@@ -9,7 +9,7 @@
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="During the days to develop our first game: Day Day Birds, I went through the progress of learning to use Marmalade, generally it&#8217;s very easy to &hellip;">
+  <meta name="description" content="During the days to develop our first game: Day Day Birds, I went through the progress of learning to use Marmalade, generally it&rsquo;s very easy to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <link href="http://feeds.feedburner.com/yjpark" rel="alternate" title="Living and Programming - YJ Park's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -99,18 +99,19 @@
 
 <time datetime="2013-04-14T20:22:00+08:00" pubdate data-updated="true">2013-04-14 20:22</time>
         
-         | <a href="/blog/2013/04/14/marmalade-tricks-and-tips/#disqus_thread">Comments</a>
+           | <a href="/blog/2013/04/14/marmalade-tricks-and-tips/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&#8217;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
+  <div class="entry-content"><p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&rsquo;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
 
 <h2>Stack Size</h2>
 
-<p>The game started to crash randomly before I noticed, it&#8217;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
+<p>The game started to crash randomly before I noticed, it&rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
 
 <p>When it crashed on iOS device, some information were provided, though full stack trace is not availabe, and the place of crash is not consistent. After 2 or 3 days and nights figihting with this bug, finally found out the root cause, which is very surprising.</p>
 
@@ -148,20 +149,21 @@
 
 <time datetime="2012-11-06T23:24:00+08:00" pubdate data-updated="true">2012-11-06 23:24</time>
         
-         | <a href="/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&#8217;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
+  <div class="entry-content"><p>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.</p>
 
-<p>There are quite some libraries to support xm playback, though I can&#8217;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
+<p>There are quite some libraries to support xm playback, though I can&rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</p>
 
 <p>After some search, I decided to use <a href="http://www.un4seen.com/bass.html">BASS audio engine</a>, which is quite powerful, with well designed API, not bad documentation and sample, and a reasonable price for small projects (the shareware license can cover product with small price).</p>
 
-<p>Now I&#8217;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&#8217;m going to share the extension and some experiences I&#8217;ve learn from the process(not in this post).</p>
+<p>Now I&rsquo;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&rsquo;m going to share the extension and some experiences I&rsquo;ve learn from the process(not in this post).</p>
 
 </div>
   
@@ -197,22 +199,23 @@
 
 <time datetime="2012-11-05T19:16:00+08:00" pubdate data-updated="true">2012-11-05 19:16</time>
         
-         | <a href="/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>In 2D games, it&#8217;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+  <div class="entry-content"><p>In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
 
-<p>There are quite some tools to generate such font images, I&#8217;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &#8220;Cocos2d / BMFont&#8221; format, though it&#8217;s not directly usable in Marmalade.</p>
+<p>There are quite some tools to generate such font images, I&rsquo;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &ldquo;Cocos2d / BMFont&rdquo; format, though it&rsquo;s not directly usable in Marmalade.</p>
 
-<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&#8217;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
 
-<p>My first thought was to add function to use the BMFont generated, though it&#8217;s not an easy task, also I want to use IwGame&#8217;s label components, which are based on Marmalade&#8217;s GxFont and Truetype support.</p>
+<p>My first thought was to add function to use the BMFont generated, though it&rsquo;s not an easy task, also I want to use IwGame&rsquo;s label components, which are based on Marmalade&rsquo;s GxFont and Truetype support.</p>
 
-<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&#8217;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
 
 </div>
   
@@ -248,14 +251,15 @@
 
 <time datetime="2012-10-12T22:56:00+08:00" pubdate data-updated="true">2012-10-12 22:56</time>
         
-         | <a href="/blog/2012/10/12/level-editor-based-on-iwgame-introduction/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/10/12/level-editor-based-on-iwgame-introduction/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>It&#8217;s been more than a month since my post about the idea of <a href="/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">game engine based on Marmalade and IwGame</a>, after the post, spent many hours busy coding, now I&#8217;ve got the basic level editor up running, I think it&#8217;s pretty cool, so here are some details about it.</p>
+  <div class="entry-content"><p>It&rsquo;s been more than a month since my post about the idea of <a href="/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">game engine based on Marmalade and IwGame</a>, after the post, spent many hours busy coding, now I&rsquo;ve got the basic level editor up running, I think it&rsquo;s pretty cool, so here are some details about it.</p>
 
 <p>Here is a screenshot of the level editor:</p>
 
@@ -295,20 +299,21 @@
 
 <time datetime="2012-10-02T18:00:00+08:00" pubdate data-updated="true">2012-10-02 18:00</time>
         
-         | <a href="/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Marmalade provide good support for writing custom shaders in it, though it&#8217;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
+  <div class="entry-content"><p>Marmalade provide good support for writing custom shaders in it, though it&rsquo;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.</p>
 
-<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&#8217;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
+<p>I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&rsquo;t have testers for now, also the architect of 2.0 is simpler and cleaner.</p>
 
-<p>The sample shader&#8217;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
+<p>The sample shader&rsquo;s function is to replace non-transparent part of the image to a given color, then the color can be changed programmingly (also by xml thanks to IwGame). Basically the images will be just working as masks, the actually color to be rendered are controlled by the shader.</p>
 
-<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&#8217;s a good start point to me, you should read it first to get the concepts.</p>
+<p>I will not cover the basics about Open GL Shaders, there are plenty of information on the web about that, also a PDF doc is included in Marmalade installation, it&rsquo;s a good start point to me, you should read it first to get the concepts.</p>
 
 </div>
   
@@ -344,7 +349,8 @@
 
 <time datetime="2012-08-30T22:58:00+08:00" pubdate data-updated="true">2012-08-30 22:58</time>
         
-         | <a href="/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">Comments</a>
         
       </p>
     
@@ -353,15 +359,15 @@
 
   <div class="entry-content"><p>Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual games, as the tech lead, I need to choose a development way for our first batch of games.</p>
 
-<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&#8217;s better for the team and the graphic quality of the games.</p>
+<p>Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&rsquo;s better for the team and the graphic quality of the games.</p>
 
 <p>After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.</p>
 
 <h2>Why choose Marmalade?</h2>
 
-<p>I did have quite some experience on cocos2d, though it&#8217;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&#8217;t use much platform-specific features, we don&#8217;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&#8217;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&#8217;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&#8217;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&#8217;t dig into it deeply.</p>
+<p>I did have quite some experience on cocos2d, though it&rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&rsquo;t use much platform-specific features, we don&rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&rsquo;t dig into it deeply.</p>
 
-<p>The second option is Unity3d, I&#8217;ve used it for about 3 months before, It&#8217;s pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it&#8217;s a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don&#8217;t really think the .Net virtual machine is the best way for our rather small games. My feeling is that it&#8217;s more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it&#8217;s mostly 3D centric, 2D works are possible, but a bit awkard, since we don&#8217;t need the 3D power and I want more control with my codes, I did not take this path either.</p>
+<p>The second option is Unity3d, I&rsquo;ve used it for about 3 months before, It&rsquo;s pretty good, easy to use, and have a hugh community with tons of good plugins. My biggest concern about it is the binary format of the prefebs, it&rsquo;s a bit like the xib file in App development, hard to change and track, as a developer, I want a text based format. Also don&rsquo;t really think the .Net virtual machine is the best way for our rather small games. My feeling is that it&rsquo;s more like a tool for game designers and graphic designers, as developers, we gave up full control in exchange with a full-feature game development environment. And also it&rsquo;s mostly 3D centric, 2D works are possible, but a bit awkard, since we don&rsquo;t need the 3D power and I want more control with my codes, I did not take this path either.</p>
 
 </div>
   
@@ -397,7 +403,8 @@
 
 <time datetime="2012-07-27T18:31:00+08:00" pubdate data-updated="true">2012-07-27 18:31</time>
         
-         | <a href="/blog/2012/07/27/pettyfun-game-studio-established/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/07/27/pettyfun-game-studio-established/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/07/27/pettyfun-game-studio-established/">Comments</a>
         
       </p>
     
@@ -450,7 +457,8 @@
 
 <time datetime="2012-04-30T23:20:00+08:00" pubdate data-updated="true">2012-04-30 23:20</time>
         
-         | <a href="/blog/2012/04/30/plantuml-plugin-for-octopress/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/04/30/plantuml-plugin-for-octopress/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/">Comments</a>
         
       </p>
     
@@ -472,13 +480,13 @@
 </ul>
 
 
-<p>I really like the idea of writing UML diagram with plain text. Since it&#8217;s totally plaintext, it&#8217;s very easy to do diff and version track, also you don&#8217;t need to do anything about the layout (the text itself looks pretty good too).</p>
+<p>I really like the idea of writing UML diagram with plain text. Since it&rsquo;s totally plaintext, it&rsquo;s very easy to do diff and version track, also you don&rsquo;t need to do anything about the layout (the text itself looks pretty good too).</p>
 
 <p>Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.</p>
 
 <h2>The Plugin</h2>
 
-<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&#8217;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
+<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&rsquo;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
 
 <p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
 
@@ -516,7 +524,8 @@
 
 <time datetime="2012-04-22T13:35:00+08:00" pubdate data-updated="true">2012-04-22 13:35</time>
         
-         | <a href="/blog/2012/04/22/movable-write-open-sourced/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/04/22/movable-write-open-sourced/#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/">Comments</a>
         
       </p>
     
@@ -527,9 +536,9 @@
 
 <p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
 
-<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&#8217;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
 
-<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&#8217;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&rsquo;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
 
 <p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
 
@@ -652,7 +661,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - YJ Park -
+  Copyright &copy; 2014 - YJ Park -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -667,7 +676,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -700,7 +709,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
