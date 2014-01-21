@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tool | Living and Programming - YJ Park's Blog]]></title>
   <link href="http://blog.yjpark.org/blog/categories/tool/atom.xml" rel="self"/>
   <link href="http://blog.yjpark.org/"/>
-  <updated>2014-01-21T18:15:36+08:00</updated>
+  <updated>2014-01-21T21:53:44+08:00</updated>
   <id>http://blog.yjpark.org/</id>
   <author>
     <name><![CDATA[YJ Park]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Save Day One Summary to Evernote]]></title>
+    <link href="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/"/>
+    <updated>2014-01-21T18:24:11+08:00</updated>
+    <id>http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote</id>
+    <content type="html"><![CDATA[<h2>Why Not Just Use Evernote?</h2>
+
+<p>I&rsquo;ve been using Evernote for several years, which is great, the best features to me are:</p>
+
+<ul>
+<li>Multi devices synchronization</li>
+<li>High quality app on iOS/Android and OSX</li>
+<li>Very good search in notes (even in the photos)</li>
+</ul>
+
+
+<p>Though lately I found myself write less an less in Evernote, if I&rsquo;m writing something long, then usually I will use MacVim, may copy the text back to Evernote. If I need to write a couple of line, the process to write in Evernote is like this:</p>
+
+<ul>
+<li>Switch to Evernote</li>
+<li>Find the note for current day (each day I will have a new note.)</li>
+<li>Go to the end of the note</li>
+<li>Write something</li>
+<li>Switch back</li>
+</ul>
+
+
+<p>Feels a bit heavy, also there is no information about when I did add the line into the note.</p>
+
+<!--more-->
+
+
+<h2>Day One</h2>
+
+<p>Since 2013 I started to use <a href="http://dayoneapp.com/">Day One</a>, which is a very beautiful application(has OSX and iOS versions) for note taking. Here is the reasons that I like it:</p>
+
+<ul>
+<li>Quick note adding widget in menubar, which can be triggered by a global shortcut</li>
+<li>Markdown format, rendered very nicely as well.</li>
+<li>Dropbox synchronization, iCloud supported as well.</li>
+<li>Every note has a timestamp.</li>
+<li>Calendar view for all the notes.</li>
+<li>Look and feels very nice.</li>
+</ul>
+
+
+<p>Then the process to add a quick note will be:</p>
+
+<ul>
+<li>Using the global shortcut.</li>
+<li>Type, then Cmd-Enter to save it.</li>
+</ul>
+
+
+<p>It&rsquo;s much more light-weigh comparing to the Evernote way.</p>
+
+<h2>Why Not Just Use Day One?</h2>
+
+<p>One major missed part in <code>Day One</code> is the lack of Android support, also the search is not as good as evernote, another problem is that you can not see all the notes in one day at once, you have to mouse over each item to see the whole content, which is a bit annoying IMO.</p>
+
+<h2>Dayone 2 Evernote</h2>
+
+<p>So I wrote a very simple script to export <code>Day One</code> entries as a summary note in Evernote.</p>
+
+<p>Timestamps will be added in front of each entry.</p>
+
+<p>The summary note will look like:
+```
+[00:25]
+One note written in Day One</p>
+
+<p>[19:17]
+Another note in Day One</p>
+
+<p>&hellip;
+```
+They will not be converted to HTML format, since I prefer to keep the plain text format in Evernote, and MarkDown notes looks very nice as plain text to me.</p>
+
+<p>Note that since I used the applescript to save the note, it only works on OSX. Also there is some tricks to keep track of the last saved date. Check the README in the repository for more informations.</p>
+
+<p>The code is: <a href="https://github.com/yjpark/dayone2evernote">https://github.com/yjpark/dayone2evernote</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[PlantUML Plugin for Octopress]]></title>

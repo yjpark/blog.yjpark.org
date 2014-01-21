@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: ios - Living and Programming - YJ Park's Blog</title>
+  <title>Save Day One Summary to Evernote - Living and Programming - YJ Park's Blog</title>
   <meta name="author" content="YJ Park">
 
   
-  <meta name="description" content="Category: ios">
+  <meta name="description" content="Why Not Just Use Evernote? I&rsquo;ve been using Evernote for several years, which is great, the best features to me are: Multi devices &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.yjpark.orgblog/categories/ios">
+  <link rel="canonical" href="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/yjpark" rel="alternate" title="Living and Programming - YJ Park's Blog" type="application/atom+xml">
@@ -74,36 +74,181 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: ios</h1>
+    
+      <h1 class="entry-title">Save Day One Summary to Evernote</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-21T18:24:11+08:00" pubdate data-updated="true">2014-01-21 18:24</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://blog.yjpark.org">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h2>Why Not Just Use Evernote?</h2>
 
-  
-  <h2>2012</h2>
+<p>I&rsquo;ve been using Evernote for several years, which is great, the best features to me are:</p>
 
-<article>
-  
-<h1><a href="/blog/2012/04/22/movable-write-open-sourced/">Movable Write Open Sourced</a></h1>
-<time datetime="2012-04-22T13:35:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>22</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/movablewrite/'>movablewrite</a>, <a class='category' href='/blog/categories/pettyfun/'>pettyfun</a></span>
-</footer>
+<ul>
+<li>Multi devices synchronization</li>
+<li>High quality app on iOS/Android and OSX</li>
+<li>Very good search in notes (even in the photos)</li>
+</ul>
 
 
-</article>
+<p>Though lately I found myself write less an less in Evernote, if I&rsquo;m writing something long, then usually I will use MacVim, may copy the text back to Evernote. If I need to write a couple of line, the process to write in Evernote is like this:</p>
 
+<ul>
+<li>Switch to Evernote</li>
+<li>Find the note for current day (each day I will have a new note.)</li>
+<li>Go to the end of the note</li>
+<li>Write something</li>
+<li>Switch back</li>
+</ul>
+
+
+<p>Feels a bit heavy, also there is no information about when I did add the line into the note.</p>
+
+<!--more-->
+
+
+<h2>Day One</h2>
+
+<p>Since 2013 I started to use <a href="http://dayoneapp.com/">Day One</a>, which is a very beautiful application(has OSX and iOS versions) for note taking. Here is the reasons that I like it:</p>
+
+<ul>
+<li>Quick note adding widget in menubar, which can be triggered by a global shortcut</li>
+<li>Markdown format, rendered very nicely as well.</li>
+<li>Dropbox synchronization, iCloud supported as well.</li>
+<li>Every note has a timestamp.</li>
+<li>Calendar view for all the notes.</li>
+<li>Look and feels very nice.</li>
+</ul>
+
+
+<p>Then the process to add a quick note will be:</p>
+
+<ul>
+<li>Using the global shortcut.</li>
+<li>Type, then Cmd-Enter to save it.</li>
+</ul>
+
+
+<p>It&rsquo;s much more light-weigh comparing to the Evernote way.</p>
+
+<h2>Why Not Just Use Day One?</h2>
+
+<p>One major missed part in <code>Day One</code> is the lack of Android support, also the search is not as good as evernote, another problem is that you can not see all the notes in one day at once, you have to mouse over each item to see the whole content, which is a bit annoying IMO.</p>
+
+<h2>Dayone 2 Evernote</h2>
+
+<p>So I wrote a very simple script to export <code>Day One</code> entries as a summary note in Evernote.</p>
+
+<p>Timestamps will be added in front of each entry.</p>
+
+<p>The summary note will look like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[00:25]
+</span><span class='line'>One note written in Day One
+</span><span class='line'>
+</span><span class='line'>[19:17]
+</span><span class='line'>Another note in Day One
+</span><span class='line'>
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>They will not be converted to HTML format, since I prefer to keep the plain text format in Evernote, and MarkDown notes looks very nice as plain text to me.</p>
+
+<p>Note that since I used the applescript to save the note, it only works on OSX. Also there is some tricks to keep track of the last saved date. Check the README in the repository for more informations.</p>
+
+<p>The code is: <a href="https://github.com/yjpark/dayone2evernote">https://github.com/yjpark/dayone2evernote</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">YJ Park</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-21T18:24:11+08:00" pubdate data-updated="true">2014-01-21 18:24</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/" data-via="yjpark" data-counturl="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/14/marmalade-tricks-and-tips/" title="Previous Post: Marmalade Tricks and Tips">&laquo; Marmalade Tricks and Tips</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -214,7 +359,10 @@
       var disqus_shortname = 'yjpark';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/';
+        var disqus_url = 'http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
