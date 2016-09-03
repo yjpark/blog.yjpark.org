@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Level Editor Based on IwGame - Introduction</title>
+
+  <meta name="author" content="YJ Park" />
+  
+  
+
+  <meta name="generator" content="Hugo 0.15" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+  
+  
+  <meta property="og:title" content="Level Editor Based on IwGame - Introduction" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>Level Editor Based on IwGame - Introduction</h1>
+        
+        <span class="post-meta">Posted on October 12, 2012</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  
+
+<p>It&rsquo;s been more than a month since my post about the idea of <a href="/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/">game engine based on Marmalade and IwGame</a>, after the post, spent many hours busy coding, now I&rsquo;ve got the basic level editor up running, I think it&rsquo;s pretty cool, so here are some details about it.</p>
+
+<p>Here is a screenshot of the level editor:</p>
+
+
+<figure >
+    
+        <img src="/img/pfgame/leveleditor-screenshot-1.png" />
+    
+    
+    <figcaption>
+        <h4>Level Editor Screen Shot 1</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<!-- more -->
+
+<h2 id="updates-about-original-post:3f1fb7d4683fdca6132f21143e5391c2">Updates about Original Post</h2>
+
+<p>Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</p>
+
+<p>First, Marmalade 6.1 was released, it&rsquo;s great for me, the 2 most useful feature for me are: Open GL ES 2.0 shader support in simulator, easy to debug shader now, and OSX deployment to send game/editor as running application to Graphic Artists.</p>
+
+<p>Second, DrMop commented in the original post, assure that IwGame is very actively developed and <a href="http://www.drmop.com/index.php/2012/10/08/iwgame-0-4-coming-very-soon-iwgame-is-going-portable/">version 0.40 is about to be released</a>.</p>
+
+<p>Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&rsquo;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.</p>
+
+<h2 id="current-features:3f1fb7d4683fdca6132f21143e5391c2">Current Features</h2>
+
+<p>Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&rsquo;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).</p>
+
+<p>Actually it&rsquo;s a bit easier than I thought to implement it, caused me about 5 weeks so far, worked quite hared during the time, but also had a basic animation editor and a game prototype at the same time, so the pure time on it was about 3 weeks.</p>
+
+<p>Our graphic artists have already used the editor to build a few nice scenes and they are getting more productively with it day by day, It&rsquo;s just what I wished it to be: a tool to make developer and other roles to collaborative more effectively, think it&rsquo;s at the right direction.</p>
+
+<p>Also it&rsquo;s extremely useful for prototyping and debugging, the way I did it is to add a few tools around the objects, so when you&rsquo;re running your game, you can switch to editor mode at any time (by tapping the tab key), then you can check the scene to see what&rsquo;s going on, or adjust the objects right in the editor, then you can switch back to game mode. It feels like you can freeze time in game at any time, then make changes, then go back, very cool, and very useful.</p>
+
+<p>To make it clear, here is a screenshot of our game prototype:</p>
+
+
+<figure >
+    
+        <img src="/img/pfgame/leveleditor-screenshot-2.png" />
+    
+    
+    <figcaption>
+        <h4>Level Editor Screen Shot 2</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>After I switch to editor mode, and zoom out a bit, I can get the screen as the first screenshot, then I can adjust the level, and switch back to keep playing. Our graphic artist feels very happy with this in game editing ability, they can see their changes instantly, which make the whole process very efficiently.</p>
+
+<p>Another very useful feature is the Box2D shape editor and debug view, we can create boxes and circles right through the level editor, they will be effective instantly, so for a game based on Box2D, it&rsquo;s very easy to create the levels by non-programmers.</p>
+
+<p>Here is the same game prototype with Box2D debug view enabled:</p>
+
+
+<figure >
+    
+        <img src="/img/pfgame/leveleditor-screenshot-3.png" />
+    
+    
+    <figcaption>
+        <h4>Level Editor Screen Shot 3</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>As you can see, we use boxes and circles to create a rather complicate level. Also it&rsquo;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.</p>
+
+<h2 id="what-s-missing:3f1fb7d4683fdca6132f21143e5391c2">What&rsquo;s Missing</h2>
+
+<p>As a basic level editor with advanced features (particle, animations&hellip;), I think it&rsquo;s quite complete and usable, we&rsquo;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.</p>
+
+<p>The biggest missed feature is undo/redo, only deleting have a quick undo since it can cause big trouble when touch wrong key accidentally. To make it better, all version of saved files are kept on disk, so if you made big mistakes, then it&rsquo;s recoverable by hand. It&rsquo;s non trivial to implement a good undo/redo system, so probably this feature will only be added in a much later stage.</p>
+
+<p>Also there is on gui at all, all functions are done by keyboard shortcut and mouse movement, so there is a learning curve, and you&rsquo;ll feel a bit awkward at first. Though this is the quickest way for implementation and also for actually using IMO, after a few days using it, both of our graphic artists can use it with no big problem, and they said that it&rsquo;s a bit geeky feeling when using it. :)</p>
+
+<p>And manual works required to create a skeleton scene and import images to it, it&rsquo;s not hard, just running some python scripts, but it&rsquo;s still not so simple for non-programmers.</p>
+
+<h2 id="what-s-next:3f1fb7d4683fdca6132f21143e5391c2">What&rsquo;s Next</h2>
+
+<p>Guess I&rsquo;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&rsquo;ll add particle feature to the level editor.</p>
+
+<p>I feel quite happy doing this kind of tool works, and actually it&rsquo;s not hard to make it usable as a standalone project and let other people to use it. e.g. I can make a converter to generate cocos builder format, then it can be used in cocos2d projects. Or if I make my animation editor to export spriter&rsquo;s xml syntax, it can be used in many other projects too.</p>
+
+<p>And at least for myself and our graphic artists, we think that our homebrew tools are much easier to use and feature complete (for just our needs) comparing to the tools we&rsquo;ve tried. e.g. cocos builder, sprite helper, and spriter. Not saying that my editors are better products, just they are tailored by exactly our need and my design approach, and since it&rsquo;s integrated in the exact game process, the workflow is much better comparing to a 3rd party tools. Also our level is pretty big(currently the demo scene is about 20000 pixel wide, and the engine/editor can support much bigger usage), I can&rsquo;t find a proper tool to handle such big scene.</p>
+
+<p>Though making a generic tool will involve many not so interesting works, and it&rsquo;s very hard to make it works for more people, and probably my tools are just too tailored to our need, so I think I will keep focusing on our games in the near future.</p>
+
+<p>But anyway, I already have some demo scene editor running as OS X application, will make it downloadable in next few days, after I wrote a very basic manual about it. like Jakub commented in the original post, even if I decided to keep it private, it can still help others a bit, and maybe by using it in a experimental way, people can get some ideas about improving their own tools.</p>
+
+<p>If you are interested to see more information about the editor, please leave comments, thanks.</p>
+
+<p>I&rsquo;ll try to post more about technical details about some aspects of the editors, some hacks I used, and some mistakes I&rsquo;ve overcomed.</p>
+
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/" data-toggle="tooltip" data-placement="top" title="OpenGL ES 2.0 Shader in Marmalade">&larr; Previous Post</a>
+      </li>
+      
+      
+      <li class="next">
+        <a href="http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/" data-toggle="tooltip" data-placement="top" title="Convert Cocos2D Font (BMFont) to Marmalade&#39;s GxFont">Next Post &rarr;</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2014
+    		  
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+
+
+  </body>
+</html>

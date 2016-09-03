@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>PlantUML Plugin for Octopress</title>
+
+  <meta name="author" content="YJ Park" />
+  
+  
+
+  <meta name="generator" content="Hugo 0.15" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+  
+  
+  <meta property="og:title" content="PlantUML Plugin for Octopress" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>PlantUML Plugin for Octopress</h1>
+        
+        <span class="post-meta">Posted on April 30, 2012</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  
+
+<h2 id="what-is-plantuml:dd56f1c7c71566f72435a0335f016577">What is PlantUML?</h2>
+
+<p><a href="http://plantuml.sourceforge.net/">PlantUML</a> is a component that allows to quickly write:</p>
+
+<ul>
+<li>sequence diagram,</li>
+<li>use case diagram,</li>
+<li>class diagram,</li>
+<li>activity diagram,</li>
+<li>component diagram,</li>
+<li>state diagram</li>
+<li>object diagram</li>
+</ul>
+
+<p>I really like the idea of writing UML diagram with plain text. Since it&rsquo;s totally plaintext, it&rsquo;s very easy to do diff and version track, also you don&rsquo;t need to do anything about the layout (the text itself looks pretty good too).</p>
+
+<p>Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.</p>
+
+<h2 id="the-plugin:dd56f1c7c71566f72435a0335f016577">The Plugin</h2>
+
+<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&rsquo;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
+
+<p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
+
+<!-- more -->
+
+<h2 id="configuration:dd56f1c7c71566f72435a0335f016577">Configuration</h2>
+
+<p>You need to download the plantuml.jar file from <a href="http://plantuml.sourceforge.net/download.html">http://plantuml.sourceforge.net/download.html</a></p>
+
+<p>In your _config.xml, setup plantuml_jar to the downloaded jar file, e.g.</p>
+
+<pre><code>plantuml_jar: ../_lib/plantuml.jar
+plantuml_background_color: &quot;#f8f8f8&quot;
+</code></pre>
+
+<p>The plantuml_background_color is optional, which will change the background of the generated diagram.</p>
+
+<h2 id="usage:dd56f1c7c71566f72435a0335f016577">Usage</h2>
+
+<p>Just wrap the diagram text in &ldquo;plantuml&rdquo; block, e.g.</p>
+
+<pre><code>{% plantuml %}
+Alice -&gt; Bob: Authentication Request
+Bob --&gt; Alice: Authentication Response
+
+Alice -&gt; Bob: Another authentication Request
+Alice &lt;-- Bob: another authentication Response
+{% endplantuml %}
+</code></pre>
+
+<h2 id="an-example:dd56f1c7c71566f72435a0335f016577">An Example</h2>
+
+
+<figure >
+    
+        <img src="/img/plantuml/plantuml-example.png" />
+    
+    
+</figure>
+
+
+<!--
+{% plantuml %}
+   actor Tester as QA
+   participant "Issue Tracking\nSystem" as CQ
+   actor Developer as RD
+   participant "Configuration" as P4C
+   participant "Component\nTopic Branch" as P4CTB
+   participant "Customer\nRelease Branch" as P4CRB
+   actor "Release Engineer" as BM
+
+   QA   ->      CQ:     Critical bug\n reported
+   group Fix
+      RD   <--     CQ:     Assigned
+      RD   ->      P4C:    Create bugfix\n configuration
+      RD   ->      P4CTB:  Create topic branch (by tools)
+      RD   ->      P4CTB:  Working on the bugfix
+      RD   ->      CQ:     Resolve
+   end group
+   group Virification
+      QA   <--     CQ:     Verify
+      QA   <-      P4C:    Get target to verify
+      QA   ->      CQ:     Confirm
+   end group
+   group Release
+      BM   <--     CQ:     Release request received
+      loop Multiple customers
+         BM   ->      P4CRB:  Update customer\n branches
+         P4CTB ->     P4CRB:  Auto integrate\n (by tools)
+      end loop
+   end group
+{% endplantuml %}
+-->
+
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" data-toggle="tooltip" data-placement="top" title="Movable Write Open Sourced">&larr; Previous Post</a>
+      </li>
+      
+      
+      <li class="next">
+        <a href="http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/" data-toggle="tooltip" data-placement="top" title="Game Engine Based on Marmalade and IwGame">Next Post &rarr;</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2014
+    		  
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+
+
+  </body>
+</html>

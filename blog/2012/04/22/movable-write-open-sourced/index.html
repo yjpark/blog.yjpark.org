@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Movable Write Open Sourced</title>
+
+  <meta name="author" content="YJ Park" />
+  
+  
+
+  <meta name="generator" content="Hugo 0.15" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+  
+  
+  <meta property="og:title" content="Movable Write Open Sourced" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>Movable Write Open Sourced</h1>
+        
+        <span class="post-meta">Posted on April 22, 2012</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  
+
+<h2 id="what-is-movable-write:dd410da24d1375c6167582f4e3858f34">What is Movable Write</h2>
+
+<p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
+
+<p>But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.</p>
+
+<p>I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&rsquo;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.</p>
+
+<p>So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.</p>
+
+<ul>
+<li><a href="http://itunes.apple.com/us/app/movable-write/id416413981?mt=8">App store link</a></li>
+<li><a href="http://wolfewithane.com/blog/2011/6/22/review-hand-notes-over-to-movable-write.html">A nice introduction from wolfewithane.com</a></li>
+<li><a href="http://iapp.com.tw/ex/topic_inside.php?id=2447">Another nice introduction from iapp.com.tw (in Chinese)</a></li>
+</ul>
+
+<!-- more -->
+
+<h2 id="what-is-missed:dd410da24d1375c6167582f4e3858f34">What is missed</h2>
+
+<p>I did implement support for USB transfer for backup/restore, though didn&rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&rsquo;t get time for it.</p>
+
+<p>Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.</p>
+
+<p>A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&rsquo;ve done some experiments about bigger writing area, it&rsquo;s not easy to put it into the current structure though.</p>
+
+<p>Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.</p>
+
+<p>A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.</p>
+
+<p>&hellip;</p>
+
+<h2 id="why-open-sourced:dd410da24d1375c6167582f4e3858f34">Why open sourced</h2>
+
+<p>It&rsquo;s sadly that I can&rsquo;t put more dedicated time into it, since it didn&rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
+
+<p>I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&rsquo;re interesting.</p>
+
+<ul>
+<li><a href="https://github.com/pettyfun/MovableWrite">Movable Write at Github</a></li>
+</ul>
+
+<p>Might write more about the technical side of the project later, what I&rsquo;ve learned, and how to extend it.</p>
+
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      
+      <li class="next">
+        <a href="http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/" data-toggle="tooltip" data-placement="top" title="PlantUML Plugin for Octopress">Next Post &rarr;</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2014
+    		  
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+
+
+  </body>
+</html>

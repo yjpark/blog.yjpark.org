@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ios on Living and Programming - YJ Park&#39;s Blog</title>
+    <link>http://blog.yjpark.org/categories/ios/</link>
+    <description>Recent content in Ios on Living and Programming - YJ Park&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
+    <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 22 Apr 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://blog.yjpark.org/categories/ios/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Movable Write Open Sourced</title>
+      <link>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</link>
+      <pubDate>Sun, 22 Apr 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</guid>
+      <description>
+
+&lt;h2 id=&#34;what-is-movable-write:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is Movable Write&lt;/h2&gt;
+
+&lt;p&gt;Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.&lt;/p&gt;
+
+&lt;p&gt;But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&amp;rsquo;ve been working on Web development for a few years. So I decided to work part-time in the company, and use the other half time to develop a real application, by real I mean with proper quality and released at app-store.&lt;/p&gt;
+
+&lt;p&gt;I just got a iPad1 as development device, and tried a few apps, I liked note plus a lot, it&amp;rsquo;s very powerful, but a bit too powerful for my need, I want to write words most of the time, and I want to write largely, but view the written lines small.&lt;/p&gt;
+
+&lt;p&gt;So I decided to write a note taking app for myself, after 3 months, Movable Write was released at app store.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://itunes.apple.com/us/app/movable-write/id416413981?mt=8&#34;&gt;App store link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wolfewithane.com/blog/2011/6/22/review-hand-notes-over-to-movable-write.html&#34;&gt;A nice introduction from wolfewithane.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://iapp.com.tw/ex/topic_inside.php?id=2447&#34;&gt;Another nice introduction from iapp.com.tw (in Chinese)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&#34;what-is-missed:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is missed&lt;/h2&gt;
+
+&lt;p&gt;I did implement support for USB transfer for backup/restore, though didn&amp;rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&amp;rsquo;t get time for it.&lt;/p&gt;
+
+&lt;p&gt;Another interesting possibility is Evernote integration, the code should be very easy to be runnable on OSX, also can be added as image or pdf.&lt;/p&gt;
+
+&lt;p&gt;A bigger change is adding bigger element into page, e.g. a photo then wrap the lines around it. I&amp;rsquo;ve done some experiments about bigger writing area, it&amp;rsquo;s not easy to put it into the current structure though.&lt;/p&gt;
+
+&lt;p&gt;Another bigger one is OCR for the written words, there are open-source libraries, though not sure how mature they are, all the original writing information are saved in file, it might be easy to add this feature.&lt;/p&gt;
+
+&lt;p&gt;A small one is to replay the writing process of the note, since all the timing infomation was saved too, this is not hard to implement.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;why-open-sourced:dd410da24d1375c6167582f4e3858f34&#34;&gt;Why open sourced&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s sadly that I can&amp;rsquo;t put more dedicated time into it, since it didn&amp;rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.&lt;/p&gt;
+
+&lt;p&gt;I feel very happy that some people found it useful and use it frequently, so in case any of them are programmer, I decided to put all the source codes at github, please fork it if you&amp;rsquo;re interesting.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pettyfun/MovableWrite&#34;&gt;Movable Write at Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Might write more about the technical side of the project later, what I&amp;rsquo;ve learned, and how to extend it.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

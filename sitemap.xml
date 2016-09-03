@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://blog.yjpark.org/</loc>
+    <lastmod>2014-04-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</loc>
+    <lastmod>2014-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/</loc>
+    <lastmod>2014-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/</loc>
+    <lastmod>2013-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</loc>
+    <lastmod>2012-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</loc>
+    <lastmod>2012-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</loc>
+    <lastmod>2012-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</loc>
+    <lastmod>2012-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</loc>
+    <lastmod>2012-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</loc>
+    <lastmod>2012-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</loc>
+    <lastmod>2012-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/page/about/</loc>
+  </url>
+  
+</urlset>

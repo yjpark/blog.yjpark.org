@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Convert Cocos2D Font (BMFont) to Marmalade&#39;s GxFont</title>
+
+  <meta name="author" content="YJ Park" />
+  
+  
+
+  <meta name="generator" content="Hugo 0.15" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+  
+  
+  <meta property="og:title" content="Convert Cocos2D Font (BMFont) to Marmalade&#39;s GxFont" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-heading">
+        <h1>Convert Cocos2D Font (BMFont) to Marmalade&#39;s GxFont</h1>
+        
+        <span class="post-meta">Posted on January 1, 0001</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  
+
+<p>In 2D games, it&rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).</p>
+
+<p>There are quite some tools to generate such font images, I&rsquo;m using <a href="http://www.bmglyph.com/">bmGlyph</a> as the font generator, it can publish the popular &ldquo;Cocos2d / BMFont&rdquo; format, though it&rsquo;s not directly usable in Marmalade.</p>
+
+<p>Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.</p>
+
+<p>My first thought was to add function to use the BMFont generated, though it&rsquo;s not an easy task, also I want to use IwGame&rsquo;s label components, which are based on Marmalade&rsquo;s GxFont and Truetype support.</p>
+
+<p>After reading <a href="http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html">GxFont Reference</a>, turns out it&rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.</p>
+
+<!-- more -->
+
+<h2 id="code-of-the-converter:dfd49ebd283d84668c9da4594eb7704f">Code of the Converter</h2>
+
+<p>I&rsquo;ve put the codes at <a href="https://github.com/yjpark/marmalade-tools">Github</a>, feel free to clone it, and try to run it. see the github pages for more details about it.</p>
+
+<p>The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.</p>
+
+<p>It&rsquo;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&rsquo;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.</p>
+
+<p>Just read the code if you&rsquo;re interested in the implementation details. :)</p>
+
+	</div>
+  </div>
+</article>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/1/01/01/game-engine-based-on-marmalade-and-iwgame/" data-toggle="tooltip" data-placement="top" title="Game Engine Based on Marmalade and IwGame">&larr; Previous Post</a>
+      </li>
+      
+      
+      <li class="next">
+        <a href="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/" data-toggle="tooltip" data-placement="top" title="Save Day One Summary to Evernote">Next Post &rarr;</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+
+      
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2014
+    		  
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme by
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+
+  </body>
+</html>
