@@ -30,7 +30,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;quick-note-about-implementation:5339cf35483b57da440cb2a6263f7cb8&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
+&lt;h2 id=&#34;quick-note-about-implementation&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
 
 &lt;p&gt;BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&amp;rsquo;s pure C, so it shouldn&amp;rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.&lt;/p&gt;
 
@@ -38,7 +38,7 @@
 
 &lt;p&gt;Will write more about how to wrap C libraries into Marmalade extension in other posts later.&lt;/p&gt;
 
-&lt;h2 id=&#34;code-of-the-extension:5339cf35483b57da440cb2a6263f7cb8&#34;&gt;Code of the Extension&lt;/h2&gt;
+&lt;h2 id=&#34;code-of-the-extension&#34;&gt;Code of the Extension&lt;/h2&gt;
 
 &lt;p&gt;Since basically I have no idea about how to use BASS now, I just tried to use some codes from the BASS examples, it works pretty good, the xm files sounds quite good.&lt;/p&gt;
 
@@ -68,7 +68,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;code-of-the-converter:dfd49ebd283d84668c9da4594eb7704f&#34;&gt;Code of the Converter&lt;/h2&gt;
+&lt;h2 id=&#34;code-of-the-converter&#34;&gt;Code of the Converter&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve put the codes at &lt;a href=&#34;https://github.com/yjpark/marmalade-tools&#34;&gt;Github&lt;/a&gt;, feel free to clone it, and try to run it. see the github pages for more details about it.&lt;/p&gt;
 
@@ -108,7 +108,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;updates-about-original-post:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;Updates about Original Post&lt;/h2&gt;
+&lt;h2 id=&#34;updates-about-original-post&#34;&gt;Updates about Original Post&lt;/h2&gt;
 
 &lt;p&gt;Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.&lt;/p&gt;
 
@@ -118,7 +118,7 @@
 
 &lt;p&gt;Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&amp;rsquo;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.&lt;/p&gt;
 
-&lt;h2 id=&#34;current-features:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;Current Features&lt;/h2&gt;
+&lt;h2 id=&#34;current-features&#34;&gt;Current Features&lt;/h2&gt;
 
 &lt;p&gt;Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&amp;rsquo;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).&lt;/p&gt;
 
@@ -166,7 +166,7 @@
 
 &lt;p&gt;As you can see, we use boxes and circles to create a rather complicate level. Also it&amp;rsquo;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-missing:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-missing&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
 
 &lt;p&gt;As a basic level editor with advanced features (particle, animations&amp;hellip;), I think it&amp;rsquo;s quite complete and usable, we&amp;rsquo;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.&lt;/p&gt;
 
@@ -176,7 +176,7 @@
 
 &lt;p&gt;And manual works required to create a skeleton scene and import images to it, it&amp;rsquo;s not hard, just running some python scripts, but it&amp;rsquo;s still not so simple for non-programmers.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-next:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
 
 &lt;p&gt;Guess I&amp;rsquo;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&amp;rsquo;ll add particle feature to the level editor.&lt;/p&gt;
 

@@ -9,10 +9,10 @@
   <title>SILP: Simple Individual Line Preprocessor</title>
 
   <meta name="author" content="YJ Park" />
-  
+
   
 
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
-  
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
   
   <meta property="og:title" content="SILP: Simple Individual Line Preprocessor" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/yjpark_icon.png" />
-  
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -81,6 +83,7 @@
   </div>
 </nav>
 
+    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -102,7 +105,7 @@
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
 	  
 
-<h2 id="why-bother-with-a-preprocessor:85566baa3fb7c2cc99cd3647e31ab2dd">Why bother with a preprocessor?</h2>
+<h2 id="why-bother-with-a-preprocessor">Why bother with a preprocessor?</h2>
 
 <p>I was quite busy working on our <a href="http://emberconflict.com/">RTS game on iPad</a> for almost a year, we are quite close to our first public version now. It&rsquo;s developed with Unity3d, using uLink as the network library. Created a quite nice data context system on Unity3d, so non-developers can update pure visual part of the system without developers&rsquo; help, will write some entries on it later when got time.</p>
 
@@ -112,7 +115,7 @@
 
 <p>I agree that in most cases we don&rsquo;t need preprocessor though there are several cases that I would like to have a preprocessor in my tool set for cleaner codes or can remove some trivial typing. Here are 2 examples:</p>
 
-<h3 id="common-import-statements:85566baa3fb7c2cc99cd3647e31ab2dd">Common Import Statements</h3>
+<h3 id="common-import-statements">Common Import Statements</h3>
 
 <p>In each project, most likely there will be some very common import statements that every source file want to include, e.g. logging and other utilities. In dynamic languages such as Python, it&rsquo;s not hard to inject them into the global namespace in some bootstrap functions, though in Java or Go it&rsquo;s not quite possible, each file has to have these lines.</p>
 
@@ -125,7 +128,7 @@
 
 <p>Of course with just one import, it&rsquo;s not a big problem, though in practice, it&rsquo;s very easy to have several imports for every file, and quite some other imports grouped by file types (e.g. services that need db library, services that provide RPC calls&hellip;)</p>
 
-<h3 id="duplicate-codes:85566baa3fb7c2cc99cd3647e31ab2dd">Duplicate Codes</h3>
+<h3 id="duplicate-codes">Duplicate Codes</h3>
 
 <p>Some time, it&rsquo;s not very easy to use usual way to remove duplicated codes, here is an example in Unity3d, it&rsquo;s a piece of our codes to check whether a user is already online in the system.</p>
 
@@ -154,33 +157,33 @@
 
 <p>If we are using a language supporting preprocessor, then we can easily create a macro here to do the duplicated works, though not possible in C#, until I created the SILP project, Our only option was just copy-paste.</p>
 
-<h2 id="so-what-is-silp:85566baa3fb7c2cc99cd3647e31ab2dd">So What is SILP?</h2>
+<h2 id="so-what-is-silp">So What is SILP?</h2>
 
 <p>After we have more RPC calls in the system sharing the similar code structure shown in last example, I decided to do something to improve it. Solve it in the language scope seems not a good option to me (only possible approach I figured possible was to wrap coroutine somehow and use some customized data structure to provide cleaner interface, both heavy and unnecessary), and I was thinking about finding a language-agnostic preprocessor for a while, so I spent some time to look for a existing project that I can use.</p>
 
 <p>After a quick research, was a bit disappointed with the result, most of the preprocessors either are heavily limited to one language or provide way too much power than I need (so it&rsquo;s harder to learn and use). It&rsquo;s very clear that all I need is just a simple text substitution tools, so I created SILP and spend a whole day on it, the result is quite satisfying.</p>
 
-<h3 id="how-simple-silp-is:85566baa3fb7c2cc99cd3647e31ab2dd">How Simple SILP Is?</h3>
+<h3 id="how-simple-silp-is">How Simple SILP Is?</h3>
 
 <p>There is zero logic in the syntax, currently all supported feature is parameter substitution in the template, and unless super useful, no complex feature will be added in the future.</p>
 
 <p>SILP only handle individual line as well. All generated lines will be put back to the original file after the line with SILP syntax.</p>
 
-<h3 id="when-should-use-silp:85566baa3fb7c2cc99cd3647e31ab2dd">When Should Use SILP?</h3>
+<h3 id="when-should-use-silp">When Should Use SILP?</h3>
 
 <ul>
 <li>Standard code block that&rsquo;s hard to be eliminated by regular technique.</li>
 <li>Some small piece of logic that you don&rsquo;t want to wrap in a function and the language doesn&rsquo;t support inline functions.</li>
 </ul>
 
-<h3 id="when-should-not-use-silp:85566baa3fb7c2cc99cd3647e31ab2dd">When Should NOT Use SILP?</h3>
+<h3 id="when-should-not-use-silp">When Should NOT Use SILP?</h3>
 
 <ul>
 <li>If you can remove duplicated code in language supported way.</li>
 <li>The logic is not standard, and using SILP make them harder to read.</li>
 </ul>
 
-<h2 id="full-example-with-silp:85566baa3fb7c2cc99cd3647e31ab2dd">Full Example With SILP</h2>
+<h2 id="full-example-with-silp">Full Example With SILP</h2>
 
 <p>After implementing SILP, here is how I can remove the duplicated codes in the previous online player checking logic, here is the <code>silp_cs.md</code> file:</p>
 
@@ -237,7 +240,7 @@ if (error != null) {
 
 <p>All lines end with <code>//__SILP__</code> are generated automatically, and can be regenerated with SILP, so if you want to adjust the logic in the future, should be very easy to do, and create a new RPC call is trivial as well, only need to write one line, and run SILP again (current manually, though it should be easy to make it automatically)</p>
 
-<h2 id="what-s-next:85566baa3fb7c2cc99cd3647e31ab2dd">What&rsquo;s Next</h2>
+<h2 id="what-s-next">What&rsquo;s Next</h2>
 
 <p>Here is the repository: <a href="https://github.com/yjpark/silp">https://github.com/yjpark/silp</a></p>
 
@@ -293,28 +296,6 @@ if (error != null) {
 
       
 
-      
-      <div class="row disqus-comments">
-        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-          <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'yjpark';
-    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2014\/04\/12\/silp-simple-individual-line-preprocessor\/';
-    var disqus_title = 'SILP: Simple Individual Line Preprocessor';
-    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2014\/04\/12\/silp-simple-individual-line-preprocessor\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
-      </div>
-      
-
     </div>
 
     <footer>
@@ -363,14 +344,14 @@ if (error != null) {
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       			  </span>
       			</a>
-    		  </li>		
+    		  </li>
 
         </ul>
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
     		  2014
-    		  
+
     		  
     		  &nbsp;&bull;&nbsp;
     		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
@@ -389,6 +370,10 @@ if (error != null) {
 <script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
 <script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
 <script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
 
 
 <script>

@@ -9,10 +9,10 @@
   <title>Game Engine Based on Marmalade and IwGame</title>
 
   <meta name="author" content="YJ Park" />
-  
+
   
 
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
-  
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
   
   <meta property="og:title" content="Game Engine Based on Marmalade and IwGame" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/yjpark_icon.png" />
-  
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -81,6 +83,7 @@
   </div>
 </nav>
 
+    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -108,7 +111,7 @@
 
 <p>After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.</p>
 
-<h2 id="why-choose-marmalade:a9ed1c04589a9ece6300f4ba87e22741">Why choose Marmalade?</h2>
+<h2 id="why-choose-marmalade">Why choose Marmalade?</h2>
 
 <p>I did have quite some experience on cocos2d, though it&rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&rsquo;t use much platform-specific features, we don&rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&rsquo;t dig into it deeply.</p>
 
@@ -138,7 +141,7 @@
 <li>Better community and 3rd party components, it&rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.</li>
 </ul>
 
-<h2 id="what-is-iwgame-and-why-it-is-helpful:a9ed1c04589a9ece6300f4ba87e22741">What is IwGame, and Why it is Helpful</h2>
+<h2 id="what-is-iwgame-and-why-it-is-helpful">What is IwGame, and Why it is Helpful</h2>
 
 <p>Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.</p>
 
@@ -164,7 +167,7 @@
 <li>There is no unit tests yet, so it might introduce its own bugs, especially if it&rsquo;s been update quickly.</li>
 </ul>
 
-<h2 id="my-plan-on-the-game-engine:a9ed1c04589a9ece6300f4ba87e22741">My Plan on The Game Engine</h2>
+<h2 id="my-plan-on-the-game-engine">My Plan on The Game Engine</h2>
 
 <p>Now I feel OK working with Marmalade and IwGame, the next steps will be creating the features/tools we need for our games, i.e. create a game engine for our requirements.</p>
 
@@ -228,28 +231,6 @@
 
       
 
-      
-      <div class="row disqus-comments">
-        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-          <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'yjpark';
-    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2012\/08\/30\/game-engine-based-on-marmalade-and-iwgame\/';
-    var disqus_title = 'Game Engine Based on Marmalade and IwGame';
-    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2012\/08\/30\/game-engine-based-on-marmalade-and-iwgame\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
-      </div>
-      
-
     </div>
 
     <footer>
@@ -298,14 +279,14 @@
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       			  </span>
       			</a>
-    		  </li>		
+    		  </li>
 
         </ul>
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
     		  2014
-    		  
+
     		  
     		  &nbsp;&bull;&nbsp;
     		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
@@ -324,6 +305,10 @@
 <script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
 <script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
 <script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
 
 
 <script>

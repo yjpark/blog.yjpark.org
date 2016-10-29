@@ -9,10 +9,10 @@
   <title>Initial Release of s3eBass - Marmalade extension for BASS audio engine</title>
 
   <meta name="author" content="YJ Park" />
-  
+
   
 
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
-  
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
   
   <meta property="og:title" content="Initial Release of s3eBass - Marmalade extension for BASS audio engine" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/yjpark_icon.png" />
-  
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -81,6 +83,7 @@
   </div>
 </nav>
 
+    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -112,7 +115,7 @@
 
 <!-- more -->
 
-<h2 id="quick-note-about-implementation:5339cf35483b57da440cb2a6263f7cb8">Quick Note about Implementation</h2>
+<h2 id="quick-note-about-implementation">Quick Note about Implementation</h2>
 
 <p>BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&rsquo;s pure C, so it shouldn&rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.</p>
 
@@ -120,7 +123,7 @@
 
 <p>Will write more about how to wrap C libraries into Marmalade extension in other posts later.</p>
 
-<h2 id="code-of-the-extension:5339cf35483b57da440cb2a6263f7cb8">Code of the Extension</h2>
+<h2 id="code-of-the-extension">Code of the Extension</h2>
 
 <p>Since basically I have no idea about how to use BASS now, I just tried to use some codes from the BASS examples, it works pretty good, the xm files sounds quite good.</p>
 
@@ -173,28 +176,6 @@
 
       
 
-      
-      <div class="row disqus-comments">
-        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-          <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'yjpark';
-    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2012\/11\/06\/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine\/';
-    var disqus_title = 'Initial Release of s3eBass - Marmalade extension for BASS audio engine';
-    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2012\/11\/06\/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
-      </div>
-      
-
     </div>
 
     <footer>
@@ -243,14 +224,14 @@
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       			  </span>
       			</a>
-    		  </li>		
+    		  </li>
 
         </ul>
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
     		  2014
-    		  
+
     		  
     		  &nbsp;&bull;&nbsp;
     		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
@@ -269,6 +250,10 @@
 <script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
 <script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
 <script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
 
 
 <script>

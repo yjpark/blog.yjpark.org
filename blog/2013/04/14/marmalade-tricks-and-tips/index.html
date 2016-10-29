@@ -9,10 +9,10 @@
   <title>Marmalade Tricks and Tips</title>
 
   <meta name="author" content="YJ Park" />
-  
+
   
 
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
-  
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
   
   <meta property="og:title" content="Marmalade Tricks and Tips" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/yjpark_icon.png" />
-  
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -81,6 +83,7 @@
   </div>
 </nav>
 
+    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -104,7 +107,7 @@
 
 <p>During the days to develop our first game: <a href="https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;uo=4">Day Day Birds</a>, I went through the progress of learning to use Marmalade, generally it&rsquo;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.</p>
 
-<h2 id="stack-size:8e42695654d48fa6b160bc59ed75f6fb">Stack Size</h2>
+<h2 id="stack-size">Stack Size</h2>
 
 <p>The game started to crash randomly before I noticed, it&rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
 
@@ -120,7 +123,7 @@
    SysStackSize=4000000
 </code></pre>
 
-<h2 id="accelerate-framework:8e42695654d48fa6b160bc59ed75f6fb">Accelerate framework</h2>
+<h2 id="accelerate-framework">Accelerate framework</h2>
 
 <p>I&rsquo;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add <code>iphone-link-opts=&quot;-weak_framework Accelerate&quot;</code> into the mkf file.</p>
 
@@ -133,13 +136,13 @@
 <pre><code>cp -r /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Accelerate.framework/* /Developer/Marmalade/6.2/s3e/deploy/plugins/iphone/sys_libs/System/Library/Frameworks/Accelerate.framework/
 </code></pre>
 
-<h2 id="ios-device-crash-report:8e42695654d48fa6b160bc59ed75f6fb">iOS device crash report</h2>
+<h2 id="ios-device-crash-report">iOS device crash report</h2>
 
 <p>This page explains how to read the crash report nicely, also don&rsquo;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.</p>
 
 <p><a href="https://marmalade.zendesk.com/entries/22126117-how-to-map-iphone-crash-log-addresses-to-your-code">How to map iPhone crash log addressed to your code</a></p>
 
-<h2 id="some-mkb-settings:8e42695654d48fa6b160bc59ed75f6fb">Some mkb settings</h2>
+<h2 id="some-mkb-settings">Some mkb settings</h2>
 
 <pre><code>deployments
 {
@@ -171,7 +174,7 @@
 
 <p><code>iphone-enable-4inch-retina=1</code> enabled the iPhone 5 wide screen mode.</p>
 
-<h2 id="some-app-icf-settings:8e42695654d48fa6b160bc59ed75f6fb">Some app.icf settings</h2>
+<h2 id="some-app-icf-settings">Some app.icf settings</h2>
 
 <pre><code>DispFixRot=&quot;Landscape&quot;
 IOSDispScaleFactor=200
@@ -250,28 +253,6 @@ memSize = 256000000
 
       
 
-      
-      <div class="row disqus-comments">
-        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-          <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'yjpark';
-    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2013\/04\/14\/marmalade-tricks-and-tips\/';
-    var disqus_title = 'Marmalade Tricks and Tips';
-    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2013\/04\/14\/marmalade-tricks-and-tips\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
-      </div>
-      
-
     </div>
 
     <footer>
@@ -320,14 +301,14 @@ memSize = 256000000
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       			  </span>
       			</a>
-    		  </li>		
+    		  </li>
 
         </ul>
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
     		  2014
-    		  
+
     		  
     		  &nbsp;&bull;&nbsp;
     		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
@@ -346,6 +327,10 @@ memSize = 256000000
 <script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
 <script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
 <script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
 
 
 <script>

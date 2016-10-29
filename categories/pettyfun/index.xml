@@ -26,7 +26,7 @@
 
 &lt;p&gt;After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-choose-marmalade:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
+&lt;h2 id=&#34;why-choose-marmalade&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
 
 &lt;p&gt;I did have quite some experience on cocos2d, though it&amp;rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&amp;rsquo;t use much platform-specific features, we don&amp;rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&amp;rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&amp;rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&amp;rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&amp;rsquo;t dig into it deeply.&lt;/p&gt;
 
@@ -56,7 +56,7 @@
 &lt;li&gt;Better community and 3rd party components, it&amp;rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
 
 &lt;p&gt;Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&amp;rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.&lt;/p&gt;
 
@@ -82,7 +82,7 @@
 &lt;li&gt;There is no unit tests yet, so it might introduce its own bugs, especially if it&amp;rsquo;s been update quickly.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;my-plan-on-the-game-engine:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
+&lt;h2 id=&#34;my-plan-on-the-game-engine&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
 
 &lt;p&gt;Now I feel OK working with Marmalade and IwGame, the next steps will be creating the features/tools we need for our games, i.e. create a game engine for our requirements.&lt;/p&gt;
 
@@ -111,7 +111,7 @@
       <guid>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</guid>
       <description>
 
-&lt;h2 id=&#34;what-is-movable-write:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is Movable Write&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-movable-write&#34;&gt;What is Movable Write&lt;/h2&gt;
 
 &lt;p&gt;Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.&lt;/p&gt;
 
@@ -129,7 +129,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;what-is-missed:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is missed&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-missed&#34;&gt;What is missed&lt;/h2&gt;
 
 &lt;p&gt;I did implement support for USB transfer for backup/restore, though didn&amp;rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&amp;rsquo;t get time for it.&lt;/p&gt;
 
@@ -143,7 +143,7 @@
 
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 
-&lt;h2 id=&#34;why-open-sourced:dd410da24d1375c6167582f4e3858f34&#34;&gt;Why open sourced&lt;/h2&gt;
+&lt;h2 id=&#34;why-open-sourced&#34;&gt;Why open sourced&lt;/h2&gt;
 
 &lt;p&gt;It&amp;rsquo;s sadly that I can&amp;rsquo;t put more dedicated time into it, since it didn&amp;rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.&lt;/p&gt;
 

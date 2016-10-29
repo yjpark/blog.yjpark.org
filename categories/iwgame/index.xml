@@ -40,7 +40,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;updates-about-original-post:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;Updates about Original Post&lt;/h2&gt;
+&lt;h2 id=&#34;updates-about-original-post&#34;&gt;Updates about Original Post&lt;/h2&gt;
 
 &lt;p&gt;Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.&lt;/p&gt;
 
@@ -50,7 +50,7 @@
 
 &lt;p&gt;Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&amp;rsquo;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.&lt;/p&gt;
 
-&lt;h2 id=&#34;current-features:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;Current Features&lt;/h2&gt;
+&lt;h2 id=&#34;current-features&#34;&gt;Current Features&lt;/h2&gt;
 
 &lt;p&gt;Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&amp;rsquo;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).&lt;/p&gt;
 
@@ -98,7 +98,7 @@
 
 &lt;p&gt;As you can see, we use boxes and circles to create a rather complicate level. Also it&amp;rsquo;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-missing:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-missing&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
 
 &lt;p&gt;As a basic level editor with advanced features (particle, animations&amp;hellip;), I think it&amp;rsquo;s quite complete and usable, we&amp;rsquo;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.&lt;/p&gt;
 
@@ -108,7 +108,7 @@
 
 &lt;p&gt;And manual works required to create a skeleton scene and import images to it, it&amp;rsquo;s not hard, just running some python scripts, but it&amp;rsquo;s still not so simple for non-programmers.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-next:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
 
 &lt;p&gt;Guess I&amp;rsquo;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&amp;rsquo;ll add particle feature to the level editor.&lt;/p&gt;
 
@@ -144,7 +144,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;marmalade-rendering-with-custom-shader:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Marmalade Rendering with Custom Shader&lt;/h2&gt;
+&lt;h2 id=&#34;marmalade-rendering-with-custom-shader&#34;&gt;Marmalade Rendering with Custom Shader&lt;/h2&gt;
 
 &lt;p&gt;Marmalade support shader very well by the &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/api/classCIwGxShaderTechnique.html&#34;&gt;CIwGxShaderTechnique&lt;/a&gt; class, to use it, you need to set it to material, here is the snnipet for that:&lt;/p&gt;
 
@@ -184,7 +184,7 @@
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;    IwGetResManager()-&amp;gt;LoadGroup(&amp;quot;effect/Shaders.group&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;files-used:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Files Used&lt;/h2&gt;
+&lt;h2 id=&#34;files-used&#34;&gt;Files Used&lt;/h2&gt;
 
 &lt;p&gt;You need to include the shader files in the asset section of the mkb/mkf file, like this&lt;/p&gt;
 
@@ -262,7 +262,7 @@ assets
 
 &lt;p&gt;Please read &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/api/group__IwGxShaderTechnique.html&#34;&gt;IwGxShaderTechnique Reference&lt;/a&gt; for the list of the attributes that you can use. It took me quite a while to find this document since this is no links to this page on the class reference page. This is VERY useful for writing shaders in Marmalade.&lt;/p&gt;
 
-&lt;h2 id=&#34;update-params-by-code-and-xml:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Update Params By Code and XML&lt;/h2&gt;
+&lt;h2 id=&#34;update-params-by-code-and-xml&#34;&gt;Update Params By Code and XML&lt;/h2&gt;
 
 &lt;p&gt;the &lt;strong&gt;param&lt;/strong&gt; in the shader is for the parameters from your code, change it&amp;rsquo;s value like this.&lt;/p&gt;
 
@@ -360,7 +360,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 
 &lt;p&gt;After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-choose-marmalade:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
+&lt;h2 id=&#34;why-choose-marmalade&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
 
 &lt;p&gt;I did have quite some experience on cocos2d, though it&amp;rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&amp;rsquo;t use much platform-specific features, we don&amp;rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&amp;rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&amp;rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&amp;rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&amp;rsquo;t dig into it deeply.&lt;/p&gt;
 
@@ -390,7 +390,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 &lt;li&gt;Better community and 3rd party components, it&amp;rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
 
 &lt;p&gt;Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&amp;rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.&lt;/p&gt;
 
@@ -416,7 +416,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 &lt;li&gt;There is no unit tests yet, so it might introduce its own bugs, especially if it&amp;rsquo;s been update quickly.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;my-plan-on-the-game-engine:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
+&lt;h2 id=&#34;my-plan-on-the-game-engine&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
 
 &lt;p&gt;Now I feel OK working with Marmalade and IwGame, the next steps will be creating the features/tools we need for our games, i.e. create a game engine for our requirements.&lt;/p&gt;
 

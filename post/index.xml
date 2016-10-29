@@ -20,7 +20,7 @@
       <guid>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</guid>
       <description>
 
-&lt;h2 id=&#34;why-bother-with-a-preprocessor:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;Why bother with a preprocessor?&lt;/h2&gt;
+&lt;h2 id=&#34;why-bother-with-a-preprocessor&#34;&gt;Why bother with a preprocessor?&lt;/h2&gt;
 
 &lt;p&gt;I was quite busy working on our &lt;a href=&#34;http://emberconflict.com/&#34;&gt;RTS game on iPad&lt;/a&gt; for almost a year, we are quite close to our first public version now. It&amp;rsquo;s developed with Unity3d, using uLink as the network library. Created a quite nice data context system on Unity3d, so non-developers can update pure visual part of the system without developers&amp;rsquo; help, will write some entries on it later when got time.&lt;/p&gt;
 
@@ -30,7 +30,7 @@
 
 &lt;p&gt;I agree that in most cases we don&amp;rsquo;t need preprocessor though there are several cases that I would like to have a preprocessor in my tool set for cleaner codes or can remove some trivial typing. Here are 2 examples:&lt;/p&gt;
 
-&lt;h3 id=&#34;common-import-statements:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;Common Import Statements&lt;/h3&gt;
+&lt;h3 id=&#34;common-import-statements&#34;&gt;Common Import Statements&lt;/h3&gt;
 
 &lt;p&gt;In each project, most likely there will be some very common import statements that every source file want to include, e.g. logging and other utilities. In dynamic languages such as Python, it&amp;rsquo;s not hard to inject them into the global namespace in some bootstrap functions, though in Java or Go it&amp;rsquo;s not quite possible, each file has to have these lines.&lt;/p&gt;
 
@@ -43,7 +43,7 @@
 
 &lt;p&gt;Of course with just one import, it&amp;rsquo;s not a big problem, though in practice, it&amp;rsquo;s very easy to have several imports for every file, and quite some other imports grouped by file types (e.g. services that need db library, services that provide RPC calls&amp;hellip;)&lt;/p&gt;
 
-&lt;h3 id=&#34;duplicate-codes:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;Duplicate Codes&lt;/h3&gt;
+&lt;h3 id=&#34;duplicate-codes&#34;&gt;Duplicate Codes&lt;/h3&gt;
 
 &lt;p&gt;Some time, it&amp;rsquo;s not very easy to use usual way to remove duplicated codes, here is an example in Unity3d, it&amp;rsquo;s a piece of our codes to check whether a user is already online in the system.&lt;/p&gt;
 
@@ -72,33 +72,33 @@
 
 &lt;p&gt;If we are using a language supporting preprocessor, then we can easily create a macro here to do the duplicated works, though not possible in C#, until I created the SILP project, Our only option was just copy-paste.&lt;/p&gt;
 
-&lt;h2 id=&#34;so-what-is-silp:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;So What is SILP?&lt;/h2&gt;
+&lt;h2 id=&#34;so-what-is-silp&#34;&gt;So What is SILP?&lt;/h2&gt;
 
 &lt;p&gt;After we have more RPC calls in the system sharing the similar code structure shown in last example, I decided to do something to improve it. Solve it in the language scope seems not a good option to me (only possible approach I figured possible was to wrap coroutine somehow and use some customized data structure to provide cleaner interface, both heavy and unnecessary), and I was thinking about finding a language-agnostic preprocessor for a while, so I spent some time to look for a existing project that I can use.&lt;/p&gt;
 
 &lt;p&gt;After a quick research, was a bit disappointed with the result, most of the preprocessors either are heavily limited to one language or provide way too much power than I need (so it&amp;rsquo;s harder to learn and use). It&amp;rsquo;s very clear that all I need is just a simple text substitution tools, so I created SILP and spend a whole day on it, the result is quite satisfying.&lt;/p&gt;
 
-&lt;h3 id=&#34;how-simple-silp-is:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;How Simple SILP Is?&lt;/h3&gt;
+&lt;h3 id=&#34;how-simple-silp-is&#34;&gt;How Simple SILP Is?&lt;/h3&gt;
 
 &lt;p&gt;There is zero logic in the syntax, currently all supported feature is parameter substitution in the template, and unless super useful, no complex feature will be added in the future.&lt;/p&gt;
 
 &lt;p&gt;SILP only handle individual line as well. All generated lines will be put back to the original file after the line with SILP syntax.&lt;/p&gt;
 
-&lt;h3 id=&#34;when-should-use-silp:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;When Should Use SILP?&lt;/h3&gt;
+&lt;h3 id=&#34;when-should-use-silp&#34;&gt;When Should Use SILP?&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Standard code block that&amp;rsquo;s hard to be eliminated by regular technique.&lt;/li&gt;
 &lt;li&gt;Some small piece of logic that you don&amp;rsquo;t want to wrap in a function and the language doesn&amp;rsquo;t support inline functions.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;when-should-not-use-silp:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;When Should NOT Use SILP?&lt;/h3&gt;
+&lt;h3 id=&#34;when-should-not-use-silp&#34;&gt;When Should NOT Use SILP?&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;If you can remove duplicated code in language supported way.&lt;/li&gt;
 &lt;li&gt;The logic is not standard, and using SILP make them harder to read.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;full-example-with-silp:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;Full Example With SILP&lt;/h2&gt;
+&lt;h2 id=&#34;full-example-with-silp&#34;&gt;Full Example With SILP&lt;/h2&gt;
 
 &lt;p&gt;After implementing SILP, here is how I can remove the duplicated codes in the previous online player checking logic, here is the &lt;code&gt;silp_cs.md&lt;/code&gt; file:&lt;/p&gt;
 
@@ -155,7 +155,7 @@ if (error != null) {
 
 &lt;p&gt;All lines end with &lt;code&gt;//__SILP__&lt;/code&gt; are generated automatically, and can be regenerated with SILP, so if you want to adjust the logic in the future, should be very easy to do, and create a new RPC call is trivial as well, only need to write one line, and run SILP again (current manually, though it should be easy to make it automatically)&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-next:85566baa3fb7c2cc99cd3647e31ab2dd&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
 
 &lt;p&gt;Here is the repository: &lt;a href=&#34;https://github.com/yjpark/silp&#34;&gt;https://github.com/yjpark/silp&lt;/a&gt;&lt;/p&gt;
 
@@ -180,7 +180,7 @@ if (error != null) {
       <guid>http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/</guid>
       <description>
 
-&lt;h2 id=&#34;why-not-just-use-evernote:fe6c652166fb9d0ba1572e80049a7b1a&#34;&gt;Why Not Just Use Evernote?&lt;/h2&gt;
+&lt;h2 id=&#34;why-not-just-use-evernote&#34;&gt;Why Not Just Use Evernote?&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve been using Evernote for several years, which is great, the best features to me are:&lt;/p&gt;
 
@@ -202,7 +202,7 @@ if (error != null) {
 
 &lt;p&gt;Feels a bit heavy, also there is no information about when I did add the line into the note.&lt;/p&gt;
 
-&lt;h2 id=&#34;day-one:fe6c652166fb9d0ba1572e80049a7b1a&#34;&gt;Day One&lt;/h2&gt;
+&lt;h2 id=&#34;day-one&#34;&gt;Day One&lt;/h2&gt;
 
 &lt;p&gt;Since 2013 I started to use &lt;a href=&#34;http://dayoneapp.com/&#34;&gt;Day One&lt;/a&gt;, which is a very beautiful application(has OSX and iOS versions) for note taking. Here is the reasons that I like it:&lt;/p&gt;
 
@@ -224,11 +224,11 @@ if (error != null) {
 
 &lt;p&gt;It&amp;rsquo;s much more light-weigh comparing to the Evernote way.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-not-just-use-day-one:fe6c652166fb9d0ba1572e80049a7b1a&#34;&gt;Why Not Just Use Day One?&lt;/h2&gt;
+&lt;h2 id=&#34;why-not-just-use-day-one&#34;&gt;Why Not Just Use Day One?&lt;/h2&gt;
 
 &lt;p&gt;One major missed part in &lt;code&gt;Day One&lt;/code&gt; is the lack of Android support, also the search is not as good as evernote, another problem is that you can not see all the notes in one day at once, you have to mouse over each item to see the whole content, which is a bit annoying IMO.&lt;/p&gt;
 
-&lt;h2 id=&#34;dayone-2-evernote:fe6c652166fb9d0ba1572e80049a7b1a&#34;&gt;Dayone 2 Evernote&lt;/h2&gt;
+&lt;h2 id=&#34;dayone-2-evernote&#34;&gt;Dayone 2 Evernote&lt;/h2&gt;
 
 &lt;p&gt;So I wrote a very simple script to export &lt;code&gt;Day One&lt;/code&gt; entries as a summary note in Evernote.&lt;/p&gt;
 
@@ -263,7 +263,7 @@ Another note in Day One
 
 &lt;p&gt;During the days to develop our first game: &lt;a href=&#34;https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;amp;uo=4&#34;&gt;Day Day Birds&lt;/a&gt;, I went through the progress of learning to use Marmalade, generally it&amp;rsquo;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.&lt;/p&gt;
 
-&lt;h2 id=&#34;stack-size:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Stack Size&lt;/h2&gt;
+&lt;h2 id=&#34;stack-size&#34;&gt;Stack Size&lt;/h2&gt;
 
 &lt;p&gt;The game started to crash randomly before I noticed, it&amp;rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.&lt;/p&gt;
 
@@ -279,7 +279,7 @@ Another note in Day One
    SysStackSize=4000000
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;accelerate-framework:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Accelerate framework&lt;/h2&gt;
+&lt;h2 id=&#34;accelerate-framework&#34;&gt;Accelerate framework&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add &lt;code&gt;iphone-link-opts=&amp;quot;-weak_framework Accelerate&amp;quot;&lt;/code&gt; into the mkf file.&lt;/p&gt;
 
@@ -292,13 +292,13 @@ Another note in Day One
 &lt;pre&gt;&lt;code&gt;cp -r /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Accelerate.framework/* /Developer/Marmalade/6.2/s3e/deploy/plugins/iphone/sys_libs/System/Library/Frameworks/Accelerate.framework/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ios-device-crash-report:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;iOS device crash report&lt;/h2&gt;
+&lt;h2 id=&#34;ios-device-crash-report&#34;&gt;iOS device crash report&lt;/h2&gt;
 
 &lt;p&gt;This page explains how to read the crash report nicely, also don&amp;rsquo;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://marmalade.zendesk.com/entries/22126117-how-to-map-iphone-crash-log-addresses-to-your-code&#34;&gt;How to map iPhone crash log addressed to your code&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;some-mkb-settings:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Some mkb settings&lt;/h2&gt;
+&lt;h2 id=&#34;some-mkb-settings&#34;&gt;Some mkb settings&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;deployments
 {
@@ -330,7 +330,7 @@ Another note in Day One
 
 &lt;p&gt;&lt;code&gt;iphone-enable-4inch-retina=1&lt;/code&gt; enabled the iPhone 5 wide screen mode.&lt;/p&gt;
 
-&lt;h2 id=&#34;some-app-icf-settings:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Some app.icf settings&lt;/h2&gt;
+&lt;h2 id=&#34;some-app-icf-settings&#34;&gt;Some app.icf settings&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;DispFixRot=&amp;quot;Landscape&amp;quot;
 IOSDispScaleFactor=200
@@ -384,7 +384,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;quick-note-about-implementation:5339cf35483b57da440cb2a6263f7cb8&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
+&lt;h2 id=&#34;quick-note-about-implementation&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
 
 &lt;p&gt;BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&amp;rsquo;s pure C, so it shouldn&amp;rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.&lt;/p&gt;
 
@@ -392,7 +392,7 @@ memSize = 256000000
 
 &lt;p&gt;Will write more about how to wrap C libraries into Marmalade extension in other posts later.&lt;/p&gt;
 
-&lt;h2 id=&#34;code-of-the-extension:5339cf35483b57da440cb2a6263f7cb8&#34;&gt;Code of the Extension&lt;/h2&gt;
+&lt;h2 id=&#34;code-of-the-extension&#34;&gt;Code of the Extension&lt;/h2&gt;
 
 &lt;p&gt;Since basically I have no idea about how to use BASS now, I just tried to use some codes from the BASS examples, it works pretty good, the xm files sounds quite good.&lt;/p&gt;
 
@@ -422,7 +422,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;code-of-the-converter:dfd49ebd283d84668c9da4594eb7704f&#34;&gt;Code of the Converter&lt;/h2&gt;
+&lt;h2 id=&#34;code-of-the-converter&#34;&gt;Code of the Converter&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve put the codes at &lt;a href=&#34;https://github.com/yjpark/marmalade-tools&#34;&gt;Github&lt;/a&gt;, feel free to clone it, and try to run it. see the github pages for more details about it.&lt;/p&gt;
 
@@ -462,7 +462,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;updates-about-original-post:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;Updates about Original Post&lt;/h2&gt;
+&lt;h2 id=&#34;updates-about-original-post&#34;&gt;Updates about Original Post&lt;/h2&gt;
 
 &lt;p&gt;Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.&lt;/p&gt;
 
@@ -472,7 +472,7 @@ memSize = 256000000
 
 &lt;p&gt;Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&amp;rsquo;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.&lt;/p&gt;
 
-&lt;h2 id=&#34;current-features:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;Current Features&lt;/h2&gt;
+&lt;h2 id=&#34;current-features&#34;&gt;Current Features&lt;/h2&gt;
 
 &lt;p&gt;Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&amp;rsquo;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).&lt;/p&gt;
 
@@ -520,7 +520,7 @@ memSize = 256000000
 
 &lt;p&gt;As you can see, we use boxes and circles to create a rather complicate level. Also it&amp;rsquo;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-missing:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-missing&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
 
 &lt;p&gt;As a basic level editor with advanced features (particle, animations&amp;hellip;), I think it&amp;rsquo;s quite complete and usable, we&amp;rsquo;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.&lt;/p&gt;
 
@@ -530,7 +530,7 @@ memSize = 256000000
 
 &lt;p&gt;And manual works required to create a skeleton scene and import images to it, it&amp;rsquo;s not hard, just running some python scripts, but it&amp;rsquo;s still not so simple for non-programmers.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-s-next:3f1fb7d4683fdca6132f21143e5391c2&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
 
 &lt;p&gt;Guess I&amp;rsquo;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&amp;rsquo;ll add particle feature to the level editor.&lt;/p&gt;
 
@@ -566,7 +566,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;marmalade-rendering-with-custom-shader:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Marmalade Rendering with Custom Shader&lt;/h2&gt;
+&lt;h2 id=&#34;marmalade-rendering-with-custom-shader&#34;&gt;Marmalade Rendering with Custom Shader&lt;/h2&gt;
 
 &lt;p&gt;Marmalade support shader very well by the &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/api/classCIwGxShaderTechnique.html&#34;&gt;CIwGxShaderTechnique&lt;/a&gt; class, to use it, you need to set it to material, here is the snnipet for that:&lt;/p&gt;
 
@@ -606,7 +606,7 @@ memSize = 256000000
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;    IwGetResManager()-&amp;gt;LoadGroup(&amp;quot;effect/Shaders.group&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;files-used:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Files Used&lt;/h2&gt;
+&lt;h2 id=&#34;files-used&#34;&gt;Files Used&lt;/h2&gt;
 
 &lt;p&gt;You need to include the shader files in the asset section of the mkb/mkf file, like this&lt;/p&gt;
 
@@ -684,7 +684,7 @@ assets
 
 &lt;p&gt;Please read &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/api/group__IwGxShaderTechnique.html&#34;&gt;IwGxShaderTechnique Reference&lt;/a&gt; for the list of the attributes that you can use. It took me quite a while to find this document since this is no links to this page on the class reference page. This is VERY useful for writing shaders in Marmalade.&lt;/p&gt;
 
-&lt;h2 id=&#34;update-params-by-code-and-xml:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Update Params By Code and XML&lt;/h2&gt;
+&lt;h2 id=&#34;update-params-by-code-and-xml&#34;&gt;Update Params By Code and XML&lt;/h2&gt;
 
 &lt;p&gt;the &lt;strong&gt;param&lt;/strong&gt; in the shader is for the parameters from your code, change it&amp;rsquo;s value like this.&lt;/p&gt;
 
@@ -782,7 +782,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 
 &lt;p&gt;After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-choose-marmalade:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
+&lt;h2 id=&#34;why-choose-marmalade&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
 
 &lt;p&gt;I did have quite some experience on cocos2d, though it&amp;rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&amp;rsquo;t use much platform-specific features, we don&amp;rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&amp;rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&amp;rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&amp;rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&amp;rsquo;t dig into it deeply.&lt;/p&gt;
 
@@ -812,7 +812,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 &lt;li&gt;Better community and 3rd party components, it&amp;rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
 
 &lt;p&gt;Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&amp;rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.&lt;/p&gt;
 
@@ -838,7 +838,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 &lt;li&gt;There is no unit tests yet, so it might introduce its own bugs, especially if it&amp;rsquo;s been update quickly.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;my-plan-on-the-game-engine:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
+&lt;h2 id=&#34;my-plan-on-the-game-engine&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
 
 &lt;p&gt;Now I feel OK working with Marmalade and IwGame, the next steps will be creating the features/tools we need for our games, i.e. create a game engine for our requirements.&lt;/p&gt;
 
@@ -867,7 +867,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
       <guid>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</guid>
       <description>
 
-&lt;h2 id=&#34;what-is-plantuml:dd56f1c7c71566f72435a0335f016577&#34;&gt;What is PlantUML?&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-plantuml&#34;&gt;What is PlantUML?&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://plantuml.sourceforge.net/&#34;&gt;PlantUML&lt;/a&gt; is a component that allows to quickly write:&lt;/p&gt;
 
@@ -885,7 +885,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 
 &lt;p&gt;Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-plugin:dd56f1c7c71566f72435a0335f016577&#34;&gt;The Plugin&lt;/h2&gt;
+&lt;h2 id=&#34;the-plugin&#34;&gt;The Plugin&lt;/h2&gt;
 
 &lt;p&gt;After switching &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&amp;rsquo;t find one, so I wrote this very simple jekyll plugin (Octopress is based on &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;).&lt;/p&gt;
 
@@ -893,7 +893,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;configuration:dd56f1c7c71566f72435a0335f016577&#34;&gt;Configuration&lt;/h2&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
 
 &lt;p&gt;You need to download the plantuml.jar file from &lt;a href=&#34;http://plantuml.sourceforge.net/download.html&#34;&gt;http://plantuml.sourceforge.net/download.html&lt;/a&gt;&lt;/p&gt;
 
@@ -905,7 +905,7 @@ plantuml_background_color: &amp;quot;#f8f8f8&amp;quot;
 
 &lt;p&gt;The plantuml_background_color is optional, which will change the background of the generated diagram.&lt;/p&gt;
 
-&lt;h2 id=&#34;usage:dd56f1c7c71566f72435a0335f016577&#34;&gt;Usage&lt;/h2&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
 
 &lt;p&gt;Just wrap the diagram text in &amp;ldquo;plantuml&amp;rdquo; block, e.g.&lt;/p&gt;
 
@@ -918,7 +918,7 @@ Alice &amp;lt;-- Bob: another authentication Response
 {% endplantuml %}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;an-example:dd56f1c7c71566f72435a0335f016577&#34;&gt;An Example&lt;/h2&gt;
+&lt;h2 id=&#34;an-example&#34;&gt;An Example&lt;/h2&gt;
 
 
 &lt;figure &gt;
@@ -972,7 +972,7 @@ Alice &amp;lt;-- Bob: another authentication Response
       <guid>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</guid>
       <description>
 
-&lt;h2 id=&#34;what-is-movable-write:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is Movable Write&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-movable-write&#34;&gt;What is Movable Write&lt;/h2&gt;
 
 &lt;p&gt;Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.&lt;/p&gt;
 
@@ -990,7 +990,7 @@ Alice &amp;lt;-- Bob: another authentication Response
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;what-is-missed:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is missed&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-missed&#34;&gt;What is missed&lt;/h2&gt;
 
 &lt;p&gt;I did implement support for USB transfer for backup/restore, though didn&amp;rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&amp;rsquo;t get time for it.&lt;/p&gt;
 
@@ -1004,7 +1004,7 @@ Alice &amp;lt;-- Bob: another authentication Response
 
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 
-&lt;h2 id=&#34;why-open-sourced:dd410da24d1375c6167582f4e3858f34&#34;&gt;Why open sourced&lt;/h2&gt;
+&lt;h2 id=&#34;why-open-sourced&#34;&gt;Why open sourced&lt;/h2&gt;
 
 &lt;p&gt;It&amp;rsquo;s sadly that I can&amp;rsquo;t put more dedicated time into it, since it didn&amp;rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.&lt;/p&gt;
 

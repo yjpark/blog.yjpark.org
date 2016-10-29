@@ -22,7 +22,7 @@
 
 &lt;p&gt;During the days to develop our first game: &lt;a href=&#34;https://itunes.apple.com/us/app/day-day-birds/id608802879?mt=8&amp;amp;uo=4&#34;&gt;Day Day Birds&lt;/a&gt;, I went through the progress of learning to use Marmalade, generally it&amp;rsquo;s very easy to use, and save me lot of time, though there are some little things that I hoped that I know earlier.&lt;/p&gt;
 
-&lt;h2 id=&#34;stack-size:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Stack Size&lt;/h2&gt;
+&lt;h2 id=&#34;stack-size&#34;&gt;Stack Size&lt;/h2&gt;
 
 &lt;p&gt;The game started to crash randomly before I noticed, it&amp;rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.&lt;/p&gt;
 
@@ -38,7 +38,7 @@
    SysStackSize=4000000
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;accelerate-framework:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Accelerate framework&lt;/h2&gt;
+&lt;h2 id=&#34;accelerate-framework&#34;&gt;Accelerate framework&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;m using libBass for the audio playpack, for some reason it require Accelarate frame under iOS to compile. so I add &lt;code&gt;iphone-link-opts=&amp;quot;-weak_framework Accelerate&amp;quot;&lt;/code&gt; into the mkf file.&lt;/p&gt;
 
@@ -51,13 +51,13 @@
 &lt;pre&gt;&lt;code&gt;cp -r /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Accelerate.framework/* /Developer/Marmalade/6.2/s3e/deploy/plugins/iphone/sys_libs/System/Library/Frameworks/Accelerate.framework/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ios-device-crash-report:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;iOS device crash report&lt;/h2&gt;
+&lt;h2 id=&#34;ios-device-crash-report&#34;&gt;iOS device crash report&lt;/h2&gt;
 
 &lt;p&gt;This page explains how to read the crash report nicely, also don&amp;rsquo;t forget to save the mapping file of the version you submitted to app store, otherwise you will have no idea to debug when get crash logs from Apple.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://marmalade.zendesk.com/entries/22126117-how-to-map-iphone-crash-log-addresses-to-your-code&#34;&gt;How to map iPhone crash log addressed to your code&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;some-mkb-settings:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Some mkb settings&lt;/h2&gt;
+&lt;h2 id=&#34;some-mkb-settings&#34;&gt;Some mkb settings&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;deployments
 {
@@ -89,7 +89,7 @@
 
 &lt;p&gt;&lt;code&gt;iphone-enable-4inch-retina=1&lt;/code&gt; enabled the iPhone 5 wide screen mode.&lt;/p&gt;
 
-&lt;h2 id=&#34;some-app-icf-settings:8e42695654d48fa6b160bc59ed75f6fb&#34;&gt;Some app.icf settings&lt;/h2&gt;
+&lt;h2 id=&#34;some-app-icf-settings&#34;&gt;Some app.icf settings&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;DispFixRot=&amp;quot;Landscape&amp;quot;
 IOSDispScaleFactor=200
@@ -143,7 +143,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;quick-note-about-implementation:5339cf35483b57da440cb2a6263f7cb8&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
+&lt;h2 id=&#34;quick-note-about-implementation&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
 
 &lt;p&gt;BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&amp;rsquo;s pure C, so it shouldn&amp;rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.&lt;/p&gt;
 
@@ -151,7 +151,7 @@ memSize = 256000000
 
 &lt;p&gt;Will write more about how to wrap C libraries into Marmalade extension in other posts later.&lt;/p&gt;
 
-&lt;h2 id=&#34;code-of-the-extension:5339cf35483b57da440cb2a6263f7cb8&#34;&gt;Code of the Extension&lt;/h2&gt;
+&lt;h2 id=&#34;code-of-the-extension&#34;&gt;Code of the Extension&lt;/h2&gt;
 
 &lt;p&gt;Since basically I have no idea about how to use BASS now, I just tried to use some codes from the BASS examples, it works pretty good, the xm files sounds quite good.&lt;/p&gt;
 
@@ -181,7 +181,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;code-of-the-converter:dfd49ebd283d84668c9da4594eb7704f&#34;&gt;Code of the Converter&lt;/h2&gt;
+&lt;h2 id=&#34;code-of-the-converter&#34;&gt;Code of the Converter&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve put the codes at &lt;a href=&#34;https://github.com/yjpark/marmalade-tools&#34;&gt;Github&lt;/a&gt;, feel free to clone it, and try to run it. see the github pages for more details about it.&lt;/p&gt;
 
@@ -211,7 +211,7 @@ memSize = 256000000
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;marmalade-rendering-with-custom-shader:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Marmalade Rendering with Custom Shader&lt;/h2&gt;
+&lt;h2 id=&#34;marmalade-rendering-with-custom-shader&#34;&gt;Marmalade Rendering with Custom Shader&lt;/h2&gt;
 
 &lt;p&gt;Marmalade support shader very well by the &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/api/classCIwGxShaderTechnique.html&#34;&gt;CIwGxShaderTechnique&lt;/a&gt; class, to use it, you need to set it to material, here is the snnipet for that:&lt;/p&gt;
 
@@ -251,7 +251,7 @@ memSize = 256000000
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;    IwGetResManager()-&amp;gt;LoadGroup(&amp;quot;effect/Shaders.group&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;files-used:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Files Used&lt;/h2&gt;
+&lt;h2 id=&#34;files-used&#34;&gt;Files Used&lt;/h2&gt;
 
 &lt;p&gt;You need to include the shader files in the asset section of the mkb/mkf file, like this&lt;/p&gt;
 
@@ -329,7 +329,7 @@ assets
 
 &lt;p&gt;Please read &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/api/group__IwGxShaderTechnique.html&#34;&gt;IwGxShaderTechnique Reference&lt;/a&gt; for the list of the attributes that you can use. It took me quite a while to find this document since this is no links to this page on the class reference page. This is VERY useful for writing shaders in Marmalade.&lt;/p&gt;
 
-&lt;h2 id=&#34;update-params-by-code-and-xml:ce65b1f80e6dcf4b472e5702969004e1&#34;&gt;Update Params By Code and XML&lt;/h2&gt;
+&lt;h2 id=&#34;update-params-by-code-and-xml&#34;&gt;Update Params By Code and XML&lt;/h2&gt;
 
 &lt;p&gt;the &lt;strong&gt;param&lt;/strong&gt; in the shader is for the parameters from your code, change it&amp;rsquo;s value like this.&lt;/p&gt;
 
@@ -427,7 +427,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 
 &lt;p&gt;After quite some readings and experiments, I finally have a clear idea about how we gonna build these games, We will create our small game engine, on top of Marmalade and IwGame.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-choose-marmalade:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
+&lt;h2 id=&#34;why-choose-marmalade&#34;&gt;Why choose Marmalade?&lt;/h2&gt;
 
 &lt;p&gt;I did have quite some experience on cocos2d, though it&amp;rsquo;s been ruled out pretty quickly. I want our game to work on multiple platforms, since we don&amp;rsquo;t use much platform-specific features, we don&amp;rsquo;t get much with objective-c. Also personally I am not really a big fan of cocos2d, it&amp;rsquo;s kind of a simple framework with good quality, though missing some of the features I want with a solid framework, e.g. Tool or Markup for graphic scene editor, I&amp;rsquo;ve tried Cocos Builder and Level Helper very breifly, might be just me, but I don&amp;rsquo;t like neither one. A similar option is to go with cocos2d-x, which is cross platform, but because of similar reason, I didn&amp;rsquo;t dig into it deeply.&lt;/p&gt;
 
@@ -457,7 +457,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 &lt;li&gt;Better community and 3rd party components, it&amp;rsquo;s quite unpopular in stackoverflow, very few blogs, and the github community projects are not very active and organized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-iwgame-and-why-it-is-helpful&#34;&gt;What is IwGame, and Why it is Helpful&lt;/h2&gt;
 
 &lt;p&gt;Marmalade is very low level, its design priciple is that people can make their engine working on it rather easily, but we don&amp;rsquo;t have any game engine yet, so either I need to write a 2D engine from scratch, or choose a C/C++ engine to work with. Cocos2d-X works on Marmalade, though I want something more powerful. Many 3D engine works on it too, but they are too complex to me, I probably will choose Unity3D if I want a 3D engine.&lt;/p&gt;
 
@@ -483,7 +483,7 @@ void PfShaderEffect::UpdateColorFromAnimation(CIwColour* color, CIwGameAnimInsta
 &lt;li&gt;There is no unit tests yet, so it might introduce its own bugs, especially if it&amp;rsquo;s been update quickly.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;my-plan-on-the-game-engine:a9ed1c04589a9ece6300f4ba87e22741&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
+&lt;h2 id=&#34;my-plan-on-the-game-engine&#34;&gt;My Plan on The Game Engine&lt;/h2&gt;
 
 &lt;p&gt;Now I feel OK working with Marmalade and IwGame, the next steps will be creating the features/tools we need for our games, i.e. create a game engine for our requirements.&lt;/p&gt;
 

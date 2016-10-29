@@ -20,7 +20,7 @@
       <guid>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</guid>
       <description>
 
-&lt;h2 id=&#34;what-is-movable-write:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is Movable Write&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-movable-write&#34;&gt;What is Movable Write&lt;/h2&gt;
 
 &lt;p&gt;Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.&lt;/p&gt;
 
@@ -38,7 +38,7 @@
 
 &lt;!-- more --&gt;
 
-&lt;h2 id=&#34;what-is-missed:dd410da24d1375c6167582f4e3858f34&#34;&gt;What is missed&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-missed&#34;&gt;What is missed&lt;/h2&gt;
 
 &lt;p&gt;I did implement support for USB transfer for backup/restore, though didn&amp;rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&amp;rsquo;t get time for it.&lt;/p&gt;
 
@@ -52,7 +52,7 @@
 
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 
-&lt;h2 id=&#34;why-open-sourced:dd410da24d1375c6167582f4e3858f34&#34;&gt;Why open sourced&lt;/h2&gt;
+&lt;h2 id=&#34;why-open-sourced&#34;&gt;Why open sourced&lt;/h2&gt;
 
 &lt;p&gt;It&amp;rsquo;s sadly that I can&amp;rsquo;t put more dedicated time into it, since it didn&amp;rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.&lt;/p&gt;
 

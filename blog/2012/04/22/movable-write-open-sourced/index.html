@@ -9,10 +9,10 @@
   <title>Movable Write Open Sourced</title>
 
   <meta name="author" content="YJ Park" />
-  
+
   
 
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
-  
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
   
   <meta property="og:title" content="Movable Write Open Sourced" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/yjpark_icon.png" />
-  
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -81,6 +83,7 @@
   </div>
 </nav>
 
+    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -102,7 +105,7 @@
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
 	  
 
-<h2 id="what-is-movable-write:dd410da24d1375c6167582f4e3858f34">What is Movable Write</h2>
+<h2 id="what-is-movable-write">What is Movable Write</h2>
 
 <p>Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.</p>
 
@@ -120,7 +123,7 @@
 
 <!-- more -->
 
-<h2 id="what-is-missed:dd410da24d1375c6167582f4e3858f34">What is missed</h2>
+<h2 id="what-is-missed">What is missed</h2>
 
 <p>I did implement support for USB transfer for backup/restore, though didn&rsquo;t write document about this feature, the plan was to implement synchronization for it, Dropbox and/or iCloud, though didn&rsquo;t get time for it.</p>
 
@@ -134,7 +137,7 @@
 
 <p>&hellip;</p>
 
-<h2 id="why-open-sourced:dd410da24d1375c6167582f4e3858f34">Why open sourced</h2>
+<h2 id="why-open-sourced">Why open sourced</h2>
 
 <p>It&rsquo;s sadly that I can&rsquo;t put more dedicated time into it, since it didn&rsquo;t bring much money as a product for a small group of people, though I get quite some very good comments from some users.</p>
 
@@ -187,28 +190,6 @@
 
       
 
-      
-      <div class="row disqus-comments">
-        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-          <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'yjpark';
-    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2012\/04\/22\/movable-write-open-sourced\/';
-    var disqus_title = 'Movable Write Open Sourced';
-    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2012\/04\/22\/movable-write-open-sourced\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
-      </div>
-      
-
     </div>
 
     <footer>
@@ -257,14 +238,14 @@
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       			  </span>
       			</a>
-    		  </li>		
+    		  </li>
 
         </ul>
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
     		  2014
-    		  
+
     		  
     		  &nbsp;&bull;&nbsp;
     		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
@@ -283,6 +264,10 @@
 <script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
 <script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
 <script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
 
 
 <script>
