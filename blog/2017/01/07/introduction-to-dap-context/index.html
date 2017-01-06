@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Introduction to Dap Context</title>
+
+  <meta name="author" content="YJ Park" />
+
+  
+
+  <meta name="generator" content="Hugo 0.17-DEV" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
+  
+  <meta property="og:title" content="Introduction to Dap Context" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    <canvas id="paper-background" resize></canvas>
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>Introduction to Dap Context</h1>
+        
+        <span class="post-meta">Posted on January 7, 2017</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  
+
+<p>Back in 2013, I was working on my first Unity3d game, it&rsquo;s a simplified RTS game for tablets, the first version took us (3 developers including me) about 2 years to hit the iOS app store, did learned quite some lessons during the process, wanted to write some blogs for a long time, though never really did.</p>
+
+<p>We released the game at 2015, but the game wasn&rsquo;t successful commercially, and our small start-up company run out of money. I was still making games after that, planned to reuse some lib codes created along the way. Then I realised that the quality of these libs can be improved much (due to time pressure, and lack of experiences)</p>
+
+<p>The most useful module was a custom data context class I wroted, it was rather simple, just an object with a bunch of properties, and event channels, both can be watched, e.g. when a property been set to a new value, all listeners will be triggered by a callback. On top of these properties and channels, I create a simple layer to interact with the data context via requests, such as <code>get</code> or <code>set</code> or <code>fire</code>, then on top of that, I create a simple text parser so diffrent section in config files can trigger different action in the system, e.g.</p>
+
+<pre><code>&quot;selection&quot; : {
+    &quot;_&quot;: [
+        &quot;sprite/destroy?key=selection&quot;,
+        &quot;sprite/do?key=selection&amp;prefab=squads.effect_sprite#color=1,1,1,0&amp;sprite=flash&amp;zoom=1.0&amp;play.flash&amp;done.flash=destroy&quot;,
+    ]
+},
+</code></pre>
+
+<p>The first command will destroy the old selection sprite, the second command will create a new one (these objects are managed by a pool, so performance won&rsquo;t be affected), then change it&rsquo;s color, sprite, zoom value, then fire an event <code>play.flash</code> which is an animation created by HoTween in the prefab, then when the event <code>done.flash</code> been triggered (when the tween finished), destroy itself.</p>
+
+<p>This is used in our effect system, in the code, a bunch of entry points were defined, when certain things happened, the logic will check according section in the config file, then parse these commands and run them through the request system, which operates on the data contexts eventually.</p>
+
+<p>This works rather smoothly, so when non-dev members wants to tweak effects, they can just create prefabs, and writing commands to operate these prefabs, no code writing envolved, it&rsquo;s a small challenge for them to learn and master the syntax, though after some documents and practice, the art works and dev works were de-coupled properly.</p>
+
+<p>Later the same system was used for GUI elements, in slightly different way, and also been used for charactor&rsquo;s properties storage, though quite some boilerplate codes was written to make things work, the parsing logic became quite messy after adding more features, such as delayed execution, relative value changes&hellip;</p>
+
+<h2 id="what-s-dap">What&rsquo;s Dap</h2>
+
+<p>So I was working on the second version of my library codes, C# version, mainly used in Unity3d, though much of the codes are not limited to Unity3d, and can been used with DotNet, Mono, and Xamarin as well.</p>
+
+<p><code>Dap</code> stands for <code>Distributed Application Platform</code>, the plan is to create conventions, api, and libraries for distributed applications, in my mind, it means:</p>
+
+<ul>
+<li>Multiple platform support</li>
+<li>Multiple devices at the same time</li>
+<li>Real-time communication and colabration from these devices</li>
+</ul>
+
+<p>This is rather big scope, when I started thinking about this, was mainly focus on application dev, though much of the ideas are suitable for game dev as well, especially for network games.</p>
+
+<h2 id="what-s-dap-context-aspect">What&rsquo;s Dap Context, Aspect</h2>
+
+<p>Dap is following ECS (Entity Component System), has following core concepts:</p>
+
+<ul>
+<li>Context, it&rsquo;s the entity in Dap, a little like Unity&rsquo;s GameObject, though you can create subclass of Contexts.</li>
+<li>Aspect, it&rsquo;s the component in Dap, everything related to a Context most likely are aspects</li>
+<li>The system in Dap can be done by either subclass from context, or with manners (special Aspects designed for sharing logic in defferent type of Entities)</li>
+<li>Env, it&rsquo;s the runtime environment of the Dap system, there is only one env instance in the system, which is holding all the contexts</li>
+</ul>
+
+<p>Aspects are grouped to certain different categories in Context, these are the basic ones for all Contexts (you can also add new categories to subclasses as well):</p>
+
+<h3 id="properties">Properties</h3>
+
+<p>Holding values, which can be watched, when the valued been changed, all listeners will be notified. The value can be serialized, so can be saved to files or transfered over network.</p>
+
+<p>You can also provide checkers on the value, so can implement validation or authentication to the underlining values.</p>
+
+<h3 id="channels">Channels</h3>
+
+<p>Channels are used to fire events, which can be watched as well, each event can have a data with it.</p>
+
+<p>Note: here the data is a simple serialization format, support basic types.</p>
+
+<h3 id="handlers">Handlers</h3>
+
+<p>Handlers are used for request handling, requests can be sent to handlers, they will check the request data, do according operation, and then return a result.</p>
+
+<h3 id="bus">Bus</h3>
+
+<p>Bus is for more loose notification, e.g. since you can only listen to a channel when it&rsquo;s already created, there is a timing issue to listen to future channels. Bus is just a simple message, with no data with it. You can also check whether a certain message have been sent as well.</p>
+
+<h3 id="vars">Vars</h3>
+
+<p>Wrapping for internal values or runtime values (not able to be serialized)</p>
+
+<h3 id="manners">Manners</h3>
+
+<p>Behaviors that can be added to multiple kind of contexts, e.g. Tickable is implemented as a Manner, means will listen to system&rsquo;s tick channel, create a own tick channel, and fire a tick event accordingly.</p>
+
+<p>Also network logic are created as Manner, so they can be added to existing classes, so by following some simple rules (mostly naming conventions), a single player game can be turned into a network one by adding proper manners at client and server sides, the code changes should be rather small.</p>
+
+<h2 id="where-s-the-code">Where&rsquo;s the Code</h2>
+
+<p>The core lib is available at github, there is no documents at the moment, and extra libraries (not open sourced yet) are needed to use it properly in real project, but the source codes can be used for understanding the concepts, so if you are interested, feel free to clone or fork:</p>
+
+<ul>
+<li><a href="https://github.com/angeldnd/dap.core.csharp">https://github.com/angeldnd/dap.core.csharp</a></li>
+</ul>
+
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/" data-toggle="tooltip" data-placement="top" title="SILP: Simple Individual Line Preprocessor">&larr; Previous Post</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+
+<div class="row disqus-comments">
+  <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'yjpark';
+    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2017\/01\/07\/introduction-to-dap-context\/';
+    var disqus_title = 'Introduction to Dap Context';
+    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2017\/01\/07\/introduction-to-dap-context\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2017
+
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2120845-8', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>

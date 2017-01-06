@@ -9,10 +9,10 @@
   <title>Living and Programming - YJ Park&#39;s Blog</title>
 
   <meta name="author" content="YJ Park" />
-  
+
   
 
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.17-DEV" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -22,13 +22,19 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
-  
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
   
   <meta property="og:title" content="Living and Programming - YJ Park&#39;s Blog" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="//" />
   <meta property="og:image" content="img/yjpark_icon.png" />
-  
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 </head>
 
 
@@ -77,6 +83,7 @@
   </div>
 </nav>
 
+    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -84,21 +91,21 @@
         
         
         <article class="post-preview">
-          <a href="http://blog.yjpark.org/blog/1/01/01/plantuml-plugin-for-octopress/">
-      	  <h2 class="post-title">PlantUML Plugin for Octopress</h2>
-      	
-      	    
+          <a href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/">
+      	  <h2 class="post-title">Movable Write Open Sourced</h2>
+
+      	  
           </a>
 
           <p class="post-meta">
-            Posted on January 1, 0001
+            Posted on April 22, 2012
           </p>
-        
+
           <div class="post-entry">
-            What is PlantUML? PlantUML is a component that allows to quickly write: sequence diagram, use case diagram, class diagram, activity diagram, component diagram, state diagram object diagram I really like the idea of writing UML diagram with plain text. Since it&rsquo;s totally plaintext, it&rsquo;s very easy to do diff and version track, also you don&rsquo;t need to do anything about the layout (the text itself looks pretty good too). Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.
-      	  <a href="http://blog.yjpark.org/blog/1/01/01/plantuml-plugin-for-octopress/" class="post-read-more">[Read&nbsp;More]</a>
+            What is Movable Write Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs. But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years.
+      	  <a href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" class="post-read-more">[Read&nbsp;More]</a>
           </div>
-        
+
          </article>
         
       </div>
@@ -162,14 +169,14 @@
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       			  </span>
       			</a>
-    		  </li>		
+    		  </li>
 
         </ul>
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
-    		  2014
-    		  
+    		  2017
+
     		  
     		  &nbsp;&bull;&nbsp;
     		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
@@ -177,7 +184,7 @@
   	    </p>
   	        
     		<p class="theme-by text-muted">
-    		  Theme by
+    		  Theme based on
     		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
     		</p>
       </div>
@@ -188,6 +195,21 @@
 <script src="http://blog.yjpark.org/js/jquery-1.11.2.min.js"></script>
 <script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
 <script src="http://blog.yjpark.org/js/main.js"></script>
+
+<script src="http://blog.yjpark.org/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2120845-8', 'auto');
+ga('send', 'pageview');
+</script>
 
 
 

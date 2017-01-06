@@ -12,7 +12,7 @@
 
   
 
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.17-DEV" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -89,6 +89,37 @@
 
       <div class="posts-list">
         
+        
+        <article class="post-preview">
+          <a href="http://blog.yjpark.org/blog/2017/01/07/introduction-to-dap-context/">
+      	  <h2 class="post-title">Introduction to Dap Context</h2>
+
+      	  
+          </a>
+
+          <p class="post-meta">
+            Posted on January 7, 2017
+          </p>
+
+          <div class="post-entry">
+            <p>Back in 2013, I was working on my first Unity3d game, it&rsquo;s a simplified RTS game for tablets, the first version took us (3 developers including me) about 2 years to hit the iOS app store, did learned quite some lessons during the process, wanted to write some blogs for a long time, though never really did.</p>
+
+<p>We released the game at 2015, but the game wasn&rsquo;t successful commercially, and our small start-up company run out of money. I was still making games after that, planned to reuse some lib codes created along the way. Then I realised that the quality of these libs can be improved much (due to time pressure, and lack of experiences)</p>
+
+<p>The most useful module was a custom data context class I wroted, it was rather simple, just an object with a bunch of properties, and event channels, both can be watched, e.g. when a property been set to a new value, all listeners will be triggered by a callback. On top of these properties and channels, I create a simple layer to interact with the data context via requests, such as <code>get</code> or <code>set</code> or <code>fire</code>, then on top of that, I create a simple text parser so diffrent section in config files can trigger different action in the system, e.g.</p>
+
+<pre><code>&quot;selection&quot; : {
+    &quot;_&quot;: [
+        &quot;sprite/destroy?key=selection&quot;,
+        &quot;sprite/do?key=selection&amp;prefab=squads.effect_sprite#color=1,1,1,0&amp;sprite=flash&amp;zoom=1.0&amp;play.flash&amp;done.flash=destroy&quot;,
+    ]
+},
+</code></pre>
+
+      	  <a href="http://blog.yjpark.org/blog/2017/01/07/introduction-to-dap-context/" class="post-read-more">[Read&nbsp;More]</a>
+          </div>
+
+         </article>
         
         <article class="post-preview">
           <a href="http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/">
@@ -289,26 +320,17 @@
 
          </article>
         
-        <article class="post-preview">
-          <a href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/">
-      	  <h2 class="post-title">Movable Write Open Sourced</h2>
-
-      	  
-          </a>
-
-          <p class="post-meta">
-            Posted on April 22, 2012
-          </p>
-
-          <div class="post-entry">
-            What is Movable Write Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs. But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&rsquo;ve been working on Web development for a few years.
-      	  <a href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" class="post-read-more">[Read&nbsp;More]</a>
-          </div>
-
-         </article>
-        
       </div>
 
+      
+      <ul class="pager main-pager">
+        
+        
+        <li class="next">
+          <a href="/page/2">Older Posts &rarr;</a>
+        </li>
+        
+      </ul>
       
 
     </div>
@@ -365,7 +387,7 @@
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
-    		  2014
+    		  2017
 
     		  
     		  &nbsp;&bull;&nbsp;
