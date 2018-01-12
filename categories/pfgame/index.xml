@@ -10,7 +10,9 @@
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Tue, 06 Nov 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://blog.yjpark.org/categories/pfgame/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://blog.yjpark.org/categories/pfgame/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Initial Release of s3eBass - Marmalade extension for BASS audio engine</title>
@@ -18,34 +20,8 @@
       <pubDate>Tue, 06 Nov 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</guid>
-      <description>
-
-&lt;p&gt;The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&amp;rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.&lt;/p&gt;
-
-&lt;p&gt;There are quite some libraries to support xm playback, though I can&amp;rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.&lt;/p&gt;
-
-&lt;p&gt;After some search, I decided to use &lt;a href=&#34;http://www.un4seen.com/bass.html&#34;&gt;BASS audio engine&lt;/a&gt;, which is quite powerful, with well designed API, not bad documentation and sample, and a reasonable price for small projects (the shareware license can cover product with small price).&lt;/p&gt;
-
-&lt;p&gt;Now I&amp;rsquo;ve got a working extension(though the only test I did was to play a xm file on OSX, iOS and Android), think other people maybe interesting in the extension or how to create similar extensions, so I&amp;rsquo;m going to share the extension and some experiences I&amp;rsquo;ve learn from the process(not in this post).&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&#34;quick-note-about-implementation&#34;&gt;Quick Note about Implementation&lt;/h2&gt;
-
-&lt;p&gt;BASS itself support many platform, the platforms I need are: OSX, iOS, Android. It&amp;rsquo;s pure C, so it shouldn&amp;rsquo;t be too hard to make it work with Marmalade. Though it took me quite a while to get some basic idea about the Marmalade extension system.&lt;/p&gt;
-
-&lt;p&gt;Most documentation from Marmalade about extensions seems focusing on writing platform specific codes in custom extension, in this case, it&amp;rsquo;s actually much more easier since BASS is already platform independent, all we need is to make it work with Marmalade&amp;rsquo;s build system.&lt;/p&gt;
-
-&lt;p&gt;Will write more about how to wrap C libraries into Marmalade extension in other posts later.&lt;/p&gt;
-
-&lt;h2 id=&#34;code-of-the-extension&#34;&gt;Code of the Extension&lt;/h2&gt;
-
-&lt;p&gt;Since basically I have no idea about how to use BASS now, I just tried to use some codes from the BASS examples, it works pretty good, the xm files sounds quite good.&lt;/p&gt;
-
-&lt;p&gt;Think I will write some wrapper layer around the C function calls to expose audio functionalities to C++, XML and Lua codes. Guess I will have much better idea about it in a couple of months after our first game get done.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve put the codes at &lt;a href=&#34;https://github.com/yjpark/s3eBass&#34;&gt;Github&lt;/a&gt;, feel free to clone it, and give it a try. see the github pages for more details about it.&lt;/p&gt;
-</description>
+      <description>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&amp;rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.
+There are quite some libraries to support xm playback, though I can&amp;rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</description>
     </item>
     
     <item>
@@ -54,30 +30,8 @@
       <pubDate>Mon, 05 Nov 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</guid>
-      <description>
-
-&lt;p&gt;In 2D games, it&amp;rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).&lt;/p&gt;
-
-&lt;p&gt;There are quite some tools to generate such font images, I&amp;rsquo;m using &lt;a href=&#34;http://www.bmglyph.com/&#34;&gt;bmGlyph&lt;/a&gt; as the font generator, it can publish the popular &amp;ldquo;Cocos2d / BMFont&amp;rdquo; format, though it&amp;rsquo;s not directly usable in Marmalade.&lt;/p&gt;
-
-&lt;p&gt;Marmalade is using its own font format, and provide a font generator in the SDK, though it only support plain color, and when I feed it with some Chinese characators, they are not included in the generated files. I&amp;rsquo;m using the OS X version of the font builder, not sure about how the Windows version works.&lt;/p&gt;
-
-&lt;p&gt;My first thought was to add function to use the BMFont generated, though it&amp;rsquo;s not an easy task, also I want to use IwGame&amp;rsquo;s label components, which are based on Marmalade&amp;rsquo;s GxFont and Truetype support.&lt;/p&gt;
-
-&lt;p&gt;After reading &lt;a href=&#34;http://docs.madewithmarmalade.com/native/api_reference/iwgxfontapidocumentation/iwgxfontapioverview/iwgxfontfiles.html&#34;&gt;GxFont Reference&lt;/a&gt;, turns out it&amp;rsquo;s using a fairly simple format, so I decided to write a converter to create gxfont files.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&#34;code-of-the-converter&#34;&gt;Code of the Converter&lt;/h2&gt;
-
-&lt;p&gt;I&amp;rsquo;ve put the codes at &lt;a href=&#34;https://github.com/yjpark/marmalade-tools&#34;&gt;Github&lt;/a&gt;, feel free to clone it, and try to run it. see the github pages for more details about it.&lt;/p&gt;
-
-&lt;p&gt;The converter support UTF-8 characters with no problem, the size of the tga files is a bit big comparing to the Cocos2d version, since more empty spaces are needed for GxFont format.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s kind of a straight-forward implementation, and probably there are ways to make it better, especially if the bmGlyph&amp;rsquo;s console support is out (in the coming feature list now), the whole process of extracting characters from data file, create Cocos2d font, convert to GxFont can be fully automatied.&lt;/p&gt;
-
-&lt;p&gt;Just read the code if you&amp;rsquo;re interested in the implementation details. :)&lt;/p&gt;
-</description>
+      <description>In 2D games, it&amp;rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).
+There are quite some tools to generate such font images, I&amp;rsquo;m using bmGlyph as the font generator, it can publish the popular &amp;ldquo;Cocos2d / BMFont&amp;rdquo; format, though it&amp;rsquo;s not directly usable in Marmalade.</description>
     </item>
     
     <item>
@@ -86,112 +40,9 @@
       <pubDate>Fri, 12 Oct 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</guid>
-      <description>
-
-&lt;p&gt;It&amp;rsquo;s been more than a month since my post about the idea of &lt;a href=&#34;http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/&#34;&gt;game engine based on Marmalade and IwGame&lt;/a&gt;, after the post, spent many hours busy coding, now I&amp;rsquo;ve got the basic level editor up running, I think it&amp;rsquo;s pretty cool, so here are some details about it.&lt;/p&gt;
-
-&lt;p&gt;Here is a screenshot of the level editor:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://blog.yjpark.org/img/pfgame/leveleditor-screenshot-1.png&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Level Editor Screen Shot 1&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&#34;updates-about-original-post&#34;&gt;Updates about Original Post&lt;/h2&gt;
-
-&lt;p&gt;Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.&lt;/p&gt;
-
-&lt;p&gt;First, Marmalade 6.1 was released, it&amp;rsquo;s great for me, the 2 most useful feature for me are: Open GL ES 2.0 shader support in simulator, easy to debug shader now, and OSX deployment to send game/editor as running application to Graphic Artists.&lt;/p&gt;
-
-&lt;p&gt;Second, DrMop commented in the original post, assure that IwGame is very actively developed and &lt;a href=&#34;http://www.drmop.com/index.php/2012/10/08/iwgame-0-4-coming-very-soon-iwgame-is-going-portable/&#34;&gt;version 0.40 is about to be released&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Quick test with Chinese characters in CIwGameActorText, it works out of box, just specify a truetype font, write the text in UTF-8, then it&amp;rsquo;s done. I guess there is no need for CIwGameString to support unicode, since it can pass the bytes to Marmalade correctly.&lt;/p&gt;
-
-&lt;h2 id=&#34;current-features&#34;&gt;Current Features&lt;/h2&gt;
-
-&lt;p&gt;Now back to the level editor, it support image objects with layer(display order), depth(for parallel perspective), users can add/remove/copy/group objects, and can change position/size/scale/angle/origin with mouse, zoom in/out and move the camera around. Also I&amp;rsquo;ve integrated a Box2D debug view, and you can edit simple shape in it too (boxes and circles).&lt;/p&gt;
-
-&lt;p&gt;Actually it&amp;rsquo;s a bit easier than I thought to implement it, caused me about 5 weeks so far, worked quite hared during the time, but also had a basic animation editor and a game prototype at the same time, so the pure time on it was about 3 weeks.&lt;/p&gt;
-
-&lt;p&gt;Our graphic artists have already used the editor to build a few nice scenes and they are getting more productively with it day by day, It&amp;rsquo;s just what I wished it to be: a tool to make developer and other roles to collaborative more effectively, think it&amp;rsquo;s at the right direction.&lt;/p&gt;
-
-&lt;p&gt;Also it&amp;rsquo;s extremely useful for prototyping and debugging, the way I did it is to add a few tools around the objects, so when you&amp;rsquo;re running your game, you can switch to editor mode at any time (by tapping the tab key), then you can check the scene to see what&amp;rsquo;s going on, or adjust the objects right in the editor, then you can switch back to game mode. It feels like you can freeze time in game at any time, then make changes, then go back, very cool, and very useful.&lt;/p&gt;
-
-&lt;p&gt;To make it clear, here is a screenshot of our game prototype:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://blog.yjpark.org/img/pfgame/leveleditor-screenshot-2.png&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Level Editor Screen Shot 2&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;After I switch to editor mode, and zoom out a bit, I can get the screen as the first screenshot, then I can adjust the level, and switch back to keep playing. Our graphic artist feels very happy with this in game editing ability, they can see their changes instantly, which make the whole process very efficiently.&lt;/p&gt;
-
-&lt;p&gt;Another very useful feature is the Box2D shape editor and debug view, we can create boxes and circles right through the level editor, they will be effective instantly, so for a game based on Box2D, it&amp;rsquo;s very easy to create the levels by non-programmers.&lt;/p&gt;
-
-&lt;p&gt;Here is the same game prototype with Box2D debug view enabled:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://blog.yjpark.org/img/pfgame/leveleditor-screenshot-3.png&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Level Editor Screen Shot 3&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;As you can see, we use boxes and circles to create a rather complicate level. Also it&amp;rsquo;s very helpful to debug the collisions between objects, e.g. when I was implementing the effect of arrows hitting targets.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-s-missing&#34;&gt;What&amp;rsquo;s Missing&lt;/h2&gt;
-
-&lt;p&gt;As a basic level editor with advanced features (particle, animations&amp;hellip;), I think it&amp;rsquo;s quite complete and usable, we&amp;rsquo;ve got quite some prototype scenes with it till now, and the artists feel happy with it most of the time.&lt;/p&gt;
-
-&lt;p&gt;The biggest missed feature is undo/redo, only deleting have a quick undo since it can cause big trouble when touch wrong key accidentally. To make it better, all version of saved files are kept on disk, so if you made big mistakes, then it&amp;rsquo;s recoverable by hand. It&amp;rsquo;s non trivial to implement a good undo/redo system, so probably this feature will only be added in a much later stage.&lt;/p&gt;
-
-&lt;p&gt;Also there is on gui at all, all functions are done by keyboard shortcut and mouse movement, so there is a learning curve, and you&amp;rsquo;ll feel a bit awkward at first. Though this is the quickest way for implementation and also for actually using IMO, after a few days using it, both of our graphic artists can use it with no big problem, and they said that it&amp;rsquo;s a bit geeky feeling when using it. :)&lt;/p&gt;
-
-&lt;p&gt;And manual works required to create a skeleton scene and import images to it, it&amp;rsquo;s not hard, just running some python scripts, but it&amp;rsquo;s still not so simple for non-programmers.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
-
-&lt;p&gt;Guess I&amp;rsquo;ll keep improving it, fixing bugs first, now the focus is character animation editor, and the game prototype. After that, I&amp;rsquo;ll add particle feature to the level editor.&lt;/p&gt;
-
-&lt;p&gt;I feel quite happy doing this kind of tool works, and actually it&amp;rsquo;s not hard to make it usable as a standalone project and let other people to use it. e.g. I can make a converter to generate cocos builder format, then it can be used in cocos2d projects. Or if I make my animation editor to export spriter&amp;rsquo;s xml syntax, it can be used in many other projects too.&lt;/p&gt;
-
-&lt;p&gt;And at least for myself and our graphic artists, we think that our homebrew tools are much easier to use and feature complete (for just our needs) comparing to the tools we&amp;rsquo;ve tried. e.g. cocos builder, sprite helper, and spriter. Not saying that my editors are better products, just they are tailored by exactly our need and my design approach, and since it&amp;rsquo;s integrated in the exact game process, the workflow is much better comparing to a 3rd party tools. Also our level is pretty big(currently the demo scene is about 20000 pixel wide, and the engine/editor can support much bigger usage), I can&amp;rsquo;t find a proper tool to handle such big scene.&lt;/p&gt;
-
-&lt;p&gt;Though making a generic tool will involve many not so interesting works, and it&amp;rsquo;s very hard to make it works for more people, and probably my tools are just too tailored to our need, so I think I will keep focusing on our games in the near future.&lt;/p&gt;
-
-&lt;p&gt;But anyway, I already have some demo scene editor running as OS X application, will make it downloadable in next few days, after I wrote a very basic manual about it. like Jakub commented in the original post, even if I decided to keep it private, it can still help others a bit, and maybe by using it in a experimental way, people can get some ideas about improving their own tools.&lt;/p&gt;
-
-&lt;p&gt;If you are interested to see more information about the editor, please leave comments, thanks.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll try to post more about technical details about some aspects of the editors, some hacks I used, and some mistakes I&amp;rsquo;ve overcomed.&lt;/p&gt;
-</description>
+      <description>It&amp;rsquo;s been more than a month since my post about the idea of game engine based on Marmalade and IwGame, after the post, spent many hours busy coding, now I&amp;rsquo;ve got the basic level editor up running, I think it&amp;rsquo;s pretty cool, so here are some details about it.
+Here is a screenshot of the level editor:
+ Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</description>
     </item>
     
   </channel>

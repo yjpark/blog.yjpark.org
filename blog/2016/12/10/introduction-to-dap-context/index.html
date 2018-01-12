@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>PlantUML Plugin for Octopress</title>
+  <title>Introduction to Dap Context</title>
 
   <meta name="author" content="YJ Park" />
 
   
 
-  <meta name="generator" content="Hugo 0.32.4" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -26,9 +26,9 @@
   <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
 
   
-  <meta property="og:title" content="PlantUML Plugin for Octopress" />
+  <meta property="og:title" content="Introduction to Dap Context" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/2012/04/30/plantuml-plugin-for-octopress//" />
+  <meta property="og:url" content="/" />
   <meta property="og:image" content="img/yjpark_icon.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
@@ -92,9 +92,9 @@
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
       <div class="post-heading">
-        <h1>PlantUML Plugin for Octopress</h1>
+        <h1>Introduction to Dap Context</h1>
         
-        <span class="post-meta">Posted on April 30, 2012</span>
+        <span class="post-meta">Posted on December 10, 2016</span>
       </div>
      </div>
   </div>
@@ -105,99 +105,54 @@
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
 	  
 
-<h2 id="what-is-plantuml">What is PlantUML?</h2>
+<p>Back in 2013, I was working on my first Unity3d game, it&rsquo;s a simplified RTS game for tablets, the first version took us (3 developers including me) about 2 years to hit the iOS app store, did learned quite some lessons during the process, wanted to write some blogs for a long time, though never really did.</p>
 
-<p><a href="http://plantuml.sourceforge.net/">PlantUML</a> is a component that allows to quickly write:</p>
+<p>We released the game at 2015, but the game wasn&rsquo;t successful commercially, and our small start-up company run out of money. I was still making games after that, planned to reuse some lib codes created along the way. Then I realised that the quality of these libs can be improved much (due to time pressure, and lack of experiences)</p>
+
+<p>The most useful module was a custom data context class I wroted, it was rather simple, just an object with a bunch of properties, and event channels, both can be watched, e.g. when a property been set to a new value, all listeners will be triggered by a callback. On top of these properties and channels, I create a simple layer to interact with the data context via requests, such as <code>get</code> or <code>set</code> or <code>fire</code>, then on top of that, I create a simple text parser so diffrent section in config files can trigger different action in the system, e.g.</p>
+
+<pre><code>&quot;selection&quot; : {
+    &quot;_&quot;: [
+        &quot;sprite/destroy?key=selection&quot;,
+        &quot;sprite/do?key=selection&amp;prefab=squads.effect_sprite#color=1,1,1,0&amp;sprite=flash&amp;zoom=1.0&amp;play.flash&amp;done.flash=destroy&quot;,
+    ]
+},
+</code></pre>
+
+<p>The first command will destroy the old selection sprite, the second command will create a new one (these objects are managed by a pool, so performance won&rsquo;t be affected), then change it&rsquo;s color, sprite, zoom value, then fire an event <code>play.flash</code> which is an animation created by HoTween in the prefab, then when the event <code>done.flash</code> been triggered (when the tween finished), destroy itself.</p>
+
+<p>This is used in our effect system, in the code, a bunch of entry points were defined, when certain things happened, the logic will check according section in the config file, then parse these commands and run them through the request system, which operates on the data contexts eventually.</p>
+
+<p>This works rather smoothly, so when non-dev members wants to tweak effects, they can just create prefabs, and writing commands to operate these prefabs, no code writing envolved, it&rsquo;s a small challenge for them to learn and master the syntax, though after some documents and practice, the art works and dev works were de-coupled properly.</p>
+
+<p>Later the same system was used for GUI elements, in slightly different way, and also been used for charactor&rsquo;s properties storage, though quite some boilerplate codes was written to make things work, the parsing logic became quite messy after adding more features, such as delayed execution, relative value changes&hellip;</p>
+
+<h2 id="what-s-dap">What&rsquo;s Dap</h2>
+
+<p>So I was working on the second version of my library codes, C# version, mainly used in Unity3d, though much of the codes are not limited to Unity3d, and can been used with DotNet, Mono, and Xamarin as well.</p>
+
+<p><code>Dap</code> stands for <code>Distributed Application Platform</code>, the plan is to create conventions, api, and libraries for distributed applications, in my mind, it means:</p>
 
 <ul>
-<li>sequence diagram,</li>
-<li>use case diagram,</li>
-<li>class diagram,</li>
-<li>activity diagram,</li>
-<li>component diagram,</li>
-<li>state diagram</li>
-<li>object diagram</li>
+<li>Multiple platform support</li>
+<li>Multiple devices at the same time</li>
+<li>Real-time communication and colabration from these devices</li>
 </ul>
 
-<p>I really like the idea of writing UML diagram with plain text. Since it&rsquo;s totally plaintext, it&rsquo;s very easy to do diff and version track, also you don&rsquo;t need to do anything about the layout (the text itself looks pretty good too).</p>
+<h2 id="where-s-the-code">Where&rsquo;s the Code</h2>
 
-<p>Also the syntax of it is very well designed, and the generated diagrams looks really nice, so I use PlantUML for technical documentation with trac and sphinx.</p>
+<p>The core lib is available at github, there is no documents at all, and extra libraries (not open sourced yet) are needed to use it properly in real project, but the source codes can be used for understanding the future related blogs.</p>
 
-<h2 id="the-plugin">The Plugin</h2>
+<ul>
+<li><a href="https://github.com/angeldnd/dap.core.csharp">https://github.com/angeldnd/dap.core.csharp</a></li>
+</ul>
 
-<p>After switching <a href="http://octopress.org/">Octopress</a> to my blog platform, I was looking for a way to integrate PlantUML within it, though I can&rsquo;t find one, so I wrote this very simple jekyll plugin (Octopress is based on <a href="http://jekyllrb.com/">Jekyll</a>).</p>
-
-<p><a href="https://github.com/yjpark/jekyll-plantuml">jekyll-plantuml</a></p>
-
-<!-- more -->
-
-<h2 id="configuration">Configuration</h2>
-
-<p>You need to download the plantuml.jar file from <a href="http://plantuml.sourceforge.net/download.html">http://plantuml.sourceforge.net/download.html</a></p>
-
-<p>In your _config.xml, setup plantuml_jar to the downloaded jar file, e.g.</p>
-
-<pre><code>plantuml_jar: ../_lib/plantuml.jar
-plantuml_background_color: &quot;#f8f8f8&quot;
-</code></pre>
-
-<p>The plantuml_background_color is optional, which will change the background of the generated diagram.</p>
-
-<h2 id="usage">Usage</h2>
-
-<p>Just wrap the diagram text in &ldquo;plantuml&rdquo; block, e.g.</p>
-
-<pre><code>{% plantuml %}
-Alice -&gt; Bob: Authentication Request
-Bob --&gt; Alice: Authentication Response
-
-Alice -&gt; Bob: Another authentication Request
-Alice &lt;-- Bob: another authentication Response
-{% endplantuml %}
-</code></pre>
-
-<h2 id="an-example">An Example</h2>
-
-
-<figure >
-    
-        <img src="/img/plantuml/plantuml-example.png" />
-    
-    
-</figure>
-
+<h1 id="ttttttt">TTTTTTT</h1>
 
 <!--
-{% plantuml %}
-   actor Tester as QA
-   participant "Issue Tracking\nSystem" as CQ
-   actor Developer as RD
-   participant "Configuration" as P4C
-   participant "Component\nTopic Branch" as P4CTB
-   participant "Customer\nRelease Branch" as P4CRB
-   actor "Release Engineer" as BM
-
-   QA   ->      CQ:     Critical bug\n reported
-   group Fix
-      RD   <--     CQ:     Assigned
-      RD   ->      P4C:    Create bugfix\n configuration
-      RD   ->      P4CTB:  Create topic branch (by tools)
-      RD   ->      P4CTB:  Working on the bugfix
-      RD   ->      CQ:     Resolve
-   end group
-   group Virification
-      QA   <--     CQ:     Verify
-      QA   <-      P4C:    Get target to verify
-      QA   ->      CQ:     Confirm
-   end group
-   group Release
-      BM   <--     CQ:     Release request received
-      loop Multiple customers
-         BM   ->      P4CRB:  Update customer\n branches
-         P4CTB ->     P4CRB:  Auto integrate\n (by tools)
-      end loop
-   end group
-{% endplantuml %}
+References
+----------
+- [GUI Architectures - Martin Fowler] (http://www.martinfowler.com/eaaDev/uiArchs.html)
 -->
 
 	</div>
@@ -209,13 +164,9 @@ Alice &lt;-- Bob: another authentication Response
     <ul class="pager blog-pager">
       
       <li class="previous">
-        <a href="http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/" data-toggle="tooltip" data-placement="top" title="Movable Write Open Sourced">&larr; Previous Post</a>
+        <a href="http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/" data-toggle="tooltip" data-placement="top" title="SILP: Simple Individual Line Preprocessor">&larr; Previous Post</a>
       </li>
       
-      
-      <li class="next">
-        <a href="http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/" data-toggle="tooltip" data-placement="top" title="Game Engine Based on Marmalade and IwGame">Next Post &rarr;</a>
-      </li>
       
     </ul>
   </div>
@@ -225,25 +176,20 @@ Alice &lt;-- Bob: another authentication Response
 <div class="row disqus-comments">
   <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
     <div id="disqus_thread"></div>
-<script>
-    var disqus_config = function () {
-    
-    
-    
-    };
+<script type="text/javascript">
+    var disqus_shortname = 'yjpark';
+    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2016\/12\/10\/introduction-to-dap-context\/';
+    var disqus_title = 'Introduction to Dap Context';
+    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2016\/12\/10\/introduction-to-dap-context\/';
+
     (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "yjpark" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </div>
 </div>
 
@@ -304,7 +250,7 @@ Alice &lt;-- Bob: another authentication Response
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
-    		  2017
+    		  2016
 
     		  
     		  &nbsp;&bull;&nbsp;
@@ -334,7 +280,7 @@ Alice &lt;-- Bob: another authentication Response
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-2120845-8', 'auto');
 ga('send', 'pageview');

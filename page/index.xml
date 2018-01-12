@@ -9,7 +9,9 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <atom:link href="http://blog.yjpark.org/page/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://blog.yjpark.org/page/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title></title>
@@ -17,10 +19,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/page/about/</guid>
-      <description>
-
-&lt;h1 id=&#34;todo&#34;&gt;TODO&lt;/h1&gt;
-</description>
+      <description> TODO </description>
     </item>
     
   </channel>

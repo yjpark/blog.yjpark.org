@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Living and Programming - YJ Park&#39;s Blog</title>
+    <link>http://blog.yjpark.org/categories/</link>
+    <description>Recent content in Categories on Living and Programming - YJ Park&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
+    <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
+    
+	<atom:link href="http://blog.yjpark.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Code</title>
+      <link>http://blog.yjpark.org/categories/code/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Doc</title>
+      <link>http://blog.yjpark.org/categories/doc/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/doc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Game</title>
+      <link>http://blog.yjpark.org/categories/game/</link>
+      <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/game/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ios</title>
+      <link>http://blog.yjpark.org/categories/ios/</link>
+      <pubDate>Sun, 22 Apr 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Iwgame</title>
+      <link>http://blog.yjpark.org/categories/iwgame/</link>
+      <pubDate>Fri, 12 Oct 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/iwgame/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Marmalade</title>
+      <link>http://blog.yjpark.org/categories/marmalade/</link>
+      <pubDate>Sun, 14 Apr 2013 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/marmalade/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Movablewrite</title>
+      <link>http://blog.yjpark.org/categories/movablewrite/</link>
+      <pubDate>Sun, 22 Apr 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/movablewrite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pettyfun</title>
+      <link>http://blog.yjpark.org/categories/pettyfun/</link>
+      <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/pettyfun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pfgame</title>
+      <link>http://blog.yjpark.org/categories/pfgame/</link>
+      <pubDate>Tue, 06 Nov 2012 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/pfgame/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Silp</title>
+      <link>http://blog.yjpark.org/categories/silp/</link>
+      <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/silp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tool</title>
+      <link>http://blog.yjpark.org/categories/tool/</link>
+      <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/tool/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

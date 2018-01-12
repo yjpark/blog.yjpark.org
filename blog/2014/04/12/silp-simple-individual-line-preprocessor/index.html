@@ -12,7 +12,7 @@
 
   
 
-  <meta name="generator" content="Hugo 0.17-DEV" />
+  <meta name="generator" content="Hugo 0.32.4" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -28,7 +28,7 @@
   
   <meta property="og:title" content="SILP: Simple Individual Line Preprocessor" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/" />
+  <meta property="og:url" content="/blog/2014/04/12/silp-simple-individual-line-preprocessor//" />
   <meta property="og:image" content="img/yjpark_icon.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
@@ -103,9 +103,7 @@
 <article>
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-	  
-
-<h2 id="why-bother-with-a-preprocessor">Why bother with a preprocessor?</h2>
+	  <h2 id="why-bother-with-a-preprocessor">Why bother with a preprocessor?</h2>
 
 <p>I was quite busy working on our <a href="http://emberconflict.com/">RTS game on iPad</a> for almost a year, we are quite close to our first public version now. It&rsquo;s developed with Unity3d, using uLink as the network library. Created a quite nice data context system on Unity3d, so non-developers can update pure visual part of the system without developers&rsquo; help, will write some entries on it later when got time.</p>
 
@@ -114,6 +112,8 @@
 <p>There are many discussions about whether a programming language should include preprocessor, most people seems agree that preprocessor is too error-prune and sacrifice readability too badly, and there should be seldom cases that an alternative can&rsquo;t be find to replace the preprocessor usage.</p>
 
 <p>I agree that in most cases we don&rsquo;t need preprocessor though there are several cases that I would like to have a preprocessor in my tool set for cleaner codes or can remove some trivial typing. Here are 2 examples:</p>
+
+<p></p>
 
 <h3 id="common-import-statements">Common Import Statements</h3>
 
@@ -254,7 +254,6 @@ if (error != null) {
 <p>Maybe put the language configuration into the <code>silp_xx.md</code> file as well, though it might be more complicate to use and error-prone, so not sure about how to do this yet.</p>
 
 <p>There are some interesting possibilities with editors here, e.g. set up code folding for SILP line and the generated line.</p>
-
 	</div>
   </div>
 </article>
@@ -280,20 +279,25 @@ if (error != null) {
 <div class="row disqus-comments">
   <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
     <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'yjpark';
-    var disqus_identifier = 'http:\/\/blog.yjpark.org\/blog\/2014\/04\/12\/silp-simple-individual-line-preprocessor\/';
-    var disqus_title = 'SILP: Simple Individual Line Preprocessor';
-    var disqus_url = 'http:\/\/blog.yjpark.org\/blog\/2014\/04\/12\/silp-simple-individual-line-preprocessor\/';
-
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yjpark" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </div>
 </div>
 
@@ -384,7 +388,7 @@ if (error != null) {
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-2120845-8', 'auto');
 ga('send', 'pageview');
