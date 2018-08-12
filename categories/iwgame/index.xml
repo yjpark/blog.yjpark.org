@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Iwgame on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>http://blog.yjpark.org/categories/iwgame/</link>
+    <link>/categories/iwgame/</link>
     <description>Recent content in Iwgame on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,15 +11,15 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Fri, 12 Oct 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.yjpark.org/categories/iwgame/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/iwgame/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Level Editor Based on IwGame - Introduction</title>
-      <link>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</link>
+      <link>/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</link>
       <pubDate>Fri, 12 Oct 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</guid>
+      <guid>/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</guid>
       <description>It&amp;rsquo;s been more than a month since my post about the idea of game engine based on Marmalade and IwGame, after the post, spent many hours busy coding, now I&amp;rsquo;ve got the basic level editor up running, I think it&amp;rsquo;s pretty cool, so here are some details about it.
 Here is a screenshot of the level editor:
  Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</description>
@@ -27,20 +27,20 @@ Here is a screenshot of the level editor:
     
     <item>
       <title>OpenGL ES 2.0 Shader in Marmalade</title>
-      <link>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</link>
+      <link>/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</link>
       <pubDate>Tue, 02 Oct 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</guid>
+      <guid>/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</guid>
       <description>Marmalade provide good support for writing custom shaders in it, though it&amp;rsquo;s not easy to get all the information to start writing the first shader in my case, here is some information that I gathered during the process.
 I decided to only support Open GL 2.0 Shaders in our games, most current devices support it, and as a small team, supporting older devices is a bit hard since we don&amp;rsquo;t have testers for now, also the architect of 2.</description>
     </item>
     
     <item>
       <title>Game Engine Based on Marmalade and IwGame</title>
-      <link>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</link>
+      <link>/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</link>
       <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</guid>
+      <guid>/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</guid>
       <description>Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual games, as the tech lead, I need to choose a development way for our first batch of games.
 Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&amp;rsquo;s better for the team and the graphic quality of the games.</description>
     </item>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Silp on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>http://blog.yjpark.org/categories/silp/</link>
+    <link>/categories/silp/</link>
     <description>Recent content in Silp on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,15 +11,15 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sat, 12 Apr 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.yjpark.org/categories/silp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/silp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SILP: Simple Individual Line Preprocessor</title>
-      <link>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</link>
+      <link>/blog/2014/04/12/silp-simple-individual-line-preprocessor/</link>
       <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</guid>
+      <guid>/blog/2014/04/12/silp-simple-individual-line-preprocessor/</guid>
       <description>&lt;h2 id=&#34;why-bother-with-a-preprocessor&#34;&gt;Why bother with a preprocessor?&lt;/h2&gt;
 
 &lt;p&gt;I was quite busy working on our &lt;a href=&#34;http://emberconflict.com/&#34;&gt;RTS game on iPad&lt;/a&gt; for almost a year, we are quite close to our first public version now. It&amp;rsquo;s developed with Unity3d, using uLink as the network library. Created a quite nice data context system on Unity3d, so non-developers can update pure visual part of the system without developers&amp;rsquo; help, will write some entries on it later when got time.&lt;/p&gt;

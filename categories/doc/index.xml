@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Doc on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>http://blog.yjpark.org/categories/doc/</link>
+    <link>/categories/doc/</link>
     <description>Recent content in Doc on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,15 +11,15 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sat, 07 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.yjpark.org/categories/doc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/doc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Introduction to Dap Context</title>
-      <link>http://blog.yjpark.org/blog/2017/01/07/introduction-to-dap-context/</link>
+      <link>/blog/2017/01/07/introduction-to-dap-context/</link>
       <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2017/01/07/introduction-to-dap-context/</guid>
+      <guid>/blog/2017/01/07/introduction-to-dap-context/</guid>
       <description>&lt;p&gt;Back in 2013, I was working on my first Unity3d game, it&amp;rsquo;s a simplified RTS game for tablets, the first version took us (3 developers including me) about 2 years to hit the iOS app store, did learned quite some lessons during the process, wanted to write some blogs for a long time, though never really did.&lt;/p&gt;
 
 &lt;p&gt;We released the game at 2015, but the game wasn&amp;rsquo;t successful commercially, and our small start-up company run out of money. I was still making games after that, planned to reuse some lib codes created along the way. Then I realised that the quality of these libs can be improved much (due to time pressure, and lack of experiences)&lt;/p&gt;

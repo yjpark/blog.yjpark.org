@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pettyfun on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>http://blog.yjpark.org/categories/pettyfun/</link>
+    <link>/categories/pettyfun/</link>
     <description>Recent content in Pettyfun on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,25 +11,25 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 30 Aug 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.yjpark.org/categories/pettyfun/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/pettyfun/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Game Engine Based on Marmalade and IwGame</title>
-      <link>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</link>
+      <link>/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</link>
       <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</guid>
+      <guid>/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</guid>
       <description>Since August 2012, 2 developers(including me) and 2 graphic designers come together and started a small game studio to work on some mobile casual games, as the tech lead, I need to choose a development way for our first batch of games.
 Our games will be mostly 2D games, might with some 3D charactors, though the scenes or levels will be 2D, I think that&amp;rsquo;s better for the team and the graphic quality of the games.</description>
     </item>
     
     <item>
       <title>Movable Write Open Sourced</title>
-      <link>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</link>
+      <link>/blog/2012/04/22/movable-write-open-sourced/</link>
       <pubDate>Sun, 22 Apr 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</guid>
+      <guid>/blog/2012/04/22/movable-write-open-sourced/</guid>
       <description>What is Movable Write Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.
 But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&amp;rsquo;ve been working on Web development for a few years.</description>
     </item>

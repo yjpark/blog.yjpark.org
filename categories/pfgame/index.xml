@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pfgame on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>http://blog.yjpark.org/categories/pfgame/</link>
+    <link>/categories/pfgame/</link>
     <description>Recent content in Pfgame on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,35 +11,35 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Tue, 06 Nov 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.yjpark.org/categories/pfgame/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/pfgame/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Initial Release of s3eBass - Marmalade extension for BASS audio engine</title>
-      <link>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</link>
+      <link>/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</link>
       <pubDate>Tue, 06 Nov 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</guid>
+      <guid>/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</guid>
       <description>The audio and music are playing a very important role in games, for our future games, I want them to have good quality of audio and music, e.g. don&amp;rsquo;t use short loop of mp3 music, but something much longer and more dynamic without taking much space. My first thought is to use MIDI+soundfonts or some mod-based music, so I spent some time to try to see the possibility.
 There are quite some libraries to support xm playback, though I can&amp;rsquo;t find any Marmalade extensions on the web, in the forum someone mentioned that they made use of FMOD in their game, though there is no code shared, and FMOD is quite expansive.</description>
     </item>
     
     <item>
       <title>Convert Cocos2D Font (BMFont) to Marmalade&#39;s GxFont</title>
-      <link>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</link>
+      <link>/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</link>
       <pubDate>Mon, 05 Nov 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</guid>
+      <guid>/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</guid>
       <description>In 2D games, it&amp;rsquo;s typical to use image based font for UI elements, which can provide better graphic result, fast rendering, and usually smaller then true type fonts (especially if you want to support languages with big character set, e.g. Chinese).
 There are quite some tools to generate such font images, I&amp;rsquo;m using bmGlyph as the font generator, it can publish the popular &amp;ldquo;Cocos2d / BMFont&amp;rdquo; format, though it&amp;rsquo;s not directly usable in Marmalade.</description>
     </item>
     
     <item>
       <title>Level Editor Based on IwGame - Introduction</title>
-      <link>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</link>
+      <link>/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</link>
       <pubDate>Fri, 12 Oct 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</guid>
+      <guid>/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</guid>
       <description>It&amp;rsquo;s been more than a month since my post about the idea of game engine based on Marmalade and IwGame, after the post, spent many hours busy coding, now I&amp;rsquo;ve got the basic level editor up running, I think it&amp;rsquo;s pretty cool, so here are some details about it.
 Here is a screenshot of the level editor:
  Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</description>
