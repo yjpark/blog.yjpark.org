@@ -147,7 +147,7 @@ There are quite some tools to generate such font images, I&amp;rsquo;m using bmG
       <guid>/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</guid>
       <description>It&amp;rsquo;s been more than a month since my post about the idea of game engine based on Marmalade and IwGame, after the post, spent many hours busy coding, now I&amp;rsquo;ve got the basic level editor up running, I think it&amp;rsquo;s pretty cool, so here are some details about it.
 Here is a screenshot of the level editor:
- Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</description>
+  Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.</description>
     </item>
     
     <item>
@@ -197,6 +197,19 @@ But my feeling was that by only spend small amount of time like it, I can never 
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>/page/about/</guid>
       <description> TODO </description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ` [outputs] home = [&amp;quot;HTML&amp;quot;, &amp;quot;JSON&amp;quot;] \`</description>
     </item>
     
   </channel>

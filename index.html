@@ -12,7 +12,7 @@
 
   
 
-  <meta name="generator" content="Hugo 0.32.4" />
+  <meta name="generator" content="Hugo 0.46" />
 
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -31,10 +31,11 @@
   <meta property="og:url" content="//" />
   <meta property="og:image" content="img/yjpark_icon.png" />
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
 
@@ -54,6 +55,12 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Search" href="/search">Search</a>
+  	      </li>
+  	    
       
         
           <li>
@@ -83,7 +90,6 @@
   </div>
 </nav>
 
-    <canvas id="paper-background" resize></canvas>
 
     <div role="main" class="container main-content">
 
@@ -292,7 +298,7 @@ There are quite some tools to generate such font images, I&rsquo;m using bmGlyph
           <div class="post-entry">
             It&rsquo;s been more than a month since my post about the idea of game engine based on Marmalade and IwGame, after the post, spent many hours busy coding, now I&rsquo;ve got the basic level editor up running, I think it&rsquo;s pretty cool, so here are some details about it.
 Here is a screenshot of the level editor:
- Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.
+  Level Editor Screen Shot 1   Updates about Original Post Before talking about the level editor, first I want to share some updates about Marmalade and IwGame in the last month.
       	  <a href="/blog/2012/10/12/level-editor-based-on-iwgame-introduction/" class="post-read-more">[Read&nbsp;More]</a>
           </div>
 
@@ -420,23 +426,30 @@ Our games will be mostly 2D games, might with some 3D charactors, though the sce
   </div>
 </footer>
 
-<script src="/js/jquery-1.11.2.min.js"></script>
+
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
 
-<script src="/js/paper-full.min.js"></script>
-<script type="text/paperscript" src="js/paper-sea.js" canvas="paper-background">
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-2120845-8', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-2120845-8', 'auto');
-ga('send', 'pageview');
+    <canvas id="paper-background" resize></canvas>
+
+<script src="/js/paper-full.min.js"></script>
+<script type="text/paperscript" src="/js/paper-sea.js" canvas="paper-background">
 </script>
 
 
