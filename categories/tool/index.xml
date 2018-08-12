@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tool on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>/categories/tool/</link>
+    <link>http://blog.yjpark.org/categories/tool/</link>
     <description>Recent content in Tool on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,15 +11,15 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sat, 12 Apr 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yjpark.org/categories/tool/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SILP: Simple Individual Line Preprocessor</title>
-      <link>/blog/2014/04/12/silp-simple-individual-line-preprocessor/</link>
+      <link>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</link>
       <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>/blog/2014/04/12/silp-simple-individual-line-preprocessor/</guid>
+      <guid>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</guid>
       <description>&lt;h2 id=&#34;why-bother-with-a-preprocessor&#34;&gt;Why bother with a preprocessor?&lt;/h2&gt;
 
 &lt;p&gt;I was quite busy working on our &lt;a href=&#34;http://emberconflict.com/&#34;&gt;RTS game on iPad&lt;/a&gt; for almost a year, we are quite close to our first public version now. It&amp;rsquo;s developed with Unity3d, using uLink as the network library. Created a quite nice data context system on Unity3d, so non-developers can update pure visual part of the system without developers&amp;rsquo; help, will write some entries on it later when got time.&lt;/p&gt;
@@ -35,10 +35,10 @@
     
     <item>
       <title>Save Day One Summary to Evernote</title>
-      <link>/blog/2014/01/21/save-day-one-summary-to-evernote/</link>
+      <link>http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/</link>
       <pubDate>Tue, 21 Jan 2014 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>/blog/2014/01/21/save-day-one-summary-to-evernote/</guid>
+      <guid>http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/</guid>
       <description>&lt;h2 id=&#34;why-not-just-use-evernote&#34;&gt;Why Not Just Use Evernote?&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve been using Evernote for several years, which is great, the best features to me are:&lt;/p&gt;
@@ -66,10 +66,10 @@
     
     <item>
       <title>PlantUML Plugin for Octopress</title>
-      <link>/blog/2012/04/30/plantuml-plugin-for-octopress/</link>
+      <link>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</link>
       <pubDate>Mon, 30 Apr 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>/blog/2012/04/30/plantuml-plugin-for-octopress/</guid>
+      <guid>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</guid>
       <description>What is PlantUML? PlantUML is a component that allows to quickly write:
  sequence diagram, use case diagram, class diagram, activity diagram, component diagram, state diagram object diagram  I really like the idea of writing UML diagram with plain text. Since it&amp;rsquo;s totally plaintext, it&amp;rsquo;s very easy to do diff and version track, also you don&amp;rsquo;t need to do anything about the layout (the text itself looks pretty good too).</description>
     </item>

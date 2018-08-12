@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Movablewrite on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>/categories/movablewrite/</link>
+    <link>http://blog.yjpark.org/categories/movablewrite/</link>
     <description>Recent content in Movablewrite on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,15 +11,15 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sun, 22 Apr 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/movablewrite/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yjpark.org/categories/movablewrite/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Movable Write Open Sourced</title>
-      <link>/blog/2012/04/22/movable-write-open-sourced/</link>
+      <link>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</link>
       <pubDate>Sun, 22 Apr 2012 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>/blog/2012/04/22/movable-write-open-sourced/</guid>
+      <guid>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</guid>
       <description>What is Movable Write Back in 2010, I already had some experiences on iOS development. Did wrote some very simple application to fetch information over HTTP-RPC to a trac instance, and wrote a very simple game with Cocos2D and Box2D. Did spend some time to catch up with the versions or iOS updates and read about the new APIs.
 But my feeling was that by only spend small amount of time like it, I can never learn enough to have real experience on it, and I&amp;rsquo;ve been working on Web development for a few years.</description>
     </item>

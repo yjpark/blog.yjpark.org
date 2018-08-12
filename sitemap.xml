@@ -3,175 +3,175 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/2017/08/12/functional-reactive-actors-in-fsharp/</loc>
+    <loc>http://blog.yjpark.org/blog/2017/08/12/functional-reactive-actors-in-fsharp/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2017/01/07/introduction-to-dap-context/</loc>
+    <loc>http://blog.yjpark.org/blog/2017/01/07/introduction-to-dap-context/</loc>
     <lastmod>2017-01-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2014/04/12/silp-simple-individual-line-preprocessor/</loc>
+    <loc>http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/</loc>
     <lastmod>2014-04-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2014/01/21/save-day-one-summary-to-evernote/</loc>
+    <loc>http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/</loc>
     <lastmod>2014-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2013/04/14/marmalade-tricks-and-tips/</loc>
+    <loc>http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/</loc>
     <lastmod>2013-04-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/11/06/initial-release-of-s3ebass-marmalade-extension-for-bass-audio-engine/</loc>
     <lastmod>2012-11-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/11/05/convert-cocos2d-font-bmfont-to-marmalades-gxfont/</loc>
     <lastmod>2012-11-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/10/12/level-editor-based-on-iwgame-introduction/</loc>
     <lastmod>2012-10-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/10/02/opengl-es-2-dot-0-shader-in-marmalade/</loc>
     <lastmod>2012-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/08/30/game-engine-based-on-marmalade-and-iwgame/</loc>
     <lastmod>2012-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/04/30/plantuml-plugin-for-octopress/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/04/30/plantuml-plugin-for-octopress/</loc>
     <lastmod>2012-04-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2012/04/22/movable-write-open-sourced/</loc>
+    <loc>http://blog.yjpark.org/blog/2012/04/22/movable-write-open-sourced/</loc>
     <lastmod>2012-04-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/page/about/</loc>
+    <loc>http://blog.yjpark.org/page/about/</loc>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>http://blog.yjpark.org/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/code/</loc>
+    <loc>http://blog.yjpark.org/categories/code/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/dap/</loc>
+    <loc>http://blog.yjpark.org/categories/dap/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/doc/</loc>
+    <loc>http://blog.yjpark.org/categories/doc/</loc>
     <lastmod>2017-01-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/fsharp/</loc>
+    <loc>http://blog.yjpark.org/categories/fsharp/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/game/</loc>
+    <loc>http://blog.yjpark.org/categories/game/</loc>
     <lastmod>2012-08-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/ios/</loc>
+    <loc>http://blog.yjpark.org/categories/ios/</loc>
     <lastmod>2012-04-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/iwgame/</loc>
+    <loc>http://blog.yjpark.org/categories/iwgame/</loc>
     <lastmod>2012-10-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>http://blog.yjpark.org/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/marmalade/</loc>
+    <loc>http://blog.yjpark.org/categories/marmalade/</loc>
     <lastmod>2013-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/movablewrite/</loc>
+    <loc>http://blog.yjpark.org/categories/movablewrite/</loc>
     <lastmod>2012-04-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/page/</loc>
+    <loc>http://blog.yjpark.org/page/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/pettyfun/</loc>
+    <loc>http://blog.yjpark.org/categories/pettyfun/</loc>
     <lastmod>2012-08-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/pfgame/</loc>
+    <loc>http://blog.yjpark.org/categories/pfgame/</loc>
     <lastmod>2012-11-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>http://blog.yjpark.org/post/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/search/</loc>
+    <loc>http://blog.yjpark.org/search/</loc>
     <priority>0.1</priority>
   </url>
   
   <url>
-    <loc>/categories/silp/</loc>
+    <loc>http://blog.yjpark.org/categories/silp/</loc>
     <lastmod>2014-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>http://blog.yjpark.org/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/tool/</loc>
+    <loc>http://blog.yjpark.org/categories/tool/</loc>
     <lastmod>2014-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

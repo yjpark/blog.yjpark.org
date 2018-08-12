@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Living and Programming - YJ Park&#39;s Blog</title>
-    <link>/tags/</link>
+    <link>http://blog.yjpark.org/tags/</link>
     <description>Recent content in Tags on Living and Programming - YJ Park&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -10,7 +10,7 @@
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yjpark.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
