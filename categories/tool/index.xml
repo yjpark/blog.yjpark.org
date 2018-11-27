@@ -28,9 +28,7 @@
 
 &lt;p&gt;There are many discussions about whether a programming language should include preprocessor, most people seems agree that preprocessor is too error-prune and sacrifice readability too badly, and there should be seldom cases that an alternative can&amp;rsquo;t be find to replace the preprocessor usage.&lt;/p&gt;
 
-&lt;p&gt;I agree that in most cases we don&amp;rsquo;t need preprocessor though there are several cases that I would like to have a preprocessor in my tool set for cleaner codes or can remove some trivial typing. Here are 2 examples:&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;I agree that in most cases we don&amp;rsquo;t need preprocessor though there are several cases that I would like to have a preprocessor in my tool set for cleaner codes or can remove some trivial typing. Here are 2 examples:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -59,9 +57,7 @@
 &lt;li&gt;Switch back&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Feels a bit heavy, also there is no information about when I did add the line into the note.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Feels a bit heavy, also there is no information about when I did add the line into the note.&lt;/p&gt;</description>
     </item>
     
     <item>

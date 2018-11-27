@@ -3,8 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://blog.yjpark.org/blog/2017/08/12/functional-reactive-actors-in-fsharp/</loc>
-    <lastmod>2017-08-12T00:00:00+00:00</lastmod>
+    <loc>http://blog.yjpark.org/blog/2018/09/01/build-dotnet-projects-with-fake/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.yjpark.org/blog/2018/08/12/functional-reactive-actors-in-fsharp/</loc>
+    <lastmod>2018-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -73,13 +78,13 @@
   
   <url>
     <loc>http://blog.yjpark.org/categories/code/</loc>
-    <lastmod>2017-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.yjpark.org/categories/dap/</loc>
-    <lastmod>2017-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -91,7 +96,7 @@
   
   <url>
     <loc>http://blog.yjpark.org/categories/fsharp/</loc>
-    <lastmod>2017-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -115,7 +120,7 @@
   
   <url>
     <loc>http://blog.yjpark.org/</loc>
-    <lastmod>2017-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -150,7 +155,7 @@
   
   <url>
     <loc>http://blog.yjpark.org/post/</loc>
-    <lastmod>2017-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

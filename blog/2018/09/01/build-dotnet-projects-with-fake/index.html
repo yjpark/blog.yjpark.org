@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Build DotNet Projects with Fake</title>
+
+  <meta name="author" content="YJ Park" />
+
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
+  
+  <meta property="og:title" content="Build DotNet Projects with Fake" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/2018/09/01/build-dotnet-projects-with-fake//" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Search" href="/search/">Search</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>Build DotNet Projects with Fake</h1>
+        
+        <span class="post-meta">Posted on September 1, 2018</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  <p>I&rsquo;ve been doing quite some F# coding lately, which is really nice, plan to write more about F# later, here I&rsquo;m gonna talk about how to build DotNet projects with Fake.</p>
+
+<p>I&rsquo;ve put common logic as libraries, then can share them easily across multiple projects, so I need to create NuGet packages. I&rsquo;ve already created more than a dozen individual libraries, it&rsquo;s clear that I need an automated process to manage them, or it&rsquo;s very tedious to keep proper version of libraries in each project.</p>
+
+<p>I&rsquo;ve did some small work around Fake to make such process, which works quite nicely for me, I plan to write two articles on this, this one will explain the basic structure, and how I use it to manage multiple projects easily, the next one will talk about how to create NuGet package, and how to use a hacky way to do local development easily.</p>
+
+<h2 id="what-s-fake-and-why-need-it">What&rsquo;s Fake and Why Need It.</h2>
+
+<p>Here is the slogan form Fake&rsquo;s official site: <a href="https://fake.build/">https://fake.build/</a></p>
+
+<p><code>F# MAKE 5 - A DSL FOR BUILD TASKS AND MORE THE POWER OF F# - ANYWHERE - ANYTIME</code></p>
+
+<p>It&rsquo;s a <code>make</code> like system, but instead of a special purpose DSL, it&rsquo;s standard F#, with addition of modules and syntax to make common tasks easily. You can define dependencies of targets (a task in Fake&rsquo;s terminology) very easily with it&rsquo;s <code>==&gt;</code> operator.</p>
+
+<p>Since it&rsquo;s standard F#, you can have type check for the make script, and quite nice IDE support in VS Code (haven&rsquo;t tried other IDEs yet). Here is the code snippet from tutorial</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#75715e">// Targets
+</span><span style="color:#75715e"></span>Target.create <span style="color:#e6db74">&#34;Clean&#34;</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span>
+  Shell.cleanDir buildDir
+<span style="color:#f92672">)</span>
+
+Target.create <span style="color:#e6db74">&#34;BuildApp&#34;</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span>
+  <span style="color:#f92672">!!</span> <span style="color:#e6db74">&#34;src/app/**/*.csproj&#34;</span>
+    <span style="color:#f92672">|&gt;</span> MSBuild.runRelease id buildDir <span style="color:#e6db74">&#34;Build&#34;</span>
+    <span style="color:#f92672">|&gt;</span> Trace.logItems <span style="color:#e6db74">&#34;AppBuild-Output: &#34;</span>
+<span style="color:#f92672">)</span>
+
+Target.create <span style="color:#e6db74">&#34;Default&#34;</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span>
+  Trace.trace <span style="color:#e6db74">&#34;Hello World from FAKE&#34;</span>
+<span style="color:#f92672">)</span>
+
+<span style="color:#66d9ef">open</span> Fake.Core.TargetOperators
+
+<span style="color:#e6db74">&#34;Clean&#34;</span>
+  <span style="color:#f92672">==&gt;</span> <span style="color:#e6db74">&#34;BuildApp&#34;</span>
+  <span style="color:#f92672">==&gt;</span> <span style="color:#e6db74">&#34;Default&#34;</span>
+
+<span style="color:#75715e">// start build
+</span><span style="color:#75715e"></span>Target.runOrDefault <span style="color:#e6db74">&#34;Default&#34;</span></code></pre></div>
+
+<p>Nice and clean, isn&rsquo;t it?</p>
+
+<p>Though in practice, this kind of simple approach not working for me.</p>
+
+<ul>
+<li>First of all, don&rsquo;t really like the build targets as string here, which is error prune, and won&rsquo;t benefit from compiler for checks, a union type will be better, though won&rsquo;t fit to fake&rsquo;s API easily, the best approach to me is that no need to define these standard targets manually, should be able to generate them by convention.</li>
+<li>Secondly, since building several projects can take time, I would like to be able to just operate on specific project if I want to, I can <code>cd</code> to certain folder and run <code>dotnet</code> commands there in a shell, though it&rsquo;s a bit tedious to switch current folder back and forth all the time.</li>
+<li>Also, most projects are having similar tasks, but with the out-of-box fake, still need to write some boilerplate codes for each project, which is quite tedious.</li>
+</ul>
+
+<h2 id="introducing-dap-build">Introducing Dap.Build</h2>
+
+<p>So after some time tinkering around it, I&rsquo;ve create a simple package for this, which is on GitHub and NuGet:</p>
+
+<ul>
+<li><p><a href="https://github.com/yjpark/dap.build.fsharp">https://github.com/yjpark/dap.build.fsharp</a></p></li>
+
+<li><p><a href="https://www.nuget.org/packages/dap.build">https://www.nuget.org/packages/dap.build</a></p></li>
+</ul>
+
+<p>The following example is used in a library project (not open sourced yet, pushed to private nuget ATM), which includes 13 libraries, with just 30 lines of codes, all of them have individual tasks to clean/restore/build/pack/push&hellip; and aggragated tasks to build all, restore all &hellip; and all the targets are with properly dependencies.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#f92672">#</span>r <span style="color:#e6db74">&#34;paket: groupref Build //&#34;</span>
+<span style="color:#f92672">#</span>load <span style="color:#e6db74">&#34;.fake/build.fsx/intellisense.fsx&#34;</span>
+
+<span style="color:#66d9ef">open</span> Fake.Core
+<span style="color:#66d9ef">open</span> Fake.IO.Globbing.Operators
+
+<span style="color:#66d9ef">module</span> NuGet <span style="color:#f92672">=</span> Dap.Build.NuGet
+
+<span style="color:#66d9ef">let</span> feed <span style="color:#f92672">=</span>
+    NuGet.Feed.Create <span style="color:#f92672">(</span>
+        server <span style="color:#f92672">=</span> NuGet.ProGet <span style="color:#e6db74">&#34;https://nuget.yjpark.org/nuget/dap&#34;</span><span style="color:#f92672">,</span>
+        apiKey <span style="color:#f92672">=</span> NuGet.Environment <span style="color:#e6db74">&#34;API_KEY_nuget_yjpark_org&#34;</span>
+    <span style="color:#f92672">)</span>
+
+<span style="color:#66d9ef">let</span> projects <span style="color:#f92672">=</span>
+    <span style="color:#f92672">!!</span> <span style="color:#e6db74">&#34;lib/Dap.FlatBuffers/*.csproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Fable.Dap.Prelude/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Dap.Prelude/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Fable.Dap.Context/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Dap.Context/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Fable.Dap.Platform/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Dap.Platform/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Fable.Dap.WebSocket/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Dap.WebSocket/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Fable.Dap.Remote/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Dap.Remote/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Fable.Dap.Dsl/*.fsproj&#34;</span>
+    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Dap.Archive/*.fsproj&#34;</span>
+
+NuGet.createAndRun NuGet.release feed project</code></pre></div>
+
+<p>This example use <code>paket</code> to manage packages, need the following snippet in <code>paket.dependencies</code></p>
+
+<pre><code class="language-paket">group Build
+    source https://www.nuget.org/api/v2
+    storage: none
+    framework: netstandard2.0
+
+    nuget Dap.Build
+</code></pre>
+
+<p>Full list of targets are:</p>
+
+<pre><code class="language-text">The following targets are available:
+   Build - Build 13 Projects
+   Clean - Clean 13 Projects
+   Dap.Archive:Build - Build Dap.Archive
+   Dap.Archive:Clean - Clean Dap.Archive
+   Dap.Archive:Fetch - Fetch Dap.Archive
+   Dap.Archive:Inject - Inject Dap.Archive
+   Dap.Archive:Pack - Pack Dap.Archive
+   Dap.Archive:Push - Push Dap.Archive
+   Dap.Archive:Recover - Recover Dap.Archive
+   Dap.Archive:Restore - Restore Dap.Archive
+   Dap.Context:Build - Build Dap.Context
+   Dap.Context:Clean - Clean Dap.Context
+   Dap.Context:Fetch - Fetch Dap.Context
+   Dap.Context:Inject - Inject Dap.Context
+   Dap.Context:Pack - Pack Dap.Context
+   Dap.Context:Push - Push Dap.Context
+   Dap.Context:Recover - Recover Dap.Context
+   Dap.Context:Restore - Restore Dap.Context
+   Dap.FlatBuffers:Build - Build Dap.FlatBuffers
+   Dap.FlatBuffers:Clean - Clean Dap.FlatBuffers
+   Dap.FlatBuffers:Fetch - Fetch Dap.FlatBuffers
+   Dap.FlatBuffers:Inject - Inject Dap.FlatBuffers
+   Dap.FlatBuffers:Pack - Pack Dap.FlatBuffers
+   Dap.FlatBuffers:Push - Push Dap.FlatBuffers
+   Dap.FlatBuffers:Recover - Recover Dap.FlatBuffers
+   Dap.FlatBuffers:Restore - Restore Dap.FlatBuffers
+   Dap.Platform:Build - Build Dap.Platform
+   Dap.Platform:Clean - Clean Dap.Platform
+   Dap.Platform:Fetch - Fetch Dap.Platform
+   Dap.Platform:Inject - Inject Dap.Platform
+   Dap.Platform:Pack - Pack Dap.Platform
+   Dap.Platform:Push - Push Dap.Platform
+   Dap.Platform:Recover - Recover Dap.Platform
+   Dap.Platform:Restore - Restore Dap.Platform
+   Dap.Prelude:Build - Build Dap.Prelude
+   Dap.Prelude:Clean - Clean Dap.Prelude
+   Dap.Prelude:Fetch - Fetch Dap.Prelude
+   Dap.Prelude:Inject - Inject Dap.Prelude
+   Dap.Prelude:Pack - Pack Dap.Prelude
+   Dap.Prelude:Push - Push Dap.Prelude
+   Dap.Prelude:Recover - Recover Dap.Prelude
+   Dap.Prelude:Restore - Restore Dap.Prelude
+   Dap.Remote:Build - Build Dap.Remote
+   Dap.Remote:Clean - Clean Dap.Remote
+   Dap.Remote:Fetch - Fetch Dap.Remote
+   Dap.Remote:Inject - Inject Dap.Remote
+   Dap.Remote:Pack - Pack Dap.Remote
+   Dap.Remote:Push - Push Dap.Remote
+   Dap.Remote:Recover - Recover Dap.Remote
+   Dap.Remote:Restore - Restore Dap.Remote
+   Dap.WebSocket:Build - Build Dap.WebSocket
+   Dap.WebSocket:Clean - Clean Dap.WebSocket
+   Dap.WebSocket:Fetch - Fetch Dap.WebSocket
+   Dap.WebSocket:Inject - Inject Dap.WebSocket
+   Dap.WebSocket:Pack - Pack Dap.WebSocket
+   Dap.WebSocket:Push - Push Dap.WebSocket
+   Dap.WebSocket:Recover - Recover Dap.WebSocket
+   Dap.WebSocket:Restore - Restore Dap.WebSocket
+   Fable.Dap.Context:Build - Build Fable.Dap.Context
+   Fable.Dap.Context:Clean - Clean Fable.Dap.Context
+   Fable.Dap.Context:Fetch - Fetch Fable.Dap.Context
+   Fable.Dap.Context:Inject - Inject Fable.Dap.Context
+   Fable.Dap.Context:Pack - Pack Fable.Dap.Context
+   Fable.Dap.Context:Push - Push Fable.Dap.Context
+   Fable.Dap.Context:Recover - Recover Fable.Dap.Context
+   Fable.Dap.Context:Restore - Restore Fable.Dap.Context
+   Fable.Dap.Dsl:Build - Build Fable.Dap.Dsl
+   Fable.Dap.Dsl:Clean - Clean Fable.Dap.Dsl
+   Fable.Dap.Dsl:Fetch - Fetch Fable.Dap.Dsl
+   Fable.Dap.Dsl:Inject - Inject Fable.Dap.Dsl
+   Fable.Dap.Dsl:Pack - Pack Fable.Dap.Dsl
+   Fable.Dap.Dsl:Push - Push Fable.Dap.Dsl
+   Fable.Dap.Dsl:Recover - Recover Fable.Dap.Dsl
+   Fable.Dap.Dsl:Restore - Restore Fable.Dap.Dsl
+   Fable.Dap.Platform:Build - Build Fable.Dap.Platform
+   Fable.Dap.Platform:Clean - Clean Fable.Dap.Platform
+   Fable.Dap.Platform:Fetch - Fetch Fable.Dap.Platform
+   Fable.Dap.Platform:Inject - Inject Fable.Dap.Platform
+   Fable.Dap.Platform:Pack - Pack Fable.Dap.Platform
+   Fable.Dap.Platform:Push - Push Fable.Dap.Platform
+   Fable.Dap.Platform:Recover - Recover Fable.Dap.Platform
+   Fable.Dap.Platform:Restore - Restore Fable.Dap.Platform
+   Fable.Dap.Prelude:Build - Build Fable.Dap.Prelude
+   Fable.Dap.Prelude:Clean - Clean Fable.Dap.Prelude
+   Fable.Dap.Prelude:Fetch - Fetch Fable.Dap.Prelude
+   Fable.Dap.Prelude:Inject - Inject Fable.Dap.Prelude
+   Fable.Dap.Prelude:Pack - Pack Fable.Dap.Prelude
+   Fable.Dap.Prelude:Push - Push Fable.Dap.Prelude
+   Fable.Dap.Prelude:Recover - Recover Fable.Dap.Prelude
+   Fable.Dap.Prelude:Restore - Restore Fable.Dap.Prelude
+   Fable.Dap.Remote:Build - Build Fable.Dap.Remote
+   Fable.Dap.Remote:Clean - Clean Fable.Dap.Remote
+   Fable.Dap.Remote:Fetch - Fetch Fable.Dap.Remote
+   Fable.Dap.Remote:Inject - Inject Fable.Dap.Remote
+   Fable.Dap.Remote:Pack - Pack Fable.Dap.Remote
+   Fable.Dap.Remote:Push - Push Fable.Dap.Remote
+   Fable.Dap.Remote:Recover - Recover Fable.Dap.Remote
+   Fable.Dap.Remote:Restore - Restore Fable.Dap.Remote
+   Fable.Dap.WebSocket:Build - Build Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Clean - Clean Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Fetch - Fetch Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Inject - Inject Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Pack - Pack Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Push - Push Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Recover - Recover Fable.Dap.WebSocket
+   Fable.Dap.WebSocket:Restore - Restore Fable.Dap.WebSocket
+   Fetch - Fetch 13 Projects
+   Inject - Inject 13 Projects
+   Pack - Pack 13 Projects
+   Push - Push 13 Projects
+   Recover - Recover 13 Projects
+   Restore - Restore 13 Projects
+</code></pre>
+
+<p>I am really happy with it, can do most operation easily. The nuget related feature is very nice, I didn&rsquo;t find much information about how other developers work with nugets, what commands to pack and push them, currently Dap.Build support both nuget.org and ProGit, will have another post on this part later.</p>
+
+<p>The missing part is auto complete for targets, though since I&rsquo;m using fish, it&rsquo;s command history can replace auto completion mostly, so this is not an urgent feature to me.</p>
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2018/08/12/functional-reactive-actors-in-fsharp/" data-toggle="tooltip" data-placement="top" title="Functional Reactive Actors in F#">&larr; Previous Post</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+
+<div class="row disqus-comments">
+  <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yjpark" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2018
+
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-2120845-8', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+  </body>
+</html>

@@ -12,7 +12,7 @@
 
   
 
-  <meta name="generator" content="Hugo 0.46" />
+  <meta name="generator" content="Hugo 0.51" />
 
   <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
 
@@ -117,8 +117,6 @@
 <p>The game started to crash randomly before I noticed, it&rsquo;s quite hard to debug, especially without the tools in Xcode or other IDEs provide. And it never crash in the simulator, so the debugging is quite awkward, a lot of guess, build, test-run going on.</p>
 
 <p>When it crashed on iOS device, some information were provided, though full stack trace is not availabe, and the place of crash is not consistent. After 2 or 3 days and nights figihting with this bug, finally found out the root cause, which is very surprising.</p>
-
-<p></p>
 
 <p>It&rsquo;s caused by stack overflow, since Marmalade is designed to support many different mobile devices, many of them are with limited hardware, the stack size is 32k by default, since I&rsquo;m having a LUA layer, and also allocated some string buffer in stack for convinience, it got overflowed, so caused the random crash.</p>
 
@@ -239,7 +237,7 @@ memSize = 256000000
 <div class="row disqus-comments">
   <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
     <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -318,7 +316,7 @@ memSize = 256000000
         <p class="copyright text-muted">
     		  YJ Park
     		  &nbsp;&bull;&nbsp;
-    		  2017
+    		  2018
 
     		  
     		  &nbsp;&bull;&nbsp;
@@ -340,7 +338,7 @@ memSize = 256000000
 <script src="http://blog.yjpark.org/js/main.js"></script>
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
