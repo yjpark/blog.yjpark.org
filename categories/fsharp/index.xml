@@ -9,17 +9,34 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 01 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.yjpark.org/categories/fsharp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Build DotNet Projects with Fake</title>
-      <link>http://blog.yjpark.org/blog/2018/09/01/build-dotnet-projects-with-fake/</link>
-      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <title>F# Game Tutorial Overview</title>
+      <link>http://blog.yjpark.org/blog/2019/01/02/fsharp-game-tutorial-overview/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
-      <guid>http://blog.yjpark.org/blog/2018/09/01/build-dotnet-projects-with-fake/</guid>
+      <guid>http://blog.yjpark.org/blog/2019/01/02/fsharp-game-tutorial-overview/</guid>
+      <description>&lt;p&gt;Have been working on game development for a few years now, making game is indeed quite fun, it shares much with other kind of software development, while it also has its uniqueness. Always wanted to write more on it, though not really have good idea about how to start.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been working with a couple of game engines, mostly Unity3D, IwGame on Marmalade, Cocos2D, Phaser, created some own frameworks, did experiment with a very simple game engine in Elm as well. Most of them were designed in a similar way, provide similar components and tools. As game developers, we usually don&amp;rsquo;t need to dig much in the game engine itself, but we should have a rather clear understanding about its structure so we can work on it efficiently.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve decided to write some tutorials on game development, a very basic one, in my mind, it&amp;rsquo;s mostly for developers without much experiences with game development, but curious in it. I&amp;rsquo;ll try to share some of my understandings with game development, explain core components of game engine.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;http://blog.yjpark.org/img/game_tutorial/intro.png&#34;/&gt; 
+&lt;/figure&gt;</description>
+    </item>
+    
+    <item>
+      <title>Build DotNet Projects with Fake</title>
+      <link>http://blog.yjpark.org/blog/2018/11/27/build-dotnet-projects-with-fake/</link>
+      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2018/11/27/build-dotnet-projects-with-fake/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been doing quite some F# coding lately, which is really nice, plan to write more about F# later, here I&amp;rsquo;m gonna talk about how to build DotNet projects with Fake.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ve put common logic as libraries, then can share them easily across multiple projects, so I need to create NuGet packages. I&amp;rsquo;ve already created more than a dozen individual libraries, it&amp;rsquo;s clear that I need an automated process to manage them, or it&amp;rsquo;s very tedious to keep proper version of libraries in each project.&lt;/p&gt;

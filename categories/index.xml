@@ -16,7 +16,7 @@
     <item>
       <title>Code</title>
       <link>http://blog.yjpark.org/categories/code/</link>
-      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/categories/code/</guid>
       <description></description>
@@ -25,7 +25,7 @@
     <item>
       <title>Dap</title>
       <link>http://blog.yjpark.org/categories/dap/</link>
-      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/categories/dap/</guid>
       <description></description>
@@ -41,9 +41,18 @@
     </item>
     
     <item>
+      <title>Fake</title>
+      <link>http://blog.yjpark.org/categories/fake/</link>
+      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/fake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Fsharp</title>
       <link>http://blog.yjpark.org/categories/fsharp/</link>
-      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/categories/fsharp/</guid>
       <description></description>
@@ -52,7 +61,7 @@
     <item>
       <title>Game</title>
       <link>http://blog.yjpark.org/categories/game/</link>
-      <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/categories/game/</guid>
       <description></description>
@@ -127,6 +136,15 @@
       <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
       <guid>http://blog.yjpark.org/categories/tool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>http://blog.yjpark.org/categories/tutorial/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/categories/tutorial/</guid>
       <description></description>
     </item>
     

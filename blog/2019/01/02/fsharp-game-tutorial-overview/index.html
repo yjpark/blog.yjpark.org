@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Save Day One Summary to Evernote</title>
+  <title>F# Game Tutorial Overview</title>
 
   <meta name="author" content="YJ Park" />
 
@@ -26,9 +26,9 @@
   <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
 
   
-  <meta property="og:title" content="Save Day One Summary to Evernote" />
+  <meta property="og:title" content="F# Game Tutorial Overview" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/2014/01/21/save-day-one-summary-to-evernote//" />
+  <meta property="og:url" content="/blog/2019/01/02/fsharp-game-tutorial-overview//" />
   <meta property="og:image" content="img/yjpark_icon.png" />
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
@@ -99,9 +99,9 @@
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
       <div class="post-heading">
-        <h1>Save Day One Summary to Evernote</h1>
+        <h1>F# Game Tutorial Overview</h1>
         
-        <span class="post-meta">Posted on January 21, 2014</span>
+        <span class="post-meta">Posted on January 2, 2019</span>
       </div>
      </div>
   </div>
@@ -110,76 +110,77 @@
 <article>
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-	  <h2 id="why-not-just-use-evernote">Why Not Just Use Evernote?</h2>
+	  <p>Have been working on game development for a few years now, making game is indeed quite fun, it shares much with other kind of software development, while it also has its uniqueness. Always wanted to write more on it, though not really have good idea about how to start.</p>
 
-<p>I&rsquo;ve been using Evernote for several years, which is great, the best features to me are:</p>
+<p>I&rsquo;ve been working with a couple of game engines, mostly Unity3D, IwGame on Marmalade, Cocos2D, Phaser, created some own frameworks, did experiment with a very simple game engine in Elm as well. Most of them were designed in a similar way, provide similar components and tools. As game developers, we usually don&rsquo;t need to dig much in the game engine itself, but we should have a rather clear understanding about its structure so we can work on it efficiently.</p>
 
-<ul>
-<li>Multi devices synchronization</li>
-<li>High quality app on iOS/Android and OSX</li>
-<li>Very good search in notes (even in the photos)</li>
-</ul>
+<p>I&rsquo;ve decided to write some tutorials on game development, a very basic one, in my mind, it&rsquo;s mostly for developers without much experiences with game development, but curious in it. I&rsquo;ll try to share some of my understandings with game development, explain core components of game engine.</p>
 
-<p>Though lately I found myself write less an less in Evernote, if I&rsquo;m writing something long, then usually I will use MacVim, may copy the text back to Evernote. If I need to write a couple of line, the process to write in Evernote is like this:</p>
+<figure>
+    <img src="/img/game_tutorial/intro.png"/> 
+</figure>
 
-<ul>
-<li>Switch to Evernote</li>
-<li>Find the note for current day (each day I will have a new note.)</li>
-<li>Go to the end of the note</li>
-<li>Write something</li>
-<li>Switch back</li>
-</ul>
 
-<p>Feels a bit heavy, also there is no information about when I did add the line into the note.</p>
+<h2 id="a-2d-tank-game">A 2D Tank Game</h2>
 
-<h2 id="day-one">Day One</h2>
-
-<p>Since 2013 I started to use <a href="http://dayoneapp.com/">Day One</a>, which is a very beautiful application(has OSX and iOS versions) for note taking. Here is the reasons that I like it:</p>
+<p>Current plan is to create a simple 2D topdown tank game in this tutorial, which is easy to understand, and have enough potential complexity as a real game. Not sure about what will eventually be covered, but at least got following ideas that worth writing about</p>
 
 <ul>
-<li>Quick note adding widget in menubar, which can be triggered by a global shortcut</li>
-<li>Markdown format, rendered very nicely as well.</li>
-<li>Dropbox synchronization, iCloud supported as well.</li>
-<li>Every note has a timestamp.</li>
-<li>Calendar view for all the notes.</li>
-<li>Look and feels very nice.</li>
+<li>Map system, the maps will be created with Tiled map editor <a href="https://www.mapeditor.org/">https://www.mapeditor.org/</a></li>
+<li>GUI for game itself, and for development</li>
+<li>The tank will have different weapon system, the parameters can be changed by buffs</li>
+<li>Special abilities that can be added with pickable items on map</li>
+<li>Enemies can be either tanks or other units, which need basic AI system to act by themself</li>
+<li>A couple game mechanics to give player purpose, and hopefully fun.</li>
+<li>Common features for games, such as achievements, charts, tutorials&hellip;</li>
 </ul>
 
-<p>Then the process to add a quick note will be:</p>
+<p>If possible also really want to write about real-time network game development, so ideally this tank game will be multi-player !</p>
+
+<h2 id="why-f">Why F# ?</h2>
+
+<p>To make it even more fun for the potential readers, I choose F# as the language for this tutorial, in my opinion, F# is very suitable for learning, it&rsquo;s quite clean and concise, and it support both functional paradigm and object oriented paradigm, also it&rsquo;s a part of DotNet ecosystem, and have full access to all C# libraries. Even if you won&rsquo;t write F# code in the project, learning it can make you a bette developer with C# or other languages.</p>
+
+<p>I don&rsquo;t plan to write too much about F# itself, there are many good F# tutorials on the web, personally I learned mainly from these two sites</p>
 
 <ul>
-<li>Using the global shortcut.</li>
-<li>Type, then Cmd-Enter to save it.</li>
+<li><a href="https://fsharpforfunandprofit.com/">https://fsharpforfunandprofit.com/</a></li>
+<li><a href="https://fsharp.org/">https://fsharp.org/</a></li>
 </ul>
 
-<p>It&rsquo;s much more light-weigh comparing to the Evernote way.</p>
+<p>If you have coding experience in most modern programming language, should not take much time to get familiar with F# syntax, don&rsquo;t need to be expert to follow this tutorial.</p>
 
-<h2 id="why-not-just-use-day-one">Why Not Just Use Day One?</h2>
+<p>It&rsquo;s not very practical to take pure functional approach in games, since for better performance, most game engines rely on mutable data structures, it&rsquo;s still possible to do it in pure functional way, at least for smaller games, but here I&rsquo;ll just focus on more traditional object-oriented way, so the ideas in this tutorial can be easily used in most game engines.</p>
 
-<p>One major missed part in <code>Day One</code> is the lack of Android support, also the search is not as good as evernote, another problem is that you can not see all the notes in one day at once, you have to mouse over each item to see the whole content, which is a bit annoying IMO.</p>
+<h2 id="dotnet-core-with-monogame">DotNet Core with MonoGame</h2>
 
-<h2 id="dayone-2-evernote">Dayone 2 Evernote</h2>
+<p>I&rsquo;ll build the tutorial on DotNet Core, which is cross-platform, have a great toolchain.</p>
 
-<p>So I wrote a very simple script to export <code>Day One</code> entries as a summary note in Evernote.</p>
+<p>I use Visual Studio Code as main IDE, it&rsquo;s really good, the Vim binding is good, after setup a few shortcuts and some configuration, I feel very comfortable with it. The F# support is quite nice, still have a few issues, though mainly nice to use.</p>
 
-<p>Timestamps will be added in front of each entry.</p>
+<ul>
+<li><a href="https://dotnet.microsoft.com/">https://dotnet.microsoft.com/</a></li>
+<li><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+</ul>
 
-<p>The summary note will look like:</p>
+<p>I choose MonoGame as the low level platform, will create very simple engine on top of it, it&rsquo;s not officially on DotNet Core yet, but a nice developer (cra0zy) did create a core version and put on nuget, I&rsquo;ll use this package in my tutorial</p>
 
-<pre><code>[00:25]
-One note written in Day One
+<ul>
+<li><a href="http://www.monogame.net/">http://www.monogame.net/</a></li>
+<li><a href="https://www.nuget.org/packages/MonoGame.Framework.DesktopGL.Core/">https://www.nuget.org/packages/MonoGame.Framework.DesktopGL.Core/</a></li>
+</ul>
 
-[19:17]
-Another note in Day One
+<p>Was thinking about use Fable and Pixi to create HTML5 games, which will be very cool too, though that approach need to bring more dependencies, and might make the whole process a bit complex for new comers, so I end up with MonoGame.</p>
 
-...
-</code></pre>
+<h2 id="the-plan">The Plan</h2>
 
-<p>They will not be converted to HTML format, since I prefer to keep the plain text format in Evernote, and MarkDown notes looks very nice as plain text to me.</p>
+<p>To make sure my library selection is practical, did create some prototype code, which can load tiled map, show some GUI elements, seems to be solid so far, the codes are at:</p>
 
-<p>Note that since I used the applescript to save the note, it only works on OSX. Also there is some tricks to keep track of the last saved date. Check the README in the repository for more informations.</p>
+<ul>
+<li><a href="https://github.com/yjpark/FSharpGameTutorial">https://github.com/yjpark/FSharpGameTutorial</a></li>
+</ul>
 
-<p>The code is: <a href="https://github.com/yjpark/dayone2evernote">https://github.com/yjpark/dayone2evernote</a></p>
+<p>I&rsquo;ll keep working on the prototype, in the meantime, will start writing the tutorial, will be organized by topics, certain branches will be created for each post, also all the contents will be put into the repository as wiki pages.</p>
 	</div>
   </div>
 </article>
@@ -189,13 +190,9 @@ Another note in Day One
     <ul class="pager blog-pager">
       
       <li class="previous">
-        <a href="http://blog.yjpark.org/blog/2013/04/14/marmalade-tricks-and-tips/" data-toggle="tooltip" data-placement="top" title="Marmalade Tricks and Tips">&larr; Previous Post</a>
+        <a href="http://blog.yjpark.org/blog/2018/11/27/build-dotnet-projects-with-fake/" data-toggle="tooltip" data-placement="top" title="Build DotNet Projects with Fake">&larr; Previous Post</a>
       </li>
       
-      
-      <li class="next">
-        <a href="http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/" data-toggle="tooltip" data-placement="top" title="SILP: Simple Individual Line Preprocessor">Next Post &rarr;</a>
-      </li>
       
     </ul>
   </div>
