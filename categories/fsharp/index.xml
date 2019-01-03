@@ -9,7 +9,11 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
+<<<<<<< HEAD
     <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
+=======
+    <lastBuildDate>Tue, 27 Nov 2018 00:00:00 +0000</lastBuildDate>
+>>>>>>> 0bc8d3640ba5b17639bd6f973b1f17a7b7ddcdfc
     
 	<atom:link href="http://blog.yjpark.org/categories/fsharp/index.xml" rel="self" type="application/rss+xml" />
     
