@@ -3,14 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-<<<<<<< HEAD
     <loc>http://blog.yjpark.org/blog/2019/01/02/fsharp-game-tutorial-overview/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-=======
->>>>>>> 0bc8d3640ba5b17639bd6f973b1f17a7b7ddcdfc
     <loc>http://blog.yjpark.org/blog/2018/11/27/build-dotnet-projects-with-fake/</loc>
     <lastmod>2018-11-27T00:00:00+00:00</lastmod>
   </url>
@@ -110,11 +107,7 @@
   
   <url>
     <loc>http://blog.yjpark.org/categories/fsharp/</loc>
-<<<<<<< HEAD
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-=======
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
->>>>>>> 0bc8d3640ba5b17639bd6f973b1f17a7b7ddcdfc
     <priority>0</priority>
   </url>
   
@@ -138,11 +131,7 @@
   
   <url>
     <loc>http://blog.yjpark.org/</loc>
-<<<<<<< HEAD
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-=======
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
->>>>>>> 0bc8d3640ba5b17639bd6f973b1f17a7b7ddcdfc
     <priority>0</priority>
   </url>
   
@@ -177,11 +166,7 @@
   
   <url>
     <loc>http://blog.yjpark.org/post/</loc>
-<<<<<<< HEAD
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-=======
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
->>>>>>> 0bc8d3640ba5b17639bd6f973b1f17a7b7ddcdfc
     <priority>0</priority>
   </url>
   
