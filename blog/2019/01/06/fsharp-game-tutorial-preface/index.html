@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>F# Game Tutorial Overview</title>
+  <title>F# Game Tutorial Preface</title>
 
   <meta name="author" content="YJ Park" />
 
@@ -26,9 +26,9 @@
   <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
 
   
-  <meta property="og:title" content="F# Game Tutorial Overview" />
+  <meta property="og:title" content="F# Game Tutorial Preface" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/2019/01/02/fsharp-game-tutorial-overview//" />
+  <meta property="og:url" content="/blog/2019/01/06/fsharp-game-tutorial-preface//" />
   <meta property="og:image" content="img/yjpark_icon.png" />
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
@@ -99,9 +99,9 @@
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
       <div class="post-heading">
-        <h1>F# Game Tutorial Overview</h1>
+        <h1>F# Game Tutorial Preface</h1>
         
-        <span class="post-meta">Posted on January 2, 2019</span>
+        <span class="post-meta">Posted on January 6, 2019</span>
       </div>
      </div>
   </div>
@@ -110,77 +110,79 @@
 <article>
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
-	  <p>Have been working on game development for a few years now, making game is indeed quite fun, it shares much with other kind of software development, while it also has its uniqueness. Always wanted to write more on it, though not really have good idea about how to start.</p>
+	  <p>Before start writing individual posts, I&rsquo;d like to talk about some general ideas about this tutorial.</p>
 
-<p>I&rsquo;ve been working with a couple of game engines, mostly Unity3D, IwGame on Marmalade, Cocos2D, Phaser, created some own frameworks, did experiment with a very simple game engine in Elm as well. Most of them were designed in a similar way, provide similar components and tools. As game developers, we usually don&rsquo;t need to dig much in the game engine itself, but we should have a rather clear understanding about its structure so we can work on it efficiently.</p>
-
-<p>I&rsquo;ve decided to write some tutorials on game development, a very basic one, in my mind, it&rsquo;s mostly for developers without much experiences with game development, but curious in it. I&rsquo;ll try to share some of my understandings with game development, explain core components of game engine.</p>
-
-<figure>
-    <img src="/img/game_tutorial/intro.png"/> 
-</figure>
-
-
-<h2 id="a-2d-tank-game">A 2D Tank Game</h2>
-
-<p>Current plan is to create a simple 2D topdown tank game in this tutorial, which is easy to understand, and have enough potential complexity as a real game. Not sure about what will eventually be covered, but at least got following ideas that worth writing about</p>
+<h2 id="target-audience-who">Target Audience (Who)</h2>
 
 <ul>
-<li>Map system, the maps will be created with Tiled map editor <a href="https://www.mapeditor.org/">https://www.mapeditor.org/</a></li>
-<li>GUI for game itself, and for development</li>
-<li>The tank will have different weapon system, the parameters can be changed by buffs</li>
-<li>Special abilities that can be added with pickable items on map</li>
-<li>Enemies can be either tanks or other units, which need basic AI system to act by themself</li>
-<li>A couple game mechanics to give player purpose, and hopefully fun.</li>
-<li>Common features for games, such as achievements, charts, tutorials&hellip;</li>
+<li>Familiar with at least one programming language, and don&rsquo;t mind to try a new one (if you don&rsquo;t know F# before).</li>
+<li>Interested in game development, want to create some simple games for fun.</li>
+<li>Have some time to spare, to really learn something like writing a game from scratch, plan to spend a lot time on it, it&rsquo;s really fun to me, but also quite hard at first.</li>
 </ul>
 
-<p>If possible also really want to write about real-time network game development, so ideally this tank game will be multi-player !</p>
-
-<h2 id="why-f">Why F# ?</h2>
-
-<p>To make it even more fun for the potential readers, I choose F# as the language for this tutorial, in my opinion, F# is very suitable for learning, it&rsquo;s quite clean and concise, and it support both functional paradigm and object oriented paradigm, also it&rsquo;s a part of DotNet ecosystem, and have full access to all C# libraries. Even if you won&rsquo;t write F# code in the project, learning it can make you a bette developer with C# or other languages.</p>
-
-<p>I don&rsquo;t plan to write too much about F# itself, there are many good F# tutorials on the web, personally I learned mainly from these two sites</p>
+<h2 id="planned-contents-what">Planned Contents (What)</h2>
 
 <ul>
-<li><a href="https://fsharpforfunandprofit.com/">https://fsharpforfunandprofit.com/</a></li>
-<li><a href="https://fsharp.org/">https://fsharp.org/</a></li>
+<li>I will write serious of posts about how to create this tank game from scratch, talking about what tasks need to be done, how to get each step forward, readers with no experiences should be able to follow these posts, and hopefully learn enough to create their own game.</li>
+<li>Along the way, I may also write some posts on specific topics, which may not directly related to current steps, but related to game development in general.</li>
 </ul>
-
-<p>If you have coding experience in most modern programming language, should not take much time to get familiar with F# syntax, don&rsquo;t need to be expert to follow this tutorial.</p>
-
-<p>It&rsquo;s not very practical to take pure functional approach in games, since for better performance, most game engines rely on mutable data structures, it&rsquo;s still possible to do it in pure functional way, at least for smaller games, but here I&rsquo;ll just focus on more traditional object-oriented way, so the ideas in this tutorial can be easily used in most game engines.</p>
-
-<h2 id="dotnet-core-with-monogame">DotNet Core with MonoGame</h2>
-
-<p>I&rsquo;ll build the tutorial on DotNet Core, which is cross-platform, have a great toolchain.</p>
-
-<p>I use Visual Studio Code as main IDE, it&rsquo;s really good, the Vim binding is good, after setup a few shortcuts and some configuration, I feel very comfortable with it. The F# support is quite nice, still have a few issues, though mainly nice to use.</p>
 
 <ul>
-<li><a href="https://dotnet.microsoft.com/">https://dotnet.microsoft.com/</a></li>
-<li><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
-</ul>
-
-<p>I choose MonoGame as the low level platform, will create very simple engine on top of it, it&rsquo;s not officially on DotNet Core yet, but a nice developer (cra0zy) did create a core version and put on nuget, I&rsquo;ll use this package in my tutorial</p>
+<li>Posts will be in different categories, I plan to cover the followings (at least briefly):
 
 <ul>
-<li><a href="http://www.monogame.net/">http://www.monogame.net/</a></li>
-<li><a href="https://www.nuget.org/packages/MonoGame.Framework.DesktopGL.Core/">https://www.nuget.org/packages/MonoGame.Framework.DesktopGL.Core/</a></li>
-</ul>
-
-<p>Was thinking about use Fable and Pixi to create HTML5 games, which will be very cool too, though that approach need to bring more dependencies, and might make the whole process a bit complex for new comers, so I end up with MonoGame.</p>
-
-<h2 id="the-plan">The Plan</h2>
-
-<p>To make sure my library selection is practical, did create some prototype code, which can load tiled map, show some GUI elements, seems to be solid so far, the codes are at:</p>
+<li><strong>Platform</strong>: development and runtime environment of the game, mainly DotNet Core and MonoGame</li>
+<li><strong>Engine</strong>: will create a very basic game engine for learning purpose, include world management, ECS (Entity Component System), physics integration&hellip;</li>
+<li><strong>Library</strong>: reusable component for multiple games, e.g. tiled map display, GUI framework, art assets management&hellip;</li>
+<li><strong>Tool</strong>: related tools, either from 3rd parties, or create from scratch.</li>
+<li><strong>Logic</strong>: specific to the tank game, not meant for reused in other games, though some logic might be abstracted later and put into library if possible.</li>
+<li><strong>Misc</strong>: other topics not in above categories.</li>
+</ul></li>
+<li>Current planned topics
 
 <ul>
-<li><a href="https://github.com/yjpark/FSharpGameTutorial">https://github.com/yjpark/FSharpGameTutorial</a></li>
+<li>Setup environment (platform)</li>
+<li>Choose dependencies (platform, engine)</li>
+<li>Game abstraction (engine, library)</li>
+<li>Atlas integration (engine, library, tool)</li>
+<li>ECS (engine)</li>
+<li>Tiled map (engine, library, tool)</li>
+<li>GUI framework (library)</li>
+<li>Tank movement (logic)</li>
+<li>Weapon system (logic)</li>
+<li>Physics integration (engine, tool)</li>
+</ul></li>
+<li>Will maintain a wiki page at github repo of the latest plan, feel free to make a suggestion on topics you are interested (just create an issue).</li>
 </ul>
 
-<p>I&rsquo;ll keep working on the prototype, in the meantime, will start writing the tutorial, will be organized by topics, certain branches will be created for each post, also all the contents will be put into the repository as wiki pages.</p>
+<h2 id="structure-of-this-tutorial-how">Structure of This Tutorial (How)</h2>
+
+<ul>
+<li>This is a <strong>hand-on</strong> tutorial, you need to do actual works to really learn something, just reading the posts can only give you some basic idea about making game, but not the confidence that you can create one by yourself.</li>
+<li>This is <strong>NOT</strong> a <em>step-by-step</em> tutorial, I will not add screenshots to tell you which buttons to click, and what snippets to paste. I&rsquo;ll show how I did certain tasks briefly, and give links to related information, but won&rsquo;t cover them in details.</li>
+<li>This is <strong>NOT</strong> a <em>quick-how-to</em> guide, even though the demo itself is quite simple, I&rsquo;ll try to treat it as real project, with proper structure and try to create these simple feature in a maintainable way.</li>
+<li>I want to explain on <strong>why</strong> I make certain technical decisions and write the codes in current way, may not directly related to game itself, but can benefit further development.</li>
+</ul>
+
+<h2 id="suggestion-for-potential-readers">Suggestion for Potential Readers</h2>
+
+<ul>
+<li>Better think about some simple game that you want to create, Tetris, Candy Crash, Platformer, anything you feel happy working on, you can use this tutorial as a guideline about how to create a game from scratch, and can create your own game along the way (can reuse the common components)</li>
+<li>It&rsquo;s also a very good idea to create a different tank game, based on my codes, but make it working in your ways.</li>
+<li>Any way, the only way to learn how to write a game is by doing it, so you have to write quite some codes to really get it, I will try to give some hints for experiments, but it&rsquo;s best to work on your own ideas.</li>
+<li>If you are serious to follow this tutorial, please create a fork of the repository, and write your own codes there, I can look into it if you need help later.</li>
+<li>Also, for any kind of communication (suggestions, questions, &hellip;), feel free to create issues in GitHub.</li>
+</ul>
+
+<h2 id="some-caveats">Some Caveats</h2>
+
+<ul>
+<li>I&rsquo;m not a native English speaker, writing in English is for broader audience and to improve my writing ability, I&rsquo;ll try to make it easy to understand but some time it&rsquo;s really hard to write technical stuffs clearly.</li>
+<li>This is a side project for me, not very busy with my main projects at the moment, but can&rsquo;t be sure about how much I can finish in the end.</li>
+<li>The codes is for learning purpose, not meant for real games, it&rsquo;ll be simplified in many aspects, and won&rsquo;t have proper test cases to make sure it&rsquo;s bugless, so if you need some thing ready for real games, please develop your game based on mature solutions.</li>
+<li>Since the codes is not finished, if you create your code base on it, might need to merge my later changes in, or need to maintain some own logic in your fork, which can be annoying, but it&rsquo;s also a common part in most coding projects, I&rsquo;ll try to make the code easier to be working with.</li>
+<li>The <code>master</code> branch will be the latest code, which will be ahead of posts, so if you want to work on own game, better create your branch from master and try update with it, and if you want to some experiments based on certain post, better branch out from the post&rsquo;s branch.</li>
+</ul>
 	</div>
   </div>
 </article>
@@ -190,13 +192,9 @@
     <ul class="pager blog-pager">
       
       <li class="previous">
-        <a href="http://blog.yjpark.org/blog/2018/11/27/build-dotnet-projects-with-fake/" data-toggle="tooltip" data-placement="top" title="Build DotNet Projects with Fake">&larr; Previous Post</a>
+        <a href="http://blog.yjpark.org/blog/2019/01/02/fsharp-game-tutorial-overview/" data-toggle="tooltip" data-placement="top" title="F# Game Tutorial Overview">&larr; Previous Post</a>
       </li>
       
-      
-      <li class="next">
-        <a href="http://blog.yjpark.org/blog/2019/01/06/fsharp-game-tutorial-preface/" data-toggle="tooltip" data-placement="top" title="F# Game Tutorial Preface">Next Post &rarr;</a>
-      </li>
       
     </ul>
   </div>

@@ -9,10 +9,34 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.yjpark.org/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>F# Game Tutorial Preface</title>
+      <link>http://blog.yjpark.org/blog/2019/01/06/fsharp-game-tutorial-preface/</link>
+      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2019/01/06/fsharp-game-tutorial-preface/</guid>
+      <description>&lt;p&gt;Before start writing individual posts, I&amp;rsquo;d like to talk about some general ideas about this tutorial.&lt;/p&gt;
+
+&lt;h2 id=&#34;target-audience-who&#34;&gt;Target Audience (Who)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Familiar with at least one programming language, and don&amp;rsquo;t mind to try a new one (if you don&amp;rsquo;t know F# before).&lt;/li&gt;
+&lt;li&gt;Interested in game development, want to create some simple games for fun.&lt;/li&gt;
+&lt;li&gt;Have some time to spare, to really learn something like writing a game from scratch, plan to spend a lot time on it, it&amp;rsquo;s really fun to me, but also quite hard at first.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;planned-contents-what&#34;&gt;Planned Contents (What)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I will write serious of posts about how to create this tank game from scratch, talking about what tasks need to be done, how to get each step forward, readers with no experiences should be able to follow these posts, and hopefully learn enough to create their own game.&lt;/li&gt;
+&lt;li&gt;Along the way, I may also write some posts on specific topics, which may not directly related to current steps, but related to game development in general.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>F# Game Tutorial Overview</title>
