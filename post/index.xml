@@ -9,13 +9,35 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 06 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.yjpark.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>F# Game Tutorial Preface</title>
+      <title>[F# Game Tutorial] Setup Environment</title>
+      <link>http://blog.yjpark.org/blog/2019/01/08/fsharp-game-tutorial-setup-environment/</link>
+      <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2019/01/08/fsharp-game-tutorial-setup-environment/</guid>
+      <description>&lt;p&gt;In this post, I&amp;rsquo;ll explain how to setup development environment for this tutorial, you should be able to build and run the demo after following the steps.&lt;/p&gt;
+
+&lt;h2 id=&#34;platform-components&#34;&gt;Platform Components&lt;/h2&gt;
+
+&lt;h3 id=&#34;net-core&#34;&gt;.NET Core&lt;/h3&gt;
+
+&lt;p&gt;.NET Core is the free, cross-platform, open source .NET platform, which is supported on Linux, macOS, Windows, you need the current version (v2.2.101) to run the tutorial codes.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Official web site: &lt;a href=&#34;https://dotnet.microsoft.com/&#34;&gt;https://dotnet.microsoft.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Source code: &lt;a href=&#34;https://github.com/dotnet&#34;&gt;https://github.com/dotnet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reasons to choose .NET Core:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[F# Game Tutorial] Preface</title>
       <link>http://blog.yjpark.org/blog/2019/01/06/fsharp-game-tutorial-preface/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
@@ -39,7 +61,7 @@
     </item>
     
     <item>
-      <title>F# Game Tutorial Overview</title>
+      <title>[F# Game Tutorial] Overview</title>
       <link>http://blog.yjpark.org/blog/2019/01/02/fsharp-game-tutorial-overview/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       <author>yjpark@gmail.com (YJ Park)</author>
