@@ -9,10 +9,27 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 08 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.yjpark.org/categories/fsharp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[F# Game Tutorial] Game Skeleton and Atlas</title>
+      <link>http://blog.yjpark.org/blog/2019/01/21/fsharp-game-tutorial-game-skeleton-and-atlas/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2019/01/21/fsharp-game-tutorial-game-skeleton-and-atlas/</guid>
+      <description>&lt;p&gt;Was down with a really bad flu last week, can&amp;rsquo;t work on anything at all, feeling much better today.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-to-cover-in-this-post&#34;&gt;What to Cover in this Post&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve setup the environment, got these command line tools to be running: &lt;code&gt;dotnet&lt;/code&gt;, &lt;code&gt;paket&lt;/code&gt;, &lt;code&gt;fake&lt;/code&gt;, now we are gonna use these tools to start development.&lt;/p&gt;
+
+&lt;p&gt;Since this is a &lt;em&gt;from scratch&lt;/em&gt; tutorial, I&amp;rsquo;ll try to explain how I create the game itself and the game engine underneath, also will talk about some reasons behind the way I chose.&lt;/p&gt;
+
+&lt;p&gt;This post will focus on the basic skeleton of the game, How I organize the codes and assets, use the libaries to create a minimal runnable game that can load an image and show it on the screen.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>[F# Game Tutorial] Setup Environment</title>

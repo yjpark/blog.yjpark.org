@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>[F# Game Tutorial] Game Skeleton and Atlas</title>
+
+  <meta name="author" content="YJ Park" />
+
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
+  
+  <meta property="og:title" content="[F# Game Tutorial] Game Skeleton and Atlas" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/2019/01/21/fsharp-game-tutorial-game-skeleton-and-atlas//" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Search" href="/search/">Search</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>[F# Game Tutorial] Game Skeleton and Atlas</h1>
+        
+        <span class="post-meta">Posted on January 21, 2019</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  <p>Was down with a really bad flu last week, can&rsquo;t work on anything at all, feeling much better today.</p>
+
+<h2 id="what-to-cover-in-this-post">What to Cover in this Post</h2>
+
+<p>We&rsquo;ve setup the environment, got these command line tools to be running: <code>dotnet</code>, <code>paket</code>, <code>fake</code>, now we are gonna use these tools to start development.</p>
+
+<p>Since this is a <em>from scratch</em> tutorial, I&rsquo;ll try to explain how I create the game itself and the game engine underneath, also will talk about some reasons behind the way I chose.</p>
+
+<p>This post will focus on the basic skeleton of the game, How I organize the codes and assets, use the libaries to create a minimal runnable game that can load an image and show it on the screen.</p>
+
+<h2 id="why-start-with-atlas">Why Start with Atlas</h2>
+
+<p>Since I had near to zero experience when I start this project, I need to do some experiments to learn something, I started with this one: <em>create a game window and show a tank in it using atlas</em>, this is a good candidate for experiments for following reasons:</p>
+
+<ul>
+<li>Very basic, without this feature, it&rsquo;s very hard to take next steps</li>
+<li>Well defined, plenty tutorials and documents around</li>
+<li>Complex enough, need to some learning to finish</li>
+<li>Flexible enough, can experiment with different ways</li>
+</ul>
+
+<h3 id="what-is-atlas-and-why-need-it">What is Atlas and Why Need It</h3>
+
+<p>In 2D game engines, a <code>Sprite</code> usually means a rectangle area that can be drawn on screen, it&rsquo;s the very basic building block in 2D games. <code>Texture</code> is a chunk of memory that holding image data that can be used when drawing sprites.</p>
+
+<p>Usually textures are loaded from images files, you can load individual images separately and create textures for each of them, though in most cases, we will use <code>Atlas</code> which is just a bigger images with several smaller images inside, and create textures for each atlas, main reasons for this way:</p>
+
+<ul>
+<li>Performance for rendering, it&rsquo;s related to more low level concepts used in GPU, basically is that when rendering a lot of sprites on screen, if they are from same texture, GPU can batch many of them together, which is much faster than individually.</li>
+<li>Performance for texture transfer, all texture need to be transferred from CPU to GPU before they can used for rendering, fewer bigger textures are much faster comparing to many smaller ones, also it take fewer memory in this way.</li>
+<li>Cleaner asset pipeline, easier to manage, e.g. you may want to create different version of images for different screen resolution, then you can just create different sets of atlas, and choose proper one at runtime.</li>
+</ul>
+
+<p>Here is the atlas been used in the game</p>
+
+<figure>
+    <img src="http://github.com/yjpark/FSharpGameTutorial/blob/posts/game-skeleton-and-atlas/src/Tank.Playground/Content/Tank.png?raw=true" width="80%"/> <figcaption>
+            <h4>Tank.png</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="notes-about-asset-pipeline">Notes about Asset Pipeline</h3>
+
+<p>Some sort of metadata about the individual images are needed to split them later, the format is different to the tool and library.</p>
+
+<p>Also the textures is only part of the assets, in game development, usually artists will create all sort of art assets, such as images, audio, music&hellip; It&rsquo;s usually pass through so called <em>pipelines</em>, for different kinds of processes, e.g. change image format from PSD to PNG, pack individual images together. Ideally done by some automatic way.</p>
+
+<p>MonoGame has its own pipeline and tools, I spent a little time to try with it, think it&rsquo;s not really needed in this stage and might make this tutorial more complex, so not using it yet at the moment.</p>
+
+<h3 id="original-assets">Original Assets</h3>
+
+<p>The original assets are from <em>Top-down Tanks Redux by Kenney Vleugels</em>, which is free to use thanks for the author.</p>
+
+<ul>
+<li><a href="https://www.kenney.nl/assets/topdown-tanks-redux">https://www.kenney.nl/assets/topdown-tanks-redux</a></li>
+</ul>
+
+<p>It already include atlas version, though the format is not the one used in MonoGame.</p>
+
+<h3 id="texture-packer">Texture Packer</h3>
+
+<p>Texture Packer is a very nice tool to create atlas, a free version is provided with limited feature, it&rsquo;s really worth the money if you&rsquo;re serious about making 2D games.</p>
+
+<ul>
+<li><a href="https://www.codeandweb.com/texturepacker">https://www.codeandweb.com/texturepacker</a></li>
+</ul>
+
+<p>it can export metadata for MonoGame, provide library to load and draw, also can export csharp code that defines constants for images names.</p>
+
+<h2 id="organization-of-the-codes">Organization of the Codes</h2>
+
+<p>When start a new project, I often spend some time on the way to organize codes first, normally I&rsquo;ll try to separate the parts that can be reused in other projects and parts that are mostly relavent to specific project only. I think even if the parts are never used in other projects, a clear structure is helpful to produce better code, and can keep my mind clear when working on it.</p>
+
+<p>It&rsquo;s typical for me that I need to tweak the structure a couple times until I feel comfortable with it, since when start working on it, I don&rsquo;t really understand the problems that I&rsquo;m solving, and can&rsquo;t anticipate what issues might meet, and usually I need to do a few iterations to improve the structure. My experience is that I&rsquo;ll try to slow down feature development a bit at first, get some basic logic, then try to refactor the codes to nicer organization, then add a few more logic, then tweak the structure, try to keep a flexible skeleton, do a few experiments before make big decision, and try not to be too hurry.</p>
+
+<h3 id="library-and-application-projects">Library and Application Projects</h3>
+
+<p>There are 2 type of projects in .NET Core, library and application, library will output <code>.dll</code> files, which will be used in applications. You can run application projects, and can also publish to be run on other machines, check <code>dotnet publish --help</code> for more details.</p>
+
+<p>Usually I will create the project folder manually, cd to it, then run <code>dotnet new classlib -lang F#</code> or <code>dotnet new console -lang F#</code> to create the project file.</p>
+
+<h4 id="tank-core-tank-core-fsproj"><code>Tank.Core/Tank.Core.fsproj</code></h4>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;netstandard2.0&lt;/TargetFramework&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;Compile Include=&quot;Game.fs&quot; /&gt;
+  &lt;/ItemGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;ProjectReference Include=&quot;..\Tank.Content\Tank.Content.csproj&quot; /&gt;
+  &lt;/ItemGroup&gt;
+  &lt;Import Project=&quot;..\..\.paket\Paket.Restore.targets&quot; /&gt;
+&lt;/Project&gt;
+</code></pre>
+
+<p>This is a library project, it&rsquo;s quite simple, just list of F# source codes, other projects that it depends on, and packages with paket.</p>
+
+<h4 id="tank-playground-tank-playground-fsproj"><code>Tank.Playground/Tank.Playground.fsproj</code></h4>
+
+<pre><code>&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;netcoreapp2.2&lt;/TargetFramework&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;Compile Include=&quot;Program.fs&quot; /&gt;
+  &lt;/ItemGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;ProjectReference Include=&quot;..\Tank.Core\Tank.Core.fsproj&quot; /&gt;
+  &lt;/ItemGroup&gt;
+  &lt;Import Project=&quot;..\..\.paket\Paket.Restore.targets&quot; /&gt;
+&lt;/Project&gt;
+</code></pre>
+
+<p>This is an application project, run <code>fake -t tank.playground.run</code> at project root, or cd to <code>src/Tank.Playground</code> and run <code>dotnet run</code> to run the application</p>
+
+<h4 id="tank-content">Tank.Content</h4>
+
+<p>It&rsquo;s not possible to mix csharp codes in fsharp project, so I create a very simple csharp project to hold the generated csharp codes and the texture packer library</p>
+
+<h4 id="build-fsx"><code>build.fsx</code></h4>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1</span><span style="color:#f92672">...</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2</span><span style="color:#66d9ef">let</span> allProjects <span style="color:#f92672">=</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3</span>    <span style="color:#f92672">!!</span> <span style="color:#e6db74">&#34;src/Tank.Core/*.fsproj&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4</span>    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Tank.Content/*.csproj&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5</span>    <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;src/Tank.Playground/*.fsproj&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">7</span>DotNet.create NuGet.debug allProjects
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">8</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">9</span>Target.runOrDefault DotNet.Build</code></pre></div>
+
+<p>I&rsquo;m using a simple package for writing the fake config, run <code>fake --list</code> to list all targets, and can run <code>fake -t TARGET</code> to run certain target.</p>
+
+<p>More details:</p>
+
+<ul>
+<li><a href="https://github.com/yjpark/dap.build.fsharp">https://github.com/yjpark/dap.build.fsharp</a></li>
+<li><a href="http://blog.yjpark.org/blog/2018/09/01/build-dotnet-projects-with-fake/">http://blog.yjpark.org/blog/2018/09/01/build-dotnet-projects-with-fake/</a></li>
+</ul>
+
+<h2 id="code-explanation">Code Explanation</h2>
+
+<p>Did spend quite some time to learn the very basic about MonoGame, following some tutorials and samples, tried a few ways, the final codes is quite simple, I&rsquo;ll add some comments to the source codes to explain a bit, these comments will be added <strong>before</strong> the codes.</p>
+
+<p>Check MonoGame documentation for some
+- <a href="http://www.monogame.net/documentation/">http://www.monogame.net/documentation/</a></p>
+
+<h3 id="tank-core-game-fs"><code>Tank.Core/Game.fs</code></h3>
+
+<p>All logic are implemented here, most of them will be generalize to be reused in other games.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#f92672">[&lt;</span>AutoOpen<span style="color:#f92672">&gt;]</span>
+<span style="color:#66d9ef">module</span> Tank.Core.Game
+
+<span style="color:#66d9ef">open</span> Microsoft.Xna.Framework
+<span style="color:#66d9ef">open</span> Microsoft.Xna.Framework.Graphics
+<span style="color:#66d9ef">open</span> Microsoft.Xna.Framework.Input
+
+<span style="color:#66d9ef">open</span> TexturePackerLoader
+
+<span style="color:#66d9ef">open</span> Tank.Content
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BaseGame</span> <span style="color:#f92672">=</span> Microsoft.Xna.Framework.Game
+
+<span style="color:#75715e">(* Create a simple record to put graphics related objects together
+</span><span style="color:#75715e"> *)</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Graphics</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    Device <span style="color:#f92672">:</span> GraphicsDevice
+    SpriteBatch <span style="color:#f92672">:</span> SpriteBatch
+    SpriteRender <span style="color:#f92672">:</span> SpriteRender
+    SpriteSheet <span style="color:#f92672">:</span> SpriteSheet
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Game</span> () <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> BaseGame ()
+
+    <span style="color:#75715e">(* The timing here is a bit tricky, can not create graphics manager here
+</span><span style="color:#75715e">     * since it need the object itself, but it&#39;s not working properly during
+</span><span style="color:#75715e">     * initialization, so using an option here.
+</span><span style="color:#75715e">     *)</span>
+    <span style="color:#66d9ef">let</span> mutable graphicsManager <span style="color:#f92672">:</span> GraphicsDeviceManager option <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">let</span> mutable graphics <span style="color:#f92672">:</span> Graphics option <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">let</span> mutable testSprite <span style="color:#f92672">:</span> SpriteFrame option <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">member</span> <span style="color:#66d9ef">private</span> this<span style="color:#f92672">.</span>Init () <span style="color:#f92672">=</span>
+        this<span style="color:#f92672">.</span>Content.RootDirectory <span style="color:#f92672">&lt;-</span> Tank.Content.Const.Root
+        graphicsManager <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">&lt;|</span> <span style="color:#66d9ef">new</span> GraphicsDeviceManager <span style="color:#f92672">(</span>this<span style="color:#f92672">)</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">member</span> CreateAndRun () <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">let</span> game <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Game ()
+        game<span style="color:#f92672">.</span>Init ()
+        <span style="color:#75715e">(* Start the game loop and show game window, exit after window been closed *)</span>
+        game<span style="color:#f92672">.</span>Run ()
+        game
+
+    <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Graphics</span> <span style="color:#f92672">=</span> graphics <span style="color:#f92672">|&gt;</span> Option.get
+
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Initialize</span> () <span style="color:#f92672">=</span>
+        <span style="color:#75715e">(* Create the graphic instance *)</span>
+        <span style="color:#66d9ef">let</span> spriteBatch <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpriteBatch <span style="color:#f92672">(</span>this<span style="color:#f92672">.</span>GraphicsDevice<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">let</span> spriteSheetLoader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpriteSheetLoader<span style="color:#f92672">(</span>this<span style="color:#f92672">.</span>Content<span style="color:#f92672">,</span> this<span style="color:#f92672">.</span>GraphicsDevice<span style="color:#f92672">)</span>
+        graphics <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">{</span>
+            Device <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>GraphicsDevice
+            SpriteBatch <span style="color:#f92672">=</span> spriteBatch
+            SpriteRender <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpriteRender <span style="color:#f92672">(</span>spriteBatch<span style="color:#f92672">)</span>
+            SpriteSheet <span style="color:#f92672">=</span> spriteSheetLoader<span style="color:#f92672">.</span>Load<span style="color:#f92672">(</span>Tank.Content.Const.Texture<span style="color:#f92672">)</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">(* Create a sprite for tank image *)</span>
+        testSprite <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">&lt;|</span> this<span style="color:#f92672">.</span>Graphics.SpriteSheet.Sprite <span style="color:#f92672">(</span>Sprites.TankBody_huge<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>IsMouseVisible <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">true</span>
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Initialize ()
+
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Update</span> <span style="color:#f92672">(</span>gameTime <span style="color:#f92672">:</span> GameTime<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Update <span style="color:#f92672">(</span>gameTime<span style="color:#f92672">)</span>
+
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Draw</span> <span style="color:#f92672">(</span>gameTime <span style="color:#f92672">:</span> GameTime<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        this<span style="color:#f92672">.</span>Graphics.Device.Clear <span style="color:#f92672">(</span>Color.Black<span style="color:#f92672">)</span>
+        this<span style="color:#f92672">.</span>Graphics.SpriteBatch.Begin ()
+        <span style="color:#75715e">(* Draw the tank image *)</span>
+        this<span style="color:#f92672">.</span>Graphics.SpriteRender.Draw <span style="color:#f92672">(</span>testSprite<span style="color:#f92672">.</span>Value<span style="color:#f92672">,</span> Vector2<span style="color:#f92672">(</span>100<span style="color:#f92672">.</span>0f<span style="color:#f92672">,</span> 100<span style="color:#f92672">.</span>0f<span style="color:#f92672">))</span>
+        this<span style="color:#f92672">.</span>Graphics.SpriteBatch.End ()
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Draw <span style="color:#f92672">(</span>gameTime<span style="color:#f92672">)</span></code></pre></div>
+
+<h3 id="tank-playground-program-fs"><code>Tank.Playground/Program.fs</code></h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">module</span> Tank.Playground.Program
+
+<span style="color:#66d9ef">open</span> System
+
+<span style="color:#66d9ef">open</span> Tank.Core
+
+<span style="color:#f92672">[&lt;</span>EntryPoint<span style="color:#f92672">&gt;]</span>
+<span style="color:#66d9ef">let</span> main argv <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">use</span> game <span style="color:#f92672">=</span> Game.CreateAndRun ()
+    0 <span style="color:#f92672">//</span> <span style="color:#66d9ef">return</span> an integer exit code</code></pre></div>
+
+<h2 id="summary">Summary</h2>
+
+<p>As you can see, it&rsquo;s very simple so far, after all, there is no much functionality yet, though I think it&rsquo;s a solid start, all codes are organized cleanly, and we have an atlas loaded.</p>
+
+<p>In next post, I&rsquo;ll start working on the game engine side, put reusable logic into it, after that, will add some basic GUI elements.</p>
+
+<hr />
+
+<p>Code: <a href="https://github.com/yjpark/FSharpGameTutorial/tree/posts/game-skeleton-and-atlas">https://github.com/yjpark/FSharpGameTutorial/tree/posts/game-skeleton-and-atlas</a></p>
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2019/01/08/fsharp-game-tutorial-setup-environment/" data-toggle="tooltip" data-placement="top" title="[F# Game Tutorial] Setup Environment">&larr; Previous Post</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+
+<div class="row disqus-comments">
+  <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yjpark" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2019
+
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-2120845-8', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+  </body>
+</html>
