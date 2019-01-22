@@ -9,10 +9,27 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 21 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.yjpark.org/categories/game/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[F# Game Tutorial] Game Abstraction</title>
+      <link>http://blog.yjpark.org/blog/2019/01/22/fsharp-game-tutorial-game-abstraction/</link>
+      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2019/01/22/fsharp-game-tutorial-game-abstraction/</guid>
+      <description>&lt;p&gt;In last post, we did load an atlas and show a simple sprite from it, this one is mainly on refactoring, extract common logic for all games, which can be reused later.&lt;/p&gt;
+
+&lt;h2 id=&#34;game-texturepacker&#34;&gt;Game.TexturePacker&lt;/h2&gt;
+
+&lt;p&gt;Moved the texture packer library from Tank.Content here.&lt;/p&gt;
+
+&lt;h2 id=&#34;game-engine&#34;&gt;Game.Engine&lt;/h2&gt;
+
+&lt;p&gt;Move game abstraction here, it&amp;rsquo;s very simple now, the logic is same from last post, just create base class, and ways for customization.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>[F# Game Tutorial] Game Skeleton and Atlas</title>

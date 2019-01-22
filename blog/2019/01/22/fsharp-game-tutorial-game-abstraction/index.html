@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>[F# Game Tutorial] Game Abstraction</title>
+
+  <meta name="author" content="YJ Park" />
+
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
+  
+  <meta property="og:title" content="[F# Game Tutorial] Game Abstraction" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/2019/01/22/fsharp-game-tutorial-game-abstraction//" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Search" href="/search/">Search</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>[F# Game Tutorial] Game Abstraction</h1>
+        
+        <span class="post-meta">Posted on January 22, 2019</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  <p>In last post, we did load an atlas and show a simple sprite from it, this one is mainly on refactoring, extract common logic for all games, which can be reused later.</p>
+
+<h2 id="game-texturepacker">Game.TexturePacker</h2>
+
+<p>Moved the texture packer library from Tank.Content here.</p>
+
+<h2 id="game-engine">Game.Engine</h2>
+
+<p>Move game abstraction here, it&rsquo;s very simple now, the logic is same from last post, just create base class, and ways for customization.</p>
+
+<h3 id="basegame-fs">BaseGame.fs</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BaseGame</span> <span style="color:#f92672">(</span>param <span style="color:#f92672">:</span> GameParam<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> Microsoft.Xna.Framework.Game ()
+
+    <span style="color:#66d9ef">let</span> mutable graphicsManager <span style="color:#f92672">:</span> GraphicsDeviceManager option <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">let</span> mutable graphics <span style="color:#f92672">:</span> Graphics option <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">let</span> mutable atlas <span style="color:#f92672">:</span> Atlas option <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">let</span> mutable time <span style="color:#f92672">:</span> GameTime option <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">Setup</span> () <span style="color:#f92672">=</span>
+        this<span style="color:#f92672">.</span>Content.RootDirectory <span style="color:#f92672">&lt;-</span> ContentRoot
+        graphicsManager <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">&lt;|</span> <span style="color:#66d9ef">new</span> GraphicsDeviceManager <span style="color:#f92672">(</span>this<span style="color:#f92672">)</span>
+
+    <span style="color:#75715e">(* Expose properties
+</span><span style="color:#75715e">     *)</span>
+    <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Graphics</span> <span style="color:#f92672">=</span> graphics <span style="color:#f92672">|&gt;</span> Option.get
+    <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Atlas</span> <span style="color:#f92672">=</span> atlas <span style="color:#f92672">|&gt;</span> Option.get
+    <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Time</span> <span style="color:#f92672">=</span> time <span style="color:#f92672">|&gt;</span> Option.get
+
+    <span style="color:#75715e">(* Extension points for subclasses, with default implementation
+</span><span style="color:#75715e">     *)</span>
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> DoInit <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> DoUpdate <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> DoDraw <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>DoInit () <span style="color:#f92672">=</span> ()
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>DoUpdate () <span style="color:#f92672">=</span> ()
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>DoDraw () <span style="color:#f92672">=</span> ()
+
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Initialize</span> () <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">let</span> spriteBatch <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpriteBatch <span style="color:#f92672">(</span>this<span style="color:#f92672">.</span>GraphicsDevice<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">let</span> spriteSheetLoader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpriteSheetLoader<span style="color:#f92672">(</span>this<span style="color:#f92672">.</span>Content<span style="color:#f92672">,</span> this<span style="color:#f92672">.</span>GraphicsDevice<span style="color:#f92672">)</span>
+        graphics <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">{</span>
+            Device <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>GraphicsDevice
+            SpriteBatch <span style="color:#f92672">=</span> spriteBatch
+            SpriteRender <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpriteRender <span style="color:#f92672">(</span>spriteBatch<span style="color:#f92672">)</span>
+            SpriteSheetLoader <span style="color:#f92672">=</span> spriteSheetLoader
+        <span style="color:#f92672">}</span>
+        atlas <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">&lt;|</span> Atlas.Create <span style="color:#f92672">^&lt;|</span> spriteSheetLoader<span style="color:#f92672">.</span>Load <span style="color:#f92672">(</span>param<span style="color:#f92672">.</span>AtlasImage<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>IsMouseVisible <span style="color:#f92672">&lt;-</span> param<span style="color:#f92672">.</span>IsMouseVisible
+        this<span style="color:#f92672">.</span>DoInit ()
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Initialize ()
+
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Update</span> <span style="color:#f92672">(</span>gameTime <span style="color:#f92672">:</span> GameTime<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        time <span style="color:#f92672">&lt;-</span> Some gameTime
+        this<span style="color:#f92672">.</span>DoUpdate ()
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Update <span style="color:#f92672">(</span>gameTime<span style="color:#f92672">)</span>
+
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Draw</span> <span style="color:#f92672">(</span>gameTime <span style="color:#f92672">:</span> GameTime<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        time <span style="color:#f92672">&lt;-</span> Some gameTime
+        param<span style="color:#f92672">.</span>ClearColor
+        <span style="color:#f92672">|&gt;</span> Option.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> color <span style="color:#f92672">-&gt;</span>
+            this<span style="color:#f92672">.</span>Graphics.Device.Clear <span style="color:#f92672">(</span>color<span style="color:#f92672">)</span>
+        <span style="color:#f92672">)</span>
+        this<span style="color:#f92672">.</span>Graphics.SpriteBatch.Begin ()
+        this<span style="color:#f92672">.</span>DoDraw ()
+        this<span style="color:#f92672">.</span>Graphics.SpriteBatch.End ()
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Draw <span style="color:#f92672">(</span>gameTime<span style="color:#f92672">)</span></code></pre></div>
+
+<h3 id="gameparam-fs">GameParam.fs</h3>
+
+<p>Record type been created for params of game, cleaner and easier to use than individual variables, more params will be added later, such as initial resolution, full screen mode, etc.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">GameParam</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    AtlasImage <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span>
+    IsMouseVisible <span style="color:#f92672">:</span> <span style="color:#66d9ef">bool</span>
+    ClearColor <span style="color:#f92672">:</span> Color option
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">with</span>
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">member</span> Create <span style="color:#f92672">(</span>atlasImage <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span><span style="color:#f92672">,</span> <span style="color:#f92672">?</span>isMouseVisible <span style="color:#f92672">:</span> <span style="color:#66d9ef">bool</span><span style="color:#f92672">,</span> <span style="color:#f92672">?</span>clearColor <span style="color:#f92672">:</span> Color<span style="color:#f92672">)</span> <span style="color:#f92672">:</span> GameParam <span style="color:#f92672">=</span>
+        <span style="color:#f92672">{</span>
+            AtlasImage <span style="color:#f92672">=</span> atlasImage
+            IsMouseVisible <span style="color:#f92672">=</span> defaultArg isMouseVisible <span style="color:#66d9ef">true</span>
+            ClearColor <span style="color:#f92672">=</span> clearColor
+        <span style="color:#f92672">}</span></code></pre></div>
+
+<h2 id="tank-core-changes">Tank.Core Changes</h2>
+
+<h3 id="game-fs">Game.fs</h3>
+
+<p>By using BaseGame, now the subclass only have logic specific to this particular game.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">let</span> param <span style="color:#f92672">=</span> GameParam.Create<span style="color:#f92672">(</span>Textures.Tank<span style="color:#f92672">,</span> clearColor <span style="color:#f92672">=</span> Color.Black<span style="color:#f92672">)</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Game</span> () <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> BaseGame <span style="color:#f92672">(</span>param<span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">let</span> mutable testSprite <span style="color:#f92672">:</span> SpriteFrame option <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">member</span> CreateAndRun () <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">let</span> game <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Game ()
+        game<span style="color:#f92672">.</span>Setup ()
+        game<span style="color:#f92672">.</span>Run ()
+        game
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">DoInit</span> () <span style="color:#f92672">=</span>
+        testSprite <span style="color:#f92672">&lt;-</span> Some <span style="color:#f92672">&lt;|</span> this<span style="color:#f92672">.</span>Atlas.SpriteSheet.Sprite <span style="color:#f92672">(</span>Sprites.TankBody_huge<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">DoDraw</span> () <span style="color:#f92672">=</span>
+        this<span style="color:#f92672">.</span>Graphics.SpriteRender.Draw <span style="color:#f92672">(</span>testSprite<span style="color:#f92672">.</span>Value<span style="color:#f92672">,</span> Vector2<span style="color:#f92672">(</span>100<span style="color:#f92672">.</span>0f<span style="color:#f92672">,</span> 100<span style="color:#f92672">.</span>0f<span style="color:#f92672">))</span></code></pre></div>
+
+<h2 id="summary">Summary</h2>
+
+<p>Only very simple refactoring this time, in next post, I will add a GUI library as addon, and create a very basic menu.</p>
+
+<hr />
+
+<p>Code: <a href="https://github.com/yjpark/FSharpGameTutorial/tree/posts/game-abstraction">https://github.com/yjpark/FSharpGameTutorial/tree/posts/game-abstraction</a></p>
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2019/01/21/fsharp-game-tutorial-game-skeleton-and-atlas/" data-toggle="tooltip" data-placement="top" title="[F# Game Tutorial] Game Skeleton and Atlas">&larr; Previous Post</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+
+<div class="row disqus-comments">
+  <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yjpark" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2019
+
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-2120845-8', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+  </body>
+</html>
