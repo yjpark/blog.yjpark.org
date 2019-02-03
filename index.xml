@@ -9,10 +9,29 @@
     <managingEditor>yjpark@gmail.com (YJ Park)</managingEditor>
     <webMaster>yjpark@gmail.com (YJ Park)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 22 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.yjpark.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[F# Game Tutorial] GUI Addon</title>
+      <link>http://blog.yjpark.org/blog/2019/02/03/fsharp-game-tutorial-gui-addon/</link>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
+      <author>yjpark@gmail.com (YJ Park)</author>
+      <guid>http://blog.yjpark.org/blog/2019/02/03/fsharp-game-tutorial-gui-addon/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s been a few days since last post, in this one, I want to talk about basic GUI implementation in the game, how to create a very simple addon system to support flexible extensions.&lt;/p&gt;
+
+&lt;p&gt;After we&amp;rsquo;ve got the very limited version of the game running (we can load an atlas and show sprites with it after last post), next steps will be adding more features, at this points, it&amp;rsquo;s better to have a way to communicate with the running game easily. For example, when I want to tweak some parameters in game, it&amp;rsquo;s not very efficient to repeatedly do these steps: change it in code, recompile, rerun to find the best value, instead I prefer to run the game, and use some way to change the parameters while the game is still running.&lt;/p&gt;
+
+&lt;p&gt;There are different ways to support this kind of communication:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Provide some REPL (read, evaluate, print, loop) for running game, this is a very powerful way, but need quite some logic to support, especially for a compiled language like F#, many game engine will use some dynamic language for scripting purpose.&lt;/li&gt;
+&lt;li&gt;Special development environment to provide extra features, e.g. when you run your game in Unity Editor, you can see many runtime information with editor UI, and can adjust many values with built-in inspector, 3rd party tools, or your editor extensions.&lt;/li&gt;
+&lt;li&gt;In game GUI, menu bar, tool bar, or any UI you created for in game control purpose&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>[F# Game Tutorial] Game Abstraction</title>

@@ -97,6 +97,34 @@
         
         
         <article class="post-preview">
+          <a href="http://blog.yjpark.org/blog/2019/02/03/fsharp-game-tutorial-gui-addon/">
+      	  <h2 class="post-title">[F# Game Tutorial] GUI Addon</h2>
+
+      	  
+          </a>
+
+          <p class="post-meta">
+            Posted on February 3, 2019
+          </p>
+
+          <div class="post-entry">
+            <p>It&rsquo;s been a few days since last post, in this one, I want to talk about basic GUI implementation in the game, how to create a very simple addon system to support flexible extensions.</p>
+
+<p>After we&rsquo;ve got the very limited version of the game running (we can load an atlas and show sprites with it after last post), next steps will be adding more features, at this points, it&rsquo;s better to have a way to communicate with the running game easily. For example, when I want to tweak some parameters in game, it&rsquo;s not very efficient to repeatedly do these steps: change it in code, recompile, rerun to find the best value, instead I prefer to run the game, and use some way to change the parameters while the game is still running.</p>
+
+<p>There are different ways to support this kind of communication:</p>
+
+<ul>
+<li>Provide some REPL (read, evaluate, print, loop) for running game, this is a very powerful way, but need quite some logic to support, especially for a compiled language like F#, many game engine will use some dynamic language for scripting purpose.</li>
+<li>Special development environment to provide extra features, e.g. when you run your game in Unity Editor, you can see many runtime information with editor UI, and can adjust many values with built-in inspector, 3rd party tools, or your editor extensions.</li>
+<li>In game GUI, menu bar, tool bar, or any UI you created for in game control purpose</li>
+</ul>
+      	  <a href="http://blog.yjpark.org/blog/2019/02/03/fsharp-game-tutorial-gui-addon/" class="post-read-more">[Read&nbsp;More]</a>
+          </div>
+
+         </article>
+        
+        <article class="post-preview">
           <a href="http://blog.yjpark.org/blog/2019/01/22/fsharp-game-tutorial-game-abstraction/">
       	  <h2 class="post-title">[F# Game Tutorial] Game Abstraction</h2>
 
@@ -334,44 +362,6 @@
 
 <p>I agree that in most cases we don&rsquo;t need preprocessor though there are several cases that I would like to have a preprocessor in my tool set for cleaner codes or can remove some trivial typing. Here are 2 examples:</p>
       	  <a href="http://blog.yjpark.org/blog/2014/04/12/silp-simple-individual-line-preprocessor/" class="post-read-more">[Read&nbsp;More]</a>
-          </div>
-
-         </article>
-        
-        <article class="post-preview">
-          <a href="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/">
-      	  <h2 class="post-title">Save Day One Summary to Evernote</h2>
-
-      	  
-          </a>
-
-          <p class="post-meta">
-            Posted on January 21, 2014
-          </p>
-
-          <div class="post-entry">
-            <h2 id="why-not-just-use-evernote">Why Not Just Use Evernote?</h2>
-
-<p>I&rsquo;ve been using Evernote for several years, which is great, the best features to me are:</p>
-
-<ul>
-<li>Multi devices synchronization</li>
-<li>High quality app on iOS/Android and OSX</li>
-<li>Very good search in notes (even in the photos)</li>
-</ul>
-
-<p>Though lately I found myself write less an less in Evernote, if I&rsquo;m writing something long, then usually I will use MacVim, may copy the text back to Evernote. If I need to write a couple of line, the process to write in Evernote is like this:</p>
-
-<ul>
-<li>Switch to Evernote</li>
-<li>Find the note for current day (each day I will have a new note.)</li>
-<li>Go to the end of the note</li>
-<li>Write something</li>
-<li>Switch back</li>
-</ul>
-
-<p>Feels a bit heavy, also there is no information about when I did add the line into the note.</p>
-      	  <a href="http://blog.yjpark.org/blog/2014/01/21/save-day-one-summary-to-evernote/" class="post-read-more">[Read&nbsp;More]</a>
           </div>
 
          </article>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>[F# Game Tutorial] GUI Addon</title>
+
+  <meta name="author" content="YJ Park" />
+
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  <link rel="alternate" href="http://blog.yjpark.org/index.xml" type="application/rss+xml" title="Living and Programming - YJ Park&#39;s Blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/rouge.css" />
+
+  <link rel="stylesheet" href="http://blog.yjpark.org/css/paper-canvas.css" />
+
+  
+  <meta property="og:title" content="[F# Game Tutorial] GUI Addon" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/2019/02/03/fsharp-game-tutorial-gui-addon//" />
+  <meta property="og:image" content="img/yjpark_icon.png" />
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Search" href="/search/">Search</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/page/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Living and Programming - YJ Park&#39;s Blog" href="http://blog.yjpark.org/">
+              <img class="avatar-img" src="http://blog.yjpark.org/img/yjpark_icon.png" alt="Living and Programming - YJ Park&#39;s Blog" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+
+    <div role="main" class="container main-content">
+
+      
+        <header class="header-post">
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+      <div class="post-heading">
+        <h1>[F# Game Tutorial] GUI Addon</h1>
+        
+        <span class="post-meta">Posted on February 3, 2019</span>
+      </div>
+     </div>
+  </div>
+</header>
+
+<article>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+	  <p>It&rsquo;s been a few days since last post, in this one, I want to talk about basic GUI implementation in the game, how to create a very simple addon system to support flexible extensions.</p>
+
+<p>After we&rsquo;ve got the very limited version of the game running (we can load an atlas and show sprites with it after last post), next steps will be adding more features, at this points, it&rsquo;s better to have a way to communicate with the running game easily. For example, when I want to tweak some parameters in game, it&rsquo;s not very efficient to repeatedly do these steps: change it in code, recompile, rerun to find the best value, instead I prefer to run the game, and use some way to change the parameters while the game is still running.</p>
+
+<p>There are different ways to support this kind of communication:</p>
+
+<ul>
+<li>Provide some REPL (read, evaluate, print, loop) for running game, this is a very powerful way, but need quite some logic to support, especially for a compiled language like F#, many game engine will use some dynamic language for scripting purpose.</li>
+<li>Special development environment to provide extra features, e.g. when you run your game in Unity Editor, you can see many runtime information with editor UI, and can adjust many values with built-in inspector, 3rd party tools, or your editor extensions.</li>
+<li>In game GUI, menu bar, tool bar, or any UI you created for in game control purpose</li>
+</ul>
+
+<p>Since we are creating our own game engine here, and use F# as programming language, the first 2 approaches are not easy to use, so I&rsquo;ll use the 3rd option here.</p>
+
+<h2 id="choose-a-gui-framework">Choose a GUI Framework</h2>
+
+<p>Implementing a GUI framework is a non trivial task, also it&rsquo;s not a essential part of this tutorial, so ideally I want to use an existing framework for this.</p>
+
+<p>I look into the community list of MonoGame libraries at <a href="https://github.com/aloisdeniel/awesome-monogame">https://github.com/aloisdeniel/awesome-monogame</a>, there are 3 GUI libraries listed:</p>
+
+<h3 id="emptykeys-https-github-com-emptykeys-ui-engines"><a href="https://github.com/EmptyKeys/UI_Engines">EmptyKeys</a></h3>
+
+<p>The short description says: <em>Create UI from a WPF like XAML</em>, which is not the intended way I planned, was thinking about a more simple pure code approach, so pass for now.</p>
+
+<h3 id="geonbit-ui-https-github-com-ronenness-geonbit-ui"><a href="https://github.com/RonenNess/GeonBit.UI">GeonBit.UI</a></h3>
+
+<p>From it&rsquo;s github readme: <em>GeonBit.UI is the UI / HUD system of the GeonBit engine</em>, and <em>GeonBit is an Entity-Component-System based game engine</em>, I planned to create my own implementation on ECS for tutorial purpose, so this may make things a bit complicate for the readers, not ideal for my special requirements.</p>
+
+<h3 id="myra-https-github-com-rds1983-myra"><a href="https://github.com/rds1983/Myra">Myra</a></h3>
+
+<p>This seems to be the best fit, has a rich feature set, not extra dependencies, it also came with a UI editor, which can be handy later.</p>
+
+<p>So I did some reading and experimenting with Myra, so far so good, then I decide to use it as the GUI framework in this tutorial.</p>
+
+<h2 id="some-thoughts-on-choosing-libraries">Some Thoughts on Choosing Libraries</h2>
+
+<p>It&rsquo;s very common for most projects nowadays to depend on external libraries, so parts of software developers&rsquo; job are to choose when to use external libraries, and what particular libraries to use.</p>
+
+<p>I&rsquo;ve done this process many times, here are some thoughts that I think worth mentioning.</p>
+
+<h3 id="always-do-some-research-before-big-implementation">Always Do Some Research Before Big Implementation</h3>
+
+<p>As developers, we love writing codes, it&rsquo;s both fun and feels nice when you can create new features, so in many cases (especially when you are not very experienced yet), when we see a requirement, we start coding very soon. Though it&rsquo;s always good to slow down a bit at this stage, do some research, see what&rsquo;s available out there first, and even if in the end you implement your own version, these research can help you to learn and design API in a better way.</p>
+
+<p>Though it take time to use libraries too, especially for big and heavy ones, and in some cases, you may not be clear about what you want at the beginning, choose a library not fitting very well may cause trouble later. My feeling is that this is highly related to your experiences, so don&rsquo;t be afraid to make mistakes, do more practices, and you can get better from time.</p>
+
+<h3 id="if-possible-wrap-the-library-or-limit-direct-dependencies">If Possible, Wrap the Library, or Limit Direct Dependencies</h3>
+
+<p>One strategy that works well for me is to create a thin wrapper for the library you chose, that should be the only place in your codes that directly depend on this library, so in the future if you want to switch to a different one, technically you can keep all other codes intact, and only update this wrapper. Of course this is a simplified description, in real world it&rsquo;s usually not that easy to have a fully independent wrapper layer, but if you have this in mind, then if you need to switch, it&rsquo;s much less painful to do.</p>
+
+<p>For some critical part of your application, it might be even better to create a generic wrapping API, than support multiple wrappers with more than one libraries with same APIs, in this way, it&rsquo;s very flexible to switch implementation, but this approach take considerable efforts to make it right, since your common API needs to be generic, also it&rsquo;s much harder to use the library&rsquo;s full power.</p>
+
+<p>Also in many cases, create a wrapper is not practical and not have much benefits, even in these cases, you can still limit direct dependencies to a smaller scope, that make the 3rd party related logic cleaner, and in case of migration, much easier to do.</p>
+
+<p>And even for some libraries that you are 100% with the usage in a project, treat it this way is still helpful, for cases like version updates with backward incompatible changes. Without proper isolation, many projects normally stuck to a particular version and can&rsquo;t take advantages from upstream improvements, some times this can lead to security risks in production system.</p>
+
+<h2 id="addon-system">Addon System</h2>
+
+<p>I&rsquo;d like to keep the core part of the game engine minimal and flexible, an addon system can help me to achieve this, and this is a very common feature in game development, so I think it&rsquo;s worthy to create a basic addon system in early stage.</p>
+
+<p>Addon, Add-in, Plugin, Extension, are similar concepts, with some designed differences, I think the terminology is not really standard, e.g. I feel that addon or add-in means that they are added in development time, while plugins means that it can be attached later in runtime, but this is just my thoughts. But in general, they means by defining some extension points, we can extend new functionalities in a clean way.</p>
+
+<h3 id="game-engine-types-fs"><code>Game.Engine/Types.fs</code></h3>
+
+<p>Define interfaces for IAddon, and add support in IGame</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IGame</span> <span style="color:#f92672">=</span>
+    <span style="color:#f92672">...</span>
+    <span style="color:#66d9ef">abstract</span> Addons <span style="color:#f92672">:</span> Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">,</span> IAddon<span style="color:#f92672">&gt;</span>
+    <span style="color:#66d9ef">abstract</span> Register <span style="color:#f92672">:</span> <span style="color:#f92672">(</span>IGame <span style="color:#f92672">-&gt;</span> IAddon<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+
+<span style="color:#f92672">and</span> IAddon <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> ILogger
+    <span style="color:#66d9ef">abstract</span> Kind <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">with</span> get
+    <span style="color:#66d9ef">abstract</span> Game <span style="color:#f92672">:</span> IGame <span style="color:#66d9ef">with</span> get
+    <span style="color:#66d9ef">abstract</span> Update <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> Draw <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> LateUpdate <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> LateDraw <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span></code></pre></div>
+
+<h3 id="game-engine-baseaddons-fs"><code>Game.Engine/BaseAddons.fs</code></h3>
+
+<p>This is the common base class for creating a new addon, just provide a few extension points, and default empty implementation.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#f92672">[&lt;</span>AbstractClass<span style="color:#f92672">&gt;]</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BaseAddon</span> <span style="color:#f92672">(</span>kind <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span><span style="color:#f92672">,</span> game <span style="color:#f92672">:</span> IGame<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">let</span> logger <span style="color:#f92672">:</span> ILogger <span style="color:#f92672">=</span> getLogger <span style="color:#f92672">&lt;|</span> sprintf <span style="color:#e6db74">&#34;%s:%s&#34;</span> game<span style="color:#f92672">.</span>Param.Name kind
+
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> Update <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> Draw <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> LateUpdate <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">member</span> LateDraw <span style="color:#f92672">:</span> <span style="color:#66d9ef">unit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">unit</span>
+
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>Update () <span style="color:#f92672">=</span> ()
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>Draw () <span style="color:#f92672">=</span> ()
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>LateUpdate () <span style="color:#f92672">=</span> ()
+    <span style="color:#66d9ef">default</span> <span style="color:#f92672">__.</span>LateDraw () <span style="color:#f92672">=</span> ()
+
+    <span style="color:#66d9ef">interface</span> IAddon <span style="color:#66d9ef">with</span>
+        <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Kind</span> <span style="color:#f92672">=</span> kind
+        <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Game</span> <span style="color:#f92672">=</span> game
+        <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">Update</span> () <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Update ()
+        <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">Draw</span> () <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Draw ()
+        <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">LateUpdate</span> () <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>LateUpdate ()
+        <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">LateDraw</span> () <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>LateDraw ()
+    <span style="color:#66d9ef">interface</span> ILogger <span style="color:#66d9ef">with</span>
+        <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Log</span> evt <span style="color:#f92672">=</span> logger<span style="color:#f92672">.</span>Log evt</code></pre></div>
+
+<h3 id="game-engine-internal-game-fs"><code>Game.Engine/Internal/Game.fs</code></h3>
+
+<p>The game class will just maintain a list of addons, and calling their extension points at right time.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">internal</span> Game <span style="color:#f92672">(</span>param <span style="color:#f92672">:</span> GameParam<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> Microsoft.Xna.Framework.Game ()
+    <span style="color:#f92672">...</span>
+    <span style="color:#66d9ef">let</span> mutable addons <span style="color:#f92672">:</span> Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">,</span> IAddon<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Map.empty
+    <span style="color:#f92672">...</span>
+    <span style="color:#66d9ef">override</span> this.<span style="color:#a6e22e">Update</span> <span style="color:#f92672">(</span>gameTime <span style="color:#f92672">:</span> GameTime<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        time <span style="color:#f92672">&lt;-</span> gameTime
+        param<span style="color:#f92672">.</span>ExitKey
+        <span style="color:#f92672">|&gt;</span> Option.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> key <span style="color:#f92672">-&gt;</span>
+            <span style="color:#66d9ef">if</span> Keyboard.isKeyDown key <span style="color:#66d9ef">then</span>
+                this<span style="color:#f92672">.</span>Exit ()
+        <span style="color:#f92672">)</span>
+        addons
+        <span style="color:#f92672">|&gt;</span> Map.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span>kind addon <span style="color:#f92672">-&gt;</span> addon<span style="color:#f92672">.</span>Update ()<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Update <span style="color:#f92672">(</span>gameTime<span style="color:#f92672">)</span>
+        addons
+        <span style="color:#f92672">|&gt;</span> Map.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span>kind addon <span style="color:#f92672">-&gt;</span> addon<span style="color:#f92672">.</span>LateUpdate ()<span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">override</span> __.<span style="color:#a6e22e">Draw</span> <span style="color:#f92672">(</span>gameTime <span style="color:#f92672">:</span> GameTime<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        time <span style="color:#f92672">&lt;-</span> gameTime
+        param<span style="color:#f92672">.</span>ClearColor
+        <span style="color:#f92672">|&gt;</span> Option.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> color <span style="color:#f92672">-&gt;</span>
+            graphics<span style="color:#f92672">.</span>Value.Device.Clear <span style="color:#f92672">(</span>color<span style="color:#f92672">)</span>
+        <span style="color:#f92672">)</span>
+        graphics<span style="color:#f92672">.</span>Value.SpriteBatch.Begin <span style="color:#f92672">(</span>camera<span style="color:#f92672">.</span>Value<span style="color:#f92672">)</span>
+        addons
+        <span style="color:#f92672">|&gt;</span> Map.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span>kind addon <span style="color:#f92672">-&gt;</span> addon<span style="color:#f92672">.</span>Draw ()<span style="color:#f92672">)</span>
+        graphics<span style="color:#f92672">.</span>Value.SpriteBatch.End ()
+        <span style="color:#66d9ef">base</span><span style="color:#f92672">.</span>Draw <span style="color:#f92672">(</span>gameTime<span style="color:#f92672">)</span>
+        addons
+        <span style="color:#f92672">|&gt;</span> Map.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span>kind addon <span style="color:#f92672">-&gt;</span> addon<span style="color:#f92672">.</span>LateDraw ()<span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">interface</span> IGame <span style="color:#66d9ef">with</span>
+        <span style="color:#f92672">...</span>
+        <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">Register</span> <span style="color:#f92672">(</span>create <span style="color:#f92672">:</span> IGame <span style="color:#f92672">-&gt;</span> IAddon<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+            <span style="color:#66d9ef">let</span> addon <span style="color:#f92672">=</span> create this
+            <span style="color:#66d9ef">let</span> kind <span style="color:#f92672">=</span> addon<span style="color:#f92672">.</span>Kind
+            <span style="color:#66d9ef">match</span> Map.tryFind kind addons <span style="color:#66d9ef">with</span>
+            <span style="color:#f92672">|</span> Some addon&#39; <span style="color:#f92672">-&gt;</span>
+                logError this <span style="color:#e6db74">&#34;Register&#34;</span> <span style="color:#e6db74">&#34;Addon_Already_Exist&#34;</span> <span style="color:#f92672">(</span>kind<span style="color:#f92672">,</span> addon&#39;<span style="color:#f92672">,</span> addon<span style="color:#f92672">)</span>
+            <span style="color:#f92672">|</span> None <span style="color:#f92672">-&gt;</span>
+                addons <span style="color:#f92672">&lt;-</span> Map.add kind addon addons
+                logInfo this <span style="color:#e6db74">&#34;Register&#34;</span> <span style="color:#e6db74">&#34;Addon_Added&#34;</span> <span style="color:#f92672">(</span>kind<span style="color:#f92672">,</span> addon<span style="color:#f92672">)</span>
+    <span style="color:#f92672">...</span></code></pre></div>
+
+<h3 id="game-gui-types-fs"><code>Game.Gui/Types.fs</code></h3>
+
+<p>Define IGui in gui addon, also provide a generic version to get the root widget with type.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IGui</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> IAddon
+    <span style="color:#66d9ef">abstract</span> Menu <span style="color:#f92672">:</span> Menu <span style="color:#66d9ef">with</span> get
+    <span style="color:#66d9ef">abstract</span> Root0 <span style="color:#f92672">:</span> Widget <span style="color:#66d9ef">with</span> get
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IGui</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root <span style="color:#66d9ef">when</span> <span style="color:#66d9ef">&#39;</span>root <span style="color:#f92672">:&gt;</span> Widget<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> IGui
+    <span style="color:#66d9ef">abstract</span> Root <span style="color:#f92672">:</span> <span style="color:#66d9ef">&#39;</span>root <span style="color:#66d9ef">with</span> get</code></pre></div>
+
+<h3 id="game-gui-internal-gui-fs"><code>Game.Gui/Internal/Gui.fs</code></h3>
+
+<p>The implementation is just simple and straightforward, here to assume all games will have a menu bar and a root widget, each game that uses this addon will add elements into the root panel to construct proper GUI elements.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">internal</span> Gui<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root <span style="color:#66d9ef">when</span> <span style="color:#66d9ef">&#39;</span>root <span style="color:#f92672">:&gt;</span> Widget<span style="color:#f92672">&gt;</span> <span style="color:#f92672">(</span>kind <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span><span style="color:#f92672">,</span> game <span style="color:#f92672">:</span> IGame<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">inherit</span> BaseAddon <span style="color:#f92672">(</span>kind<span style="color:#f92672">,</span> game<span style="color:#f92672">)</span>
+
+    <span style="color:#66d9ef">do</span> <span style="color:#f92672">(</span>
+        MyraEnvironment.Game <span style="color:#f92672">&lt;-</span> game<span style="color:#f92672">.</span>Xna
+    <span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">let</span> desktop <span style="color:#f92672">:</span> Desktop <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Desktop ()
+    <span style="color:#66d9ef">let</span> menu <span style="color:#f92672">:</span> Menu <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Menu ()
+    <span style="color:#66d9ef">let</span> root <span style="color:#f92672">:</span> <span style="color:#66d9ef">&#39;</span>root <span style="color:#f92672">=</span>
+        Activator.CreateInstance <span style="color:#f92672">(</span>typeof<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root<span style="color:#f92672">&gt;,</span> <span style="color:#f92672">[|</span> <span style="color:#f92672">|])</span>
+        <span style="color:#f92672">:?&gt;</span> <span style="color:#66d9ef">&#39;</span>root
+
+    <span style="color:#66d9ef">do</span> <span style="color:#f92672">(</span>
+        desktop<span style="color:#f92672">.</span>Widgets.Add menu
+        root<span style="color:#f92672">.</span>GridPositionY <span style="color:#f92672">&lt;-</span> 1
+        root<span style="color:#f92672">.</span>Top <span style="color:#f92672">&lt;-</span> 32
+        desktop<span style="color:#f92672">.</span>Widgets.Add root
+    <span style="color:#f92672">)</span>
+
+    <span style="color:#66d9ef">override</span> __.<span style="color:#a6e22e">Draw</span> () <span style="color:#f92672">=</span>
+        desktop<span style="color:#f92672">.</span>Bounds <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">new</span> Rectangle<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> game<span style="color:#f92672">.</span>Width<span style="color:#f92672">,</span> game<span style="color:#f92672">.</span>Height<span style="color:#f92672">)</span>
+        desktop<span style="color:#f92672">.</span>Render()
+    <span style="color:#66d9ef">interface</span> IGui <span style="color:#66d9ef">with</span>
+        <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Menu</span> <span style="color:#f92672">=</span> menu
+        <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Root0</span> <span style="color:#f92672">=</span> root <span style="color:#f92672">:&gt;</span> Widget
+
+    <span style="color:#66d9ef">interface</span> IGui<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">with</span>
+        <span style="color:#66d9ef">member</span> __.<span style="color:#a6e22e">Root</span> <span style="color:#f92672">=</span> root</code></pre></div>
+
+<h3 id="game-gui-gui-fs"><code>Game.Gui/Gui.fs</code></h3>
+
+<p>Also adding some extension and helper functions to make it easier to use.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IGui</span> <span style="color:#66d9ef">with</span>
+    <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">AddMenuItems</span> <span style="color:#f92672">([&lt;</span>ParamArray<span style="color:#f92672">&gt;]</span> items <span style="color:#f92672">:</span> MenuItem array<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        this<span style="color:#f92672">.</span>Menu.AddItems items
+        this
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IGui</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root <span style="color:#66d9ef">when</span> <span style="color:#66d9ef">&#39;</span>root <span style="color:#f92672">:&gt;</span> Widget<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">with</span>
+    <span style="color:#66d9ef">member</span> this.<span style="color:#a6e22e">AddChildren</span> <span style="color:#f92672">([&lt;</span>ParamArray<span style="color:#f92672">&gt;]</span> children <span style="color:#f92672">:</span> Widget array<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">match</span> this<span style="color:#f92672">.</span>Root0 <span style="color:#66d9ef">with</span>
+        <span style="color:#f92672">|</span> <span style="color:#f92672">:?</span> Container <span style="color:#66d9ef">as</span> container <span style="color:#f92672">-&gt;</span>
+            container<span style="color:#f92672">.</span>AddChildren children
+        <span style="color:#f92672">|</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span>
+            failWith <span style="color:#e6db74">&#34;Not_Container&#34;</span> <span style="color:#f92672">&lt;|</span> this<span style="color:#f92672">.</span>Root.GetType ()
+        this
+
+<span style="color:#66d9ef">let</span> create<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root <span style="color:#66d9ef">when</span> <span style="color:#66d9ef">&#39;</span>root <span style="color:#f92672">:&gt;</span> Widget<span style="color:#f92672">&gt;</span> <span style="color:#f92672">(</span>game <span style="color:#f92672">:</span> IGame<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">let</span> gui <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gui<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root<span style="color:#f92672">&gt;</span> <span style="color:#f92672">(</span>Kind<span style="color:#f92672">,</span> game<span style="color:#f92672">)</span>
+    gui <span style="color:#f92672">:&gt;</span> IGui<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>root<span style="color:#f92672">&gt;</span></code></pre></div>
+
+<h3 id="tank-playground-maingui-fs"><code>Tank.Playground/MainGui.fs</code></h3>
+
+<p>In game projects, can use the gui addon to show a menuitem to quit the game properly, also create a few button to move camera&rsquo;s position (panning).</p>
+
+<p>Here the menu items and buttons are created with a very simple internal DSL created with F# computation expression, more details will be written in a future post.</p>
+
+<p>Also the camera feature is provided by <a href="https://github.com/aloisdeniel/Comora">Comora</a></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">let</span> private initMenu <span style="color:#f92672">(</span>gui <span style="color:#f92672">:</span> IGui<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+    gui<span style="color:#f92672">.</span>AddMenuItems <span style="color:#f92672">(</span>
+        menuItem <span style="color:#f92672">{</span>
+            text <span style="color:#e6db74">&#34;Quit&#34;</span>
+            onSelected <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> <span style="color:#f92672">_</span>args <span style="color:#f92672">-&gt;</span> gui<span style="color:#f92672">.</span>Game.Xna.Exit ()<span style="color:#f92672">)</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">)</span>
+
+<span style="color:#66d9ef">let</span> create game <span style="color:#f92672">=</span>
+    Gui.create<span style="color:#f92672">&lt;</span>Panel<span style="color:#f92672">&gt;</span> game
+    <span style="color:#f92672">|&gt;</span> CameraGui.init
+    <span style="color:#f92672">|&gt;</span> initMenu</code></pre></div>
+
+<h3 id="tank-playground-program-fs"><code>Tank.Playground/Program.fs</code></h3>
+
+<p>By setting up a instance of GameParam, can create a game instance, and run it.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#66d9ef">let</span> initialize <span style="color:#f92672">=</span>
+    withAddon MainGui.create
+
+<span style="color:#66d9ef">let</span> execute <span style="color:#f92672">(</span>args <span style="color:#f92672">:</span> ParseResults<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;)</span> <span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">let</span> consoleMinLevel <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>Contains Verbose <span style="color:#66d9ef">then</span>
+            LogLevelInformation
+        <span style="color:#66d9ef">else</span>
+            LogLevelWarning
+    setupConsole consoleMinLevel <span style="color:#f92672">|&gt;</span> ignore
+
+    <span style="color:#66d9ef">use</span> <span style="color:#f92672">_</span>game <span style="color:#f92672">=</span> Game.tank initialize
+    0 <span style="color:#f92672">//</span> <span style="color:#66d9ef">return</span> an integer exit code</code></pre></div>
+
+<h2 id="some-comments">Some Comments</h2>
+
+<p>I won&rsquo;t have line by line explanation here, I think the structure is simple here, nothing really fancy.</p>
+
+<p>I added a GameParam record to represent the information about how to create a game instance to make the API a bit cleaner, you can browse the code base for more details</p>
+
+<p>You may feel that the codes here is a bit over design, after all, all these codes above are not adding features, they are only provide a more flexible way to organize codes together, e.g. you can just add a root gui into base game, then you&rsquo;ll have much fewer lines. In some sense this is true, we are over designing at this moment, but since I&rsquo;m pretty sure that the GUI usage will be much more complicate in the future, and also we can create more addons for cleaner codes (actually I&rsquo;ve change the tank display logic into an addon as well), I think it&rsquo;s worthy to implement the addon system now.</p>
+
+<p>Any way, hope you enjoy this post, in the next one, I want to discuss about some details of the internal DSL for GUI elements, I think it&rsquo;s a pretty neat way and can show the power and easy to use of F# computation expression.</p>
+
+<hr />
+
+<p>Code: <a href="https://github.com/yjpark/FSharpGameTutorial/tree/posts/gui-addon">https://github.com/yjpark/FSharpGameTutorial/tree/posts/gui-addon</a></p>
+	</div>
+  </div>
+</article>
+
+<div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <ul class="pager blog-pager">
+      
+      <li class="previous">
+        <a href="http://blog.yjpark.org/blog/2019/01/22/fsharp-game-tutorial-game-abstraction/" data-toggle="tooltip" data-placement="top" title="[F# Game Tutorial] Game Abstraction">&larr; Previous Post</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+
+<div class="row disqus-comments">
+  <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yjpark" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/yjpark" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/yjpark" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:yjpark@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+
+    		  <li>
+      			<a href="http://blog.yjpark.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>
+
+        </ul>
+        <p class="copyright text-muted">
+    		  YJ Park
+    		  &nbsp;&bull;&nbsp;
+    		  2019
+
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.yjpark.org/">Living and Programming - YJ Park&#39;s Blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme based on
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://blog.yjpark.org/js/bootstrap.min.js"></script>
+<script src="http://blog.yjpark.org/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-2120845-8', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+  </body>
+</html>
